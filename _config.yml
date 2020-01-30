@@ -1,0 +1,51 @@
+# Dependencies
+markdown:            kramdown
+highlighter:         rouge
+
+# Gems (for Jekyll 3.0)
+plugins: [jekyll-paginate]
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           /:year/:month/:day/:title.html
+
+# Setup
+title:               oucb
+tagline:             '水滴石穿，用心、尽力，活的快活'
+description:         'Python | Vue | Rust'
+url:                 http://oucb.github.io
+out_url:             http://www.oucb.org
+baseurl:             /
+paginate:            10
+
+# About/contact
+author:
+  name:              oucb
+  url:               https://github.com/oucb
+  email:             oucb@outlook.com
+
+# Custom vars
+# version:             2.0
+
+# Social Media
+github:				http://github.com/oucb
+
+# sidebar nav
+nav:
+  - text: 分类
+    url : /category.html
+  - text: 标签
+    url : /tags.html
+  - text: 归档
+    url : /archive.html
+  - text: 关于
+    url : /about.html
+  - text: Feed
+    url : /feed.html
+
+# Theme Author (Please don't edit this line cause of MIT LICENSE rules)
+theme_settings:
+  creator:			Rizky Ariestiyansyah
+  codename:			Naringu
+  link:             https://github.com/ariestiyansyah/naringu
