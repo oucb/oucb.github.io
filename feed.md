@@ -4,5 +4,5 @@ layout: page
 permalink: /feed.html
 ---
 
-- [博客订阅](http://www.oucb.org/atom.xml)
+- [博客订阅](https://www.oucb.cc/atom.xml)
 

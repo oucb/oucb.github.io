@@ -14,8 +14,8 @@ permalink:           /:year/:month/:day/:title.html
 title:               oucb
 tagline:             '水滴石穿，用心、尽力，活的快活'
 description:         'Python | Vue | Rust'
-url:                 http://oucb.github.io
-out_url:             http://www.oucb.org
+url:                 https://oucb.github.io
+out_url:             https://www.oucb.cc
 baseurl:             /
 paginate:            10
 
@@ -29,7 +29,7 @@ author:
 # version:             2.0
 
 # Social Media
-github:				http://github.com/oucb
+github:				https://github.com/oucb
 
 # sidebar nav
 nav:
