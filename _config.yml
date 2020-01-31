@@ -12,7 +12,7 @@ permalink:           /:year/:month/:day/:title.html
 
 # Setup
 title:               oucb
-tagline:             '水滴石穿，用心、尽力，活的快活'
+tagline:             '闻风观雨，静听无声。用心、尽力地让生活与自己都变得有趣，活的快活'
 description:         'Python | Vue | Rust'
 url:                 https://oucb.github.io
 out_url:             https://www.oucb.cc
