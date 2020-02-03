@@ -1,0 +1,1090 @@
+---
+layout     : post
+title      : "《数据结构与算法:python语言描述》之字典与集合"
+categories : 数据结构与算法
+tags       : 数据结构 算法 字典 集合
+excerpt    : "阅读《数据结构与算法:python语言描述》课件中“字典与集合”部分所写笔记"
+---
+<div id="table-of-contents">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#一数据存储检索和字典">一、数据存储、检索和字典</a></li>
+<li><a href="#二字典">二、字典</a>
+<ul>
+<li><a href="#字典和索引">1. 字典和索引</a></li>
+<li><a href="#字典元素的关联">2. 字典元素的关联</a></li>
+</ul>
+</li>
+<li><a href="#三字典实现">三、字典实现</a>
+<ul>
+<li><a href="#线性表表示">1. 线性表表示</a></li>
+<li><a href="#有序线性表和二分检索">2. 有序线性表和二分检索</a></li>
+<li><a href="#x字典操作效率">3. X字典操作效率</a></li>
+</ul>
+</li>
+<li><a href="#四散列表hash-table哈希表杂凑表">四、散列表（hash table，哈希表，杂凑表）</a>
+<ul>
+<li><a href="#散列技术设计和性质">1. 散列技术：设计和性质</a></li>
+<li><a href="#散列函数">2. 散列函数</a></li>
+<li><a href="#冲突的消除">3. 冲突的消除</a></li>
+<li><a href="#散列表的实现">4. 散列表的实现</a></li>
+<li><a href="#扩大存储">5. 扩大存储</a></li>
+</ul>
+</li>
+<li><a href="#五字典和集合">五、字典和集合</a>
+<ul>
+<li><a href="#集合的实现">1. 集合的实现</a></li>
+<li><a href="#python-字典和集合">2. python 字典和集合</a></li>
+<li><a href="#python-的散列">3. python 的散列</a></li>
+<li><a href="#对字典的进一步考虑">4. 对字典的进一步考虑</a></li>
+</ul>
+</li>
+<li><a href="#六基于树实现字典">六、基于树实现字典</a>
+<ul>
+<li><a href="#二叉排序树">1. 二叉排序树</a></li>
+<li><a href="#二叉树排序树实现">2. 二叉树排序树：实现</a></li>
+<li><a href="#最佳二叉排序树">3. 最佳二叉排序树</a></li>
+<li><a href="#平衡二叉排序树avl树">4. 平衡二叉排序树（AVL树）</a></li>
+</ul>
+</li>
+<li><a href="#七其它支持字典的树形结构">七、其它支持字典的树形结构</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="orgf86613f" class="outline-2">
+<h2 id="一数据存储检索和字典"><a id="orgf86613f"></a>一、数据存储、检索和字典</h2>
+<div class="outline-text-2" id="text-一数据存储检索和字典">
+<ul class="org-ul">
+<li>存储和检索是计算机中最重要最基本的工作</li>
+<li>基于关键码的数据存储和检索
+
+<ul class="org-ul">
+<li>关键码指数据项的某种（可能具有唯一性的）特征，可以是数据内容的组成部分，也可以是专门为数据检索建立的标签</li>
+<li>支持这种操作的数据结构，通常称为字典、查找表或映射</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org2314c17" class="outline-2">
+<h2 id="二字典"><a id="org2314c17"></a>二、字典</h2>
+<div class="outline-text-2" id="text-二字典">
+<ul class="org-ul">
+<li>最主要同时也是最频繁的操作是检索
+
+<ul class="org-ul">
+<li>检索效率</li>
+<li>检索效率重要性因字典规模不同可能不同</li>
+</ul></li>
+
+<li>分类：
+
+<ul class="org-ul">
+<li>静态字典：建立后保持不变，只做检索，实现只需考虑检索效率</li>
+<li>动态字典：内容经常动态变动。需要考虑插入和删除操作的效率</li>
+<li>动态字典的插入和删除操作可能导致字典结构的变化。长期使用需考虑保证结构的稳定及良好的检索效率（性能不应随着反复操作而恶化）</li>
+</ul></li>
+
+<li>检索效率评价标准：关键码的平均比较次数，称为平均检索长度 ASL（Average
+Search Length），定义： \[ASL=\sum_{i=0}^{n-1}p_ic_i\] 其中 n
+为字典的项数，ci 和 pi 为数据元素 i
+的检索长度和概率。若个检索概论都一样，则
+pi=1/n，ASL=1/n。可能还需考虑找不到的情况</li>
+</ul>
+</div>
+
+<div id="org442e997" class="outline-3">
+<h3 id="字典和索引"><a id="org442e997"></a>1. 字典和索引</h3>
+<div class="outline-text-3" id="text-字典和索引">
+<ul class="org-ul">
+<li>字典是两种功能的统一：
+
+<ul class="org-ul">
+<li>作为数据的存储结构，支持数据的存储</li>
+<li>提供支持数据检索的功能，维护关键码到所存数据的联系</li>
+</ul></li>
+
+<li>索引是字典的附属结构，只提供检索功能
+
+<ul class="org-ul">
+<li>可能提供与基本字典不同的查找方式，例如另一套关键码</li>
+<li>基于关键码的索引，实现的是关键码到数据存储位置的映射</li>
+<li>字典可以没有另外的索引，只有自身提供的检索方式；也可以附有一个或多个索引，如《新华字典》</li>
+</ul></li>
+
+<li>实现字典与实现索引
+
+<ul class="org-ul">
+<li>实现字典时，关键码关联于实际数据，数据保存在字典</li>
+<li>实现索引时，关键码关联于数据在字典里保存的位置</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="orgbea79fb" class="outline-3">
+<h3 id="字典元素的关联"><a id="orgbea79fb"></a>2. 字典元素的关联</h3>
+<div class="outline-text-3" id="text-字典元素的关联">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Assoc</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, key, value<span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">self</span>.key = key
+        <span style="color: #859900; font-weight: bold;">self</span>.value = value
+
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__lt__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, other<span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">self</span>.key &lt; other.key
+
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__le__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, other<span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">self</span>.key &lt; other.key <span style="color: #859900; font-weight: bold;">or</span> <span style="color: #859900; font-weight: bold;">self</span>.key == other.key
+
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__str__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">"Assoc({0},{1})"</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>.key, <span style="color: #859900; font-weight: bold;">self</span>.value<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+若 x 的值是关联，x.key 取得关键码，x.value 取得关联值；定义 &lt; 和 &lt;=
+用于比较数据。
+</p>
+</div>
+</div>
+</div>
+
+<div id="org8dd75cc" class="outline-2">
+<h2 id="三字典实现"><a id="org8dd75cc"></a>三、字典实现</h2>
+<div class="outline-text-2" id="text-三字典实现">
+<ul class="org-ul">
+<li>实现技术：
+
+<ul class="org-ul">
+<li>线性表，特别是连续表</li>
+<li>散列表</li>
+<li>基于树形结构</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="org84aea5e" class="outline-3">
+<h3 id="线性表表示"><a id="org84aea5e"></a>1. 线性表表示</h3>
+<div class="outline-text-3" id="text-线性表表示">
+<ul class="org-ul">
+<li>由于线性表可以存储信息，因此可以作为实现方式：
+
+<ul class="org-ul">
+<li>关联在线性表里顺序排列，形成关联的序列</li>
+<li>检索是在线性表里查找具有特定关键码的数据项，插入和删除操作都是普通的线性表操作</li>
+</ul></li>
+
+<li>顺序字典可以用 list 实现
+
+<ul class="org-ul">
+<li>关联可用 Assoc 对象，也可用二元 tuple 或 list 实现</li>
+<li>检索就是在表中查找特定的关键码（顺序查找），找到就说明检索成功；若检查完表还未找到，则检索失败</li>
+<li>插入新关联用 append 实现；删除可以在定位后用 del
+实现，或是基于要删除的内容，用 remove 实现</li>
+</ul></li>
+
+<li>优点与缺点：
+
+<ul class="org-ul">
+<li>优点：数据结构和算法简单，适用于任何关键码集合</li>
+<li>缺点：平均检索长度大，表长达n较大时检索耗时长，删除的效率也比较低，不太适合频繁变动的字典</li>
+<li>在字典的动态变化中，各种操作的效率不变（因为都已经是很低的操作了）</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org3c0bbeb" class="outline-3">
+<h3 id="有序线性表和二分检索"><a id="org3c0bbeb"></a>2. 有序线性表和二分检索</h3>
+<div class="outline-text-3" id="text-有序线性表和二分检索">
+<ul class="org-ul">
+<li>关键码取自一个有序集，将字典里的项按关键码排列。由于数据项排列有序，因此可以采用二分法实现快速检索</li>
+<li>基本过程：
+
+<ul class="org-ul">
+<li>初始考虑范围是整个字典</li>
+<li>取考虑范围的中间项进行比较，若相等则检索结束；若小于则考虑范围缩小为中间项左侧的数据，大于则是右侧的数据</li>
+<li>若范围里已经没有数据，则检索失败；否则重复上述步骤</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="orgb9c2948" class="outline-4">
+<h4 id="a.-二分检索程序实现"><a id="orgb9c2948"></a>a. 二分检索程序实现</h4>
+<div class="outline-text-4" id="text-a.-二分检索程序实现">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">bisearch</span><span style="color: #2aa198;">(</span>lst, key<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">low</span>, <span style="color: #268bd2;">hight</span>= <span style="color: #6c71c4;">0</span>, <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>lst<span style="color: #2aa198;">)</span>-<span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">while</span> low &lt;= hight:
+        <span style="color: #268bd2;">mid</span> = <span style="color: #2aa198;">(</span>low + hight<span style="color: #2aa198;">)</span>//<span style="color: #6c71c4;">2</span>
+        <span style="color: #859900; font-weight: bold;">if</span> lst<span style="color: #2aa198;">[</span>mid<span style="color: #2aa198;">]</span>.key == key:
+            <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #839496; font-weight: bold;">list</span><span style="color: #2aa198;">[</span>mid<span style="color: #2aa198;">]</span>.value
+        <span style="color: #859900; font-weight: bold;">if</span> lst<span style="color: #2aa198;">[</span>mid<span style="color: #2aa198;">]</span>.key &lt; key:
+            <span style="color: #268bd2;">low</span> = mid + <span style="color: #6c71c4;">1</span>
+        <span style="color: #859900; font-weight: bold;">else</span>:
+            <span style="color: #268bd2;">hight</span> = mid - <span style="color: #6c71c4;">1</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="org29c6fd7" class="outline-4">
+<h4 id="b.-x实现分析"><a id="org29c6fd7"></a>b. X实现分析</h4>
+<div class="outline-text-4" id="text-b.-x实现分析">
+<ul class="org-ul">
+<li>插入的一个特殊情况是被查关键码存在，可修改关联值或插入新项（允许关键码重复），删除时分删除一项还是所有关键码相同的项</li>
+<li>检索过程可用二叉树表示，数据位置标在树结点，通过检索找到某结点的比较次数等于该结点的层数加1</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org56a91ae" class="outline-3">
+<h3 id="x字典操作效率"><a id="org56a91ae"></a>3. X字典操作效率</h3>
+<div class="outline-text-3" id="text-x字典操作效率">
+</div>
+</div>
+</div>
+
+<div id="orgac0ec24" class="outline-2">
+<h2 id="四散列表hash-table哈希表杂凑表"><a id="orgac0ec24"></a>四、散列表（hash table，哈希表，杂凑表）</h2>
+<div class="outline-text-2" id="text-四散列表hash-table哈希表杂凑表">
+<ul class="org-ul">
+<li>当关键码是连续表下标时，检索速度最快，可直接找到元素。关键码可能不是整数，即使是，也可能取值范围很大，不适合直接作为下标。</li>
+<li>散列表基本思想：把基于关键码的检索变为基于整数下标的访问
+
+<ul class="org-ul">
+<li>方法：选定一个整数下标范围建立一个连续表；选定一个从关键码集合到该下标范围的适当映射
+h</li>
+<li>存入关键码为 key 的数据时，将其存入表第 h(key) 个位置</li>
+<li>以 key 为关键码检索数据时，直接去查第 h(key) 个位置的元素</li>
+</ul></li>
+
+<li>上述h称为散列函数，又称哈希函数或杂凑函数，是从可能的关键码到一个整数区间里(下标)的映射。其类型是：
+h：KEY -&#x2013;&#x2014;&gt; INDEX</li>
+</ul>
+</div>
+
+<div id="org8810f61" class="outline-3">
+<h3 id="散列技术设计和性质"><a id="org8810f61"></a>1. 散列技术：设计和性质</h3>
+<div class="outline-text-3" id="text-散列技术设计和性质">
+<ul class="org-ul">
+<li>将散列计算应用于存储和检索，就得到了散列表</li>
+<li>对于散列表，通常有 |KEY|&gt;&gt;|INDEX| h
+把一个大集合的元素映射到一个小集合里，必然会有多个关键码对于同一个位置的情况，此时就说出现冲突（碰撞），也称这些关键码为同义词上述可知，对规模固定的散列表，一般表中元素越多，出现冲突的可能性越大，用‘负载因子'作为一种有用的度量</li>
+<li>负载因子 a 是考察散列表性质的一个重要参数。定义： a =
+散列表中实际元素个数/基本存储区能容纳的元素个数负载因子越大，出现冲突可能性也越大。散列表中实际元素越多，说明需要映射的元素越多，出现冲突可能也越大；基本存储区能容纳的元素个数即映射的下标位置个数，增大存储空间(增大可能存储位置)可以减小负载因子。但负载因子小，空闲空间的比例就大。</li>
+</ul>
+</div>
+
+<div id="org0cd1d85" class="outline-4">
+<h4 id="a.-散列表设计实现两大问题"><a id="org0cd1d85"></a>a. 散列表设计实现两大问题</h4>
+<div class="outline-text-4" id="text-a.-散列表设计实现两大问题">
+<ul class="org-ul">
+<li>散列函数设计，冲突消除机制。首先考虑散列函数的设计问题</li>
+<li>关键码和位置区间是事先确定的，作为散列函数的基础集合（参数域和值域）。选择散列函数需考虑：
+
+<ul class="org-ul">
+<li>尽可能把关键码映射到不同值，尽可能映射到值域中的大部分</li>
+<li>关键码的散列值在下标区间里均匀分布，有可能减少冲突</li>
+<li>计算比较简单<br /></li>
+</ul></li>
+
+<li>散列表设计实现两大问题：散列函数设计，冲突消除机制</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org52173e6" class="outline-3">
+<h3 id="散列函数"><a id="org52173e6"></a>2. 散列函数</h3>
+<div class="outline-text-3" id="text-散列函数">
+<ul class="org-ul">
+<li>基本思想：映射关系越乱越好，越没有规律越好</li>
+<li>一些方法依赖于对实际数据集的分析，实际中很难使用
+
+<ul class="org-ul">
+<li>如果事先知道需要存储的数据及其分布，可能设计出一个存储效果最佳的散列函数，甚至可能保证不出现冲突</li>
+<li>一些数据结构教科书里介绍了一批散列函数设计</li>
+<li>常见情况是需要存储和使用的数据不能再设计字典之前确定，具体使用和分布情况未知，上述分析方法不可用，只能用一些通用方法</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="org52c5c53" class="outline-4">
+<h4 id="a.-除余法"><a id="org52c5c53"></a>a. 除余法</h4>
+<div class="outline-text-4" id="text-a.-除余法">
+<ul class="org-ul">
+<li>关键码是整数。以关键码除以一个不大于散列表长度 m 的整数 p
+得到的余数（或者余数加 1）作为散列地址 m 常取 2 的某个幂值，此时 p
+可以取小于 m 的最大素数（如果连续表的下标从 1 开始，可以用余数加1）</li>
+<li>设计散列函数的最基本想法是使得到的结果尽可能没有规律
+
+<ul class="org-ul">
+<li>采用除余法，如果用偶数作为除数，就会出现偶数关键码得到偶数散列值，奇数关键码得到奇数散列值</li>
+<li>如果关键码集合的数字位数较多，可以考虑采用较大的除数，然后去掉最低位，排除最低位的规律性。还可以考虑其它去掉规律性的方法</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="orge26fbcd" class="outline-4">
+<h4 id="b.-基数转换法"><a id="orge26fbcd"></a>b. 基数转换法</h4>
+<div class="outline-text-4" id="text-b.-基数转换法">
+<ul class="org-ul">
+<li>针对整数关键码。取一个正整数 r，把关键码看作基数为 r
+的数，将其转换为十进制或二进制数。通常 r
+取一个素数。最后用除余法或删除几位数字的方法将其归入所需范围</li>
+<li>对于非整数关键码，通常先设计一种方法转换为整数，然后用整数散列的方法。通常最后用除余法把关键码归入所需范围</li>
+<li>对于字符串关键码。常见方法是把一个字符看做一个整数（例如用字符的编码），把一个字符串看作以某个整数为基数的"数"
+
+<ul class="org-ul">
+<li>常以 29 或 31 为基数，用基数转换法转换为整数</li>
+<li>再用整数散列法，把结果归入下标范围</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org4ed9904" class="outline-3">
+<h3 id="冲突的消除"><a id="org4ed9904"></a>3. 冲突的消除</h3>
+<div class="outline-text-3" id="text-冲突的消除">
+<ul class="org-ul">
+<li>分为：
+
+<ul class="org-ul">
+<li>内消除方法（在基本存储区内解决元素冲突）</li>
+<li>外消除方法（在基本存储区外解决元素冲突）</li>
+</ul></li>
+
+<li>对冲突处理技术的基本要求：
+
+<ul class="org-ul">
+<li>保证存入当前数据项的工作能够完成</li>
+<li>保证字典的基本存储性质：在任何时候，从任何以前存入字典而后未删除的关键码出发，都能找到对应的数据项</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="orge0c9caf" class="outline-4">
+<h4 id="a.-开地址法和探查序列"><a id="orge0c9caf"></a>a. 开地址法和探查序列</h4>
+<div class="outline-text-4" id="text-a.-开地址法和探查序列">
+<ul class="org-ul">
+<li>开地址法（内消除法）：
+
+<ul class="org-ul">
+<li>出现冲突时设法在连续表里为要插入的数据项另安排一个位置</li>
+<li>需要设计一种系统的且易于计算的位置安排方式（称为探查方式）</li>
+</ul></li>
+
+<li>常用方法是为散列表定义一个探查位置序列： Hi = (h(key) + di) mod m
+其中m为不超过表长的数，di 为一个增量序列，设 d0 =
+0，插入数据项时，如果 h(key) 空闲就直接存入（相当于使用
+d0），否则就逐个试探位置 Hi，直到找到第一个空位时把数据项存入</li>
+<li>增量序列有多种可能取法，例如 取 di =
+0，1，2，3，&#x2026;，称为线性探查；设计另一散列函数 h2，令 di = i *
+h2(key)，称为双散列探查。使用线性探查容易出现堆积现象，即在处理同义词时又引进非同义词之间冲突。其它探查法也可能出现这种情况，但可能稍好</li>
+<li>检索过程与插入类似。为判定"找不到"，还需为"无值"确定一种表示方式。对给定的
+key：
+
+<ul class="org-ul">
+<li>用散列函数求出对应的散列地址</li>
+<li>如果该位置无数据项，检索失败</li>
+<li>否则比较数据项的关键码，如果相等则检索成功并结束</li>
+<li>否则根据散列表的探查序列找到"下一地址"并回到步骤2</li>
+</ul></li>
+
+<li>删除，若找到对应项后简单将其删除，将可能影响后面的检索操作：
+
+<ul class="org-ul">
+<li>如果被删除元素位于同一散列值或不同散列值的检索链上，直接删除就会导致检索链的破坏</li>
+<li>解决办法：在被删除元素处放一个特殊标记（与空位标记不同）。检索时将其看作有元素存在，继承探查；插入时看作是空位</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="orgb91bff3" class="outline-4">
+<h4 id="b.-溢出区"><a id="orgb91bff3"></a>b. 溢出区</h4>
+<div class="outline-text-4" id="text-b.-溢出区">
+<ul class="org-ul">
+<li>外消除冲突的一种方法是在基本存储区之外，另外设置一个公共溢出区，把所有关键码冲突的数据项都保存在这个溢出表里</li>
+<li>如果散列表里的数据项很多，溢出区就可能变得很大；随着数据项的增加，插入和检索的工作量都会趋于线性</li>
+<li>采用了公共溢出区的散列表，散列表的负载因子可能超过1</li>
+</ul>
+</div>
+</div>
+
+<div id="org02c5d79" class="outline-4">
+<h4 id="c.-拉链法"><a id="org02c5d79"></a>c. 拉链法</h4>
+<div class="outline-text-4" id="text-c.-拉链法">
+<ul class="org-ul">
+<li>数据项不存放在散列表里，而是另外存储。散列表里保存对数据项的引用，由此可以有很多可能的设计。最简单的技术是"拉链法"</li>
+<li>基本思想：数据项存在散列表的基本连续表之外，每个关键码建立一个链接表，所有关键字为同义词的数据项存在同一链表里</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="orgf2c663e" class="outline-3">
+<h3 id="散列表的实现"><a id="orgf2c663e"></a>4. 散列表的实现</h3>
+<div class="outline-text-3" id="text-散列表的实现">
+<ul class="org-ul">
+<li>实际中，拉链法还可以推广
+
+<ul class="org-ul">
+<li>"同义词表"也可以采用顺序表或散列表，还可以采用其他结构</li>
+<li>有时把存放同义词的表称为"桶"，称这种结构为"桶散列"</li>
+<li>可用于存储大型字典，或者用于组织大量文件</li>
+</ul></li>
+
+<li>无论采用哪种消除方法，随着元素增加，负载因子增大，出现冲突的可能性会明显增大。在开地址法中，最终导致存储区溢出；在溢出区方法里是溢出区越来越大，检索效率趋于线性。在拉链法中表现为链的平均长度增加</li>
+</ul>
+</div>
+</div>
+
+<div id="orgd2a50ef" class="outline-3">
+<h3 id="扩大存储"><a id="orgd2a50ef"></a>5. 扩大存储</h3>
+<div class="outline-text-3" id="text-扩大存储">
+<ul class="org-ul">
+<li>负载因子达到一定程度扩大基本存储表,明显的时间与空间交换
+
+<ul class="org-ul">
+<li>采用内消除的一般情况 经验说明负载因子 a&lt;=0.7~0.75
+时平均检索长度接近常数</li>
+<li>采用桶散列，负载因子就是桶的平均大小可以容忍任意大的负载因子，但随着其增大，检索时间趋于线性</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="orgee24924" class="outline-2">
+<h2 id="五字典和集合"><a id="orgee24924"></a>五、字典和集合</h2>
+<div class="outline-text-2" id="text-五字典和集合">
+<ul class="org-ul">
+<li>任何字典实现方法都可用于实现集合，因为集合也代表一种关联，元素是否属于集合。</li>
+</ul>
+</div>
+
+<div id="org61317ff" class="outline-3">
+<h3 id="集合的实现"><a id="org61317ff"></a>1. 集合的实现</h3>
+<div class="outline-text-3" id="text-集合的实现">
+</div>
+
+<div id="orgbfe8a32" class="outline-4">
+<h4 id="a.-x基于排序表实现"><a id="orgbfe8a32"></a>a. X基于排序表实现</h4>
+<div class="outline-text-4" id="text-a.-x基于排序表实现">
+</div>
+</div>
+
+<div id="org98b1948" class="outline-4">
+<h4 id="b.-x基于散列表实现"><a id="org98b1948"></a>b. X基于散列表实现</h4>
+<div class="outline-text-4" id="text-b.-x基于散列表实现">
+</div>
+</div>
+
+<div id="orgb2f90d2" class="outline-4">
+<h4 id="c.-特殊实现技术位向量实现"><a id="orgb2f90d2"></a>c. 特殊实现技术：位向量实现</h4>
+<div class="outline-text-4" id="text-c.-特殊实现技术位向量实现">
+<ul class="org-ul">
+<li>一个元素是否属于一个集合，是一种二值判断。基于这一认识，提出专门的集合实现技术：位向量表示</li>
+<li>如果所需要的集合对象有一个公共超集 U，即需要实现的集合都是 U
+的子集，就可以采用位向量技术实现这些集合，方法是：
+
+<ul class="org-ul">
+<li>假定 U 包含 n 个元素，给每个元素一个编号作为该元素的"下标"</li>
+<li>对任何要考虑的集合 S，用一个 n 位的二进制序列（位向量）Vs 表示
+S。对于元素 e 属于 U，如果 e 属于 S，令 Vs 里对应于
+e（下标编号）的那个位取值 1，否则取值 0</li>
+</ul></li>
+
+<li>例如：假设 U 是 {a, b, c, d, e, f}，其子集 S1 = {a, b, c}:111000，S2 =
+{b, e, f}:010011</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="orgd1b9ff7" class="outline-3">
+<h3 id="python-字典和集合"><a id="orgd1b9ff7"></a>2. python 字典和集合</h3>
+<div class="outline-text-3" id="text-python-字典和集合">
+<ul class="org-ul">
+<li>python 内置字典(dict)和集合(set 和
+frozenset),都是基于散列表实现的数据结构，采用内消除技术
+
+<ul class="org-ul">
+<li>建立空字典或小字典，初始创建的存储区可容纳 8 个元素</li>
+<li>负载因子超过 2/3
+时更换更大存储快。字典不太大时按当时元素中实际元素的 4
+倍分配新快。超过 50000 时按实际元素的两倍分配新块</li>
+</ul></li>
+
+<li>python 中 dict 的关键码，set 和 frozenset
+的元素都只能是不变对象。为保证散列表的完整性</li>
+</ul>
+</div>
+</div>
+
+<div id="org53e2941" class="outline-3">
+<h3 id="python-的散列"><a id="org53e2941"></a>3. python 的散列</h3>
+<div class="outline-text-3" id="text-python-的散列">
+<ul class="org-ul">
+<li>python 标准函数中有 hash 函数用于计算参数的散列值
+
+<ul class="org-ul">
+<li>是函数，对一个对象调用或返回一个整数或抛出异常表示无定义</li>
+<li>对数值类型有定义，保证当 a==b 时两个数的 hash 值相同</li>
+<li>对内置不变组合类型有定义，包括 str，tuple，frozenset</li>
+<li>对无定义的对象调用，例如包含可变成分的序列，hash 将抛出
+TypeError：unhashable type&#x2026;</li>
+</ul></li>
+
+<li>调用时 hash 到参数所属的类里找名为 \_\<sub>hash</sub>\_&ensp;的方法
+
+<ul class="org-ul">
+<li>hash 有定义的内置类型都有自己的 \_\<sub>hash</sub>\_&ensp;方法</li>
+<li>自定义类里也可以定义这个方法</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org3fe4b7a" class="outline-3">
+<h3 id="对字典的进一步考虑"><a id="org3fe4b7a"></a>4. 对字典的进一步考虑</h3>
+<div class="outline-text-3" id="text-对字典的进一步考虑">
+<ul class="org-ul">
+<li>前面两种结构：
+
+<ul class="org-ul">
+<li>基于线性表的结构简单，易于实现。但总存在低效操作，不适合大型字典</li>
+<li>散列表操作效率高，对关键码类型无特殊要求，应用广泛。但没有确定性的效率保证，不适合效率要求严格的环境</li>
+</ul></li>
+
+<li>两种结构需要大块连续存储，动态变化不方便，也难于用于实现巨大的字典。要支持方便的动态变化，就应该考虑链接结构。分析上述情况很容易想到树形结构
+
+<ul class="org-ul">
+<li>可以用链接方式实现，容易处理动态插入/删除元素操作</li>
+<li>树中平均路径的长度可以达到结点个数的对数，有可能实现高效操作</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org1f27e2f" class="outline-2">
+<h2 id="六基于树实现字典"><a id="org1f27e2f"></a>六、基于树实现字典</h2>
+<div class="outline-text-2" id="text-六基于树实现字典">
+<ul class="org-ul">
+<li>用于实现字典的树形结构考虑因素：
+
+<ul class="org-ul">
+<li>支持大型字典的需要</li>
+<li>支持高效的结构调整</li>
+<li>有可能较好地利用计算机系统的存储结构</li>
+</ul></li>
+
+<li>特别注意二叉树的如下特点：
+
+<ul class="org-ul">
+<li>树结构‘良好'，最长路径长度与结点个数成对数关系</li>
+<li>树结构‘畸形'，则成线性关系</li>
+</ul></li>
+
+<li>采用（链接实现）二叉树作为字典的存储结构
+
+<ul class="org-ul">
+<li>可能得到较高的检索效率</li>
+<li>采用链接的实现方式，数据项的插入、删除操作比较灵活方便</li>
+</ul></li>
+
+<li>实现优势：
+
+<ul class="org-ul">
+<li>通常平均高度远小于树中结点个数</li>
+<li>沿着树中路径进行检索，效率高</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="org7f31546" class="outline-3">
+<h3 id="二叉排序树"><a id="org7f31546"></a>1. 二叉排序树</h3>
+<div class="outline-text-3" id="text-二叉排序树">
+<ul class="org-ul">
+<li>是一种存储数据的二叉树：
+
+<ul class="org-ul">
+<li>可用于保存关键码有序的数据</li>
+<li>树中数据的存储和使用都利用了数据的序</li>
+<li>可作为一种基于二叉树结构实现字典的方法</li>
+</ul></li>
+
+<li>定义：二叉排序树或者为空，或者具有如下性质的二叉树：
+
+<ul class="org-ul">
+<li>根结点保存着一个数据项（包括关键码）</li>
+<li>若左子树不为空，则其所有结点保存的值均小于根结点所保存的值</li>
+<li>若右子树不为空，则其所有结点保存的值均大于根结点所保存的值</li>
+<li>左右子树也满足二叉排序树</li>
+</ul></li>
+
+<li>二叉排序树是一种递归结构
+
+<ul class="org-ul">
+<li>对其做中序遍历，得到按关键码排序的"上升"序列</li>
+<li>如果存在重复关键码，则它们的不同数据项的前后顺序不确定</li>
+<li>同时关键码相同的数据必定位于中序遍历后的相邻位置</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org4c0ea8f" class="outline-3">
+<h3 id="二叉树排序树实现"><a id="org4c0ea8f"></a>2. 二叉树排序树：实现</h3>
+<div class="outline-text-3" id="text-二叉树排序树实现">
+</div>
+
+<div id="orgc7af90e" class="outline-4">
+<h4 id="a.-x检索实现"><a id="orgc7af90e"></a>a. X检索实现</h4>
+<div class="outline-text-4" id="text-a.-x检索实现">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">bt_search</span><span style="color: #2aa198;">(</span>btree, key<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">bt</span> = btree
+    <span style="color: #859900; font-weight: bold;">while</span> bt <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+        <span style="color: #268bd2;">entry</span> = bt.data
+        <span style="color: #859900; font-weight: bold;">if</span> key &lt; entry.key:
+            <span style="color: #268bd2;">bt</span> = bt.left
+        <span style="color: #859900; font-weight: bold;">elif</span> key &gt; entry.key:
+            <span style="color: #268bd2;">bt</span> = bt.right
+        <span style="color: #859900; font-weight: bold;">else</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> entry.value
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">None</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="org26cfc9b" class="outline-4">
+<h4 id="b.-x基于二叉排序的字典实现"><a id="org26cfc9b"></a>b. X基于二叉排序的字典实现</h4>
+<div class="outline-text-4" id="text-b.-x基于二叉排序的字典实现">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">from</span> BiTree1 <span style="color: #859900; font-weight: bold;">import</span> BiTNode, print_BiTNodes
+<span style="color: #859900; font-weight: bold;">from</span> SStack <span style="color: #859900; font-weight: bold;">import</span> *
+<span style="color: #859900; font-weight: bold;">from</span> Assoc <span style="color: #859900; font-weight: bold;">import</span> Assoc
+
+<span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">DictBiTree</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">self</span>._root = <span style="color: #268bd2; font-weight: bold;">None</span>
+
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">is_empty</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">self</span>._root == <span style="color: #268bd2; font-weight: bold;">None</span>
+
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">inorder</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
+        <span style="color: #268bd2;">t</span>, <span style="color: #268bd2;">s</span> = <span style="color: #859900; font-weight: bold;">self</span>._root, SStack<span style="color: #2aa198;">()</span>
+        <span style="color: #859900; font-weight: bold;">while</span> t <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span> <span style="color: #859900; font-weight: bold;">or</span> <span style="color: #859900; font-weight: bold;">not</span> s.is_empty<span style="color: #2aa198;">()</span>:
+            <span style="color: #859900; font-weight: bold;">while</span> t <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+                s.push<span style="color: #2aa198;">(</span>t<span style="color: #2aa198;">)</span>; <span style="color: #268bd2;">t</span> = t.left
+            <span style="color: #268bd2;">t</span> = s.pop<span style="color: #2aa198;">()</span>;<span style="color: #859900; font-weight: bold;">yield</span><span style="color: #2aa198;">(</span>t.data<span style="color: #2aa198;">)</span>;<span style="color: #268bd2;">t</span> = t.right
+    <span style="color: #586e75;">#</span><span style="color: #586e75;">&#19982;bt_search()&#31867;&#20284;        </span>
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">search</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, key<span style="color: #2aa198;">)</span>:
+        ...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="orgff9f903" class="outline-4">
+<h4 id="c.-x插入操作"><a id="orgff9f903"></a>c. X插入操作</h4>
+<div class="outline-text-4" id="text-c.-x插入操作">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">insert</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, key, value<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">t</span> = <span style="color: #859900; font-weight: bold;">self</span>._root
+    <span style="color: #859900; font-weight: bold;">if</span> t <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+        <span style="color: #859900; font-weight: bold;">self</span>._root = BiTNode<span style="color: #2aa198;">(</span>Assoc<span style="color: #b58900;">(</span>key, value<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+        <span style="color: #859900; font-weight: bold;">return</span>
+    <span style="color: #859900; font-weight: bold;">while</span> <span style="color: #268bd2; font-weight: bold;">True</span>:
+        <span style="color: #268bd2;">entry</span> = t.data
+        <span style="color: #859900; font-weight: bold;">if</span> key &lt; entry.key:
+            <span style="color: #859900; font-weight: bold;">if</span> t.left <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+                <span style="color: #268bd2;">t.left</span> = BiTNode<span style="color: #2aa198;">(</span>Assoc<span style="color: #b58900;">(</span>key, value<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+                <span style="color: #859900; font-weight: bold;">return</span>
+            <span style="color: #268bd2;">t</span> = t.left
+        <span style="color: #859900; font-weight: bold;">elif</span> key &gt; entry.key:
+            <span style="color: #859900; font-weight: bold;">if</span> t.right <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+                <span style="color: #268bd2;">t.right</span> = BiTNode<span style="color: #2aa198;">(</span>Assoc<span style="color: #b58900;">(</span>key, value<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+                <span style="color: #859900; font-weight: bold;">return</span>
+            <span style="color: #268bd2;">t</span> = t.right
+        <span style="color: #859900; font-weight: bold;">else</span>:
+            <span style="color: #268bd2;">entry.value</span> = value
+            <span style="color: #859900; font-weight: bold;">return</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="org375a6be" class="outline-4">
+<h4 id="d.-删除操作"><a id="org375a6be"></a>d. 删除操作</h4>
+<div class="outline-text-4" id="text-d.-删除操作">
+<ul class="org-ul">
+<li>检索到要删除的结点，删除的同时还需维护二叉排序树的完整性，即树形结构完整，非删除结点仍在，整棵树依然是二叉排序树</li>
+</ul>
+</div>
+
+<div id="org58a6582" class="outline-5">
+<h5 id="实现分析"><a id="org58a6582"></a>实现分析</h5>
+<div class="outline-text-5" id="text-实现分析">
+<ul class="org-ul">
+<li>三种情况，假设被删除结点为 q：
+
+<ul class="org-ul">
+<li>被删除结点 q 是叶结点
+
+<ul class="org-ul">
+<li>直接删除即可</li>
+</ul></li>
+
+<li>被删除结点 q 只有左子树或只有右子树
+
+<ul class="org-ul">
+<li>删除结点 q 后将其左子树或右子树的根结点填补 q 中的空位</li>
+</ul></li>
+
+<li>被删除结点 q 左右子树都存在，两种处理方式：
+
+<ul class="org-ul">
+<li>从 q 的左子树中取出值最大的结点l填补 q 的空位，分配 l 的左子树为 q
+中取掉最大值的左子树，右子树为 q 的右子树</li>
+<li>用左子树根结点填补空位，将右子树根结点连接到左子树中值最大的结点</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="orga9390b4" class="outline-5">
+<h5 id="程序实现"><a id="orga9390b4"></a>程序实现</h5>
+<div class="outline-text-5" id="text-程序实现">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">del</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, key<span style="color: #2aa198;">)</span>
+    <span style="color: #268bd2;">p</span>, <span style="color: #268bd2;">q</span>= <span style="color: #859900; font-weight: bold;">self</span>._root, <span style="color: #268bd2; font-weight: bold;">None</span>
+    <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span> <span style="color: #859900; font-weight: bold;">and</span> p.data.key != key:
+        <span style="color: #268bd2;">q</span> = p
+        <span style="color: #859900; font-weight: bold;">if</span> key &lt; p.data.key:
+            <span style="color: #268bd2;">p</span> = p.left
+        <span style="color: #859900; font-weight: bold;">else</span>: <span style="color: #268bd2;">p</span> = p.right
+    <span style="color: #859900; font-weight: bold;">if</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>: <span style="color: #859900; font-weight: bold;">return</span>
+    <span style="color: #859900; font-weight: bold;">if</span> p.left <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+        <span style="color: #859900; font-weight: bold;">if</span> q <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>: <span style="color: #859900; font-weight: bold;">self</span>._root = p.right
+        <span style="color: #859900; font-weight: bold;">elif</span> p == q.left: <span style="color: #268bd2;">q.left</span> = p.right
+        <span style="color: #859900; font-weight: bold;">else</span>: <span style="color: #268bd2;">q.right</span> = p.right
+        <span style="color: #859900; font-weight: bold;">return</span>
+    <span style="color: #268bd2;">r</span> = p.left
+    <span style="color: #859900; font-weight: bold;">while</span> r <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+        <span style="color: #268bd2;">r</span> = r.right
+    <span style="color: #268bd2;">r.right</span> = p.right
+    <span style="color: #859900; font-weight: bold;">if</span> q <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>: <span style="color: #859900; font-weight: bold;">self</span>._root = p.left
+    <span style="color: #859900; font-weight: bold;">elif</span> p == q.left:<span style="color: #268bd2;">q.left</span> = p.left
+    <span style="color: #859900; font-weight: bold;">else</span>: <span style="color: #268bd2;">q.right</span> = p.left
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="org6bc919c" class="outline-4">
+<h4 id="e.-x操作性能"><a id="org6bc919c"></a>e. X操作性能</h4>
+<div class="outline-text-4" id="text-e.-x操作性能">
+</div>
+</div>
+</div>
+
+<div id="orgcbb588a" class="outline-3">
+<h3 id="最佳二叉排序树"><a id="orgcbb588a"></a>3. 最佳二叉排序树</h3>
+<div class="outline-text-3" id="text-最佳二叉排序树">
+<ul class="org-ul">
+<li>平均检索效率最高（平均检索路径最短）的二叉排序树</li>
+<li>扩充二叉排序树的对称序列:
+按中序遍历扩充二叉树得到结点标记序列。其中内外结点交叉排列，第 i
+个内部结点位于第 i 个与第 i+1 个外部结点之间</li>
+<li>扩充二叉排序树表示了一个字典的可能关键码集合：
+
+<ul class="org-ul">
+<li>内部结点代表已有元素的关键码</li>
+<li>外部结点代表介于两个相邻内部结点的关键码之间的那些关键码</li>
+</ul></li>
+
+<li>扩充二叉树，根结点层数为 0：
+
+<ul class="org-ul">
+<li>内部结点需比较层数加 1
+次，从根结点开始第一次比较，到检索位置的最后一次比较</li>
+<li>外部结点比较次数等于层数，由于是集合，不用进行最后一次当前位置的比较</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="org09fad6a" class="outline-4">
+<h4 id="a.-等概率最佳二叉排序树构造"><a id="org09fad6a"></a>a. 等概率最佳二叉排序树构造</h4>
+<div class="outline-text-4" id="text-a.-等概率最佳二叉排序树构造">
+<ul class="org-ul">
+<li>各结点被检索的概率相等时。采用递归构造（左右子树结点均分的方法），设表
+a 里是按关键码排序的一组字典项
+
+<ul class="org-ul">
+<li>令 low = 0， high = len(a)-1</li>
+<li>m = (high + low)/2</li>
+<li>把 a[m] 存入被构造二叉排序树的根结点 t，递归地：
+
+<ul class="org-ul">
+<li>将基于 a[low:m] 构造的二叉排序树作为 t 的左子树</li>
+<li>将基于 a[m+1:len(a)] 构造的二叉排序树作为 t 的右子树</li>
+<li>切片为空时直接返回 NULL，表示空树</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="orgcdc3111" class="outline-5">
+<h5 id="x程序实现"><a id="orgcdc3111"></a>X程序实现</h5>
+<div class="outline-text-5" id="text-x程序实现">
+</div>
+</div>
+</div>
+
+<div id="org99edd63" class="outline-4">
+<h4 id="b.-不等概率最佳二叉排序树构造"><a id="org99edd63"></a>b. 不等概率最佳二叉排序树构造</h4>
+<div class="outline-text-4" id="text-b.-不等概率最佳二叉排序树构造">
+<ul class="org-ul">
+<li>一颗最佳二叉排序树的左右子树必定为最佳二叉排序树</li>
+<li>构造思想：
+
+<ul class="org-ul">
+<li>给定排序的关键码序列 [key0,key1,&#x2026;,keyn-1] 和两个权序列
+[p0,&#x2026;,pn-1] 与 [q0,q1,&#x2026;,qn]</li>
+<li>比较上述序列构成的所有左右子树为最佳二叉排序树的二叉排序树，选出左右最佳二叉排序子树之和最小的，假设这时根结点为
+i，代价即为该二叉排序树所有结点权值之和 W(0,n) 加上其左右子树
+T(0,i)、T(i+1,n)，该二叉排序树即为该序列的最佳二叉排序树</li>
+<li>重复上述步骤计算最佳二叉排序子树</li>
+</ul></li>
+
+<li>核心思想：计算排序序列中所有可能的最佳二叉排序子树</li>
+</ul>
+</div>
+
+<div id="org92be947" class="outline-5">
+<h5 id="x程序实现-1"><a id="org92be947"></a>X程序实现</h5>
+<div class="outline-text-5" id="text-x程序实现-1">
+</div>
+</div>
+</div>
+</div>
+
+<div id="orgadc90f2" class="outline-3">
+<h3 id="平衡二叉排序树avl树"><a id="orgadc90f2"></a>4. 平衡二叉排序树（AVL树）</h3>
+<div class="outline-text-3" id="text-平衡二叉排序树avl树">
+<ul class="org-ul">
+<li>最佳二叉排序树的查询效率高。但这种结构需要根据所有元素的情况静态构造，适合静态字典表示，不能很好地支持动态变化</li>
+<li>原因：最佳是全局性质，难以在局部把握、检查和调整</li>
+<li>支持字典动态操作的树形结构
+
+<ul class="org-ul">
+<li>共性都是放弃最佳性质，设法提供某些接近最佳的性质，换取在动态操作中较易通过局部调整进行维护</li>
+</ul></li>
+
+<li>基本想法：如果每个结点左右子树的高度差不多，树的结构会比较好，不会出现特别长的路径</li>
+<li>定义：平衡二叉排序树或是空树，或是左右子树都是平衡二叉排序，而且左右子树的高度之差的绝对值不超过
+1。平衡由各结点的情况刻画，用简单平衡因子 BF(Balace Factor) 描述。BF
+定义为结点左右子树的高度差，可能取值只有 -1，0，1</li>
+</ul>
+</div>
+
+<div id="org9167dc7" class="outline-4">
+<h4 id="a.-x实现"><a id="org9167dc7"></a>a. X实现</h4>
+<div class="outline-text-4" id="text-a.-x实现">
+<ul class="org-ul">
+<li>与前面类似，只是需要增加一个 bf 属性</li>
+</ul>
+</div>
+</div>
+
+<div id="org69e0f89" class="outline-4">
+<h4 id="b.-插入操作"><a id="org69e0f89"></a>b. 插入操作</h4>
+<div class="outline-text-4" id="text-b.-插入操作">
+<ul class="org-ul">
+<li>破环平衡发生在离插入结点最近的根结点 bf 绝对值为 1 的平衡子树T。
+
+<ul class="org-ul">
+<li>若不存在，即所有结点的 bf 都为 0，则只需更改插入结点的父结点 bf
+值即可</li>
+<li>若存在，且插入 T 中较低的一侧，只需调整相应结点的bf值</li>
+<li>其他情况都需调整因插入结点后变成的不平衡子树 T'</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="org351f99a" class="outline-5">
+<h5 id="四种情况程序实现"><a id="org351f99a"></a>四种情况程序实现</h5>
+<div class="outline-text-5" id="text-四种情况程序实现">
+<p>
+设 a 为 T' 的根节点，b 为左右子树根结点
+</p>
+
+<ol class="org-ol">
+<li><p>
+左高插入左子树左边，把左子树根结点 b 的右边作为 T' 的根结点 a
+的左边，把新的根结点 a' 作为 b 的右边
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">LL</span><span style="color: #2aa198;">(</span>a, b<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">a.left</span> = b.right
+    <span style="color: #268bd2;">b.right</span> = a
+    <span style="color: #268bd2;">a.bf</span> = <span style="color: #268bd2;">b.bf</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">return</span> b
+</pre>
+</div></li>
+
+<li><p>
+右高插入右子树右边，把右子树根结点 b 的左边作为 T' 的根结点 a
+的右边，把新的根结点 a' 作为 b 的左边
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">RR</span><span style="color: #2aa198;">(</span>a, b<span style="color: #2aa198;">)</span>:
+  <span style="color: #268bd2;">a.right</span> = b.left
+  <span style="color: #268bd2;">b.left</span> = a
+  <span style="color: #268bd2;">a.bf</span> = <span style="color: #268bd2;">b.bf</span> = <span style="color: #6c71c4;">0</span>
+  <span style="color: #859900; font-weight: bold;">return</span> b
+</pre>
+</div></li>
+
+<li><p>
+左高插入左子树的右边，把左子树根结点 b 的右边替换为 b 的右子树根结点
+c 的左边，把根结点 a 的左边替换为 c 的右边，把新的 b' 作为 c
+的左子树，新的 a' 作为 c 的右子树
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">LR</span><span style="color: #2aa198;">(</span>a, b<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">c</span> = b.right
+    <span style="color: #268bd2;">a.left</span>, <span style="color: #268bd2;">b.right</span> = c.right, c.left
+    c. <span style="color: #268bd2;">left</span>, <span style="color: #268bd2;">c.right</span> = b, a
+    <span style="color: #859900; font-weight: bold;">if</span> c.bf == <span style="color: #6c71c4;">0</span>:
+        <span style="color: #268bd2;">a.bf</span>=<span style="color: #268bd2;">b.bf</span>=<span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">elif</span> c.bf == <span style="color: #6c71c4;">1</span>:
+        <span style="color: #268bd2;">a.bf</span> = -<span style="color: #6c71c4;">1</span>; <span style="color: #268bd2;">b.bf</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">else</span>:
+        <span style="color: #268bd2;">a.bf</span> = <span style="color: #6c71c4;">0</span>; <span style="color: #268bd2;">b.bf</span> = <span style="color: #6c71c4;">1</span>
+    <span style="color: #268bd2;">c.bf</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">return</span> c
+</pre>
+</div></li>
+
+<li><p>
+右高插入右子树的左边，把右子树根结点 b 的左边替换为 b 的左子树根结点
+c 的右边，把根结点 a 的右边替换为 c 的左边，把新的 a' 作为 c
+的左子树，新的 b' 作为 c 的右子树
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">RL</span><span style="color: #2aa198;">(</span>a, b<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">c</span> = b.left
+    <span style="color: #268bd2;">a.right</span>, <span style="color: #268bd2;">b.left</span> = c.left, c.right
+    <span style="color: #268bd2;">c.left</span>, <span style="color: #268bd2;">c.right</span> = a, b
+    <span style="color: #859900; font-weight: bold;">if</span> c.bf == <span style="color: #6c71c4;">0</span>:
+        <span style="color: #268bd2;">a.bf</span> = <span style="color: #268bd2;">b.bf</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">elif</span> c.bf == <span style="color: #6c71c4;">1</span>:
+        <span style="color: #268bd2;">a.bf</span> = <span style="color: #6c71c4;">0</span>; <span style="color: #268bd2;">b.bf</span> = -<span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">else</span>:
+        <span style="color: #268bd2;">a.bf</span> = <span style="color: #6c71c4;">1</span>; <span style="color: #268bd2;">b.bf</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #268bd2;">c.bf</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">return</span> c
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="orgcd2e815" class="outline-4">
+<h4 id="c.-xavl-树插入算法"><a id="orgcd2e815"></a>c. XAVL 树插入算法</h4>
+<div class="outline-text-4" id="text-c.-xavl-树插入算法">
+</div>
+</div>
+
+<div id="orgcf19196" class="outline-4">
+<h4 id="d.-x删除操作"><a id="orgcf19196"></a>d. X删除操作</h4>
+<div class="outline-text-4" id="text-d.-x删除操作">
+</div>
+</div>
+</div>
+</div>
+
+<div id="orga43d621" class="outline-2">
+<h2 id="七其它支持字典的树形结构"><a id="orga43d621"></a>七、其它支持字典的树形结构</h2>
+<div class="outline-text-2" id="text-七其它支持字典的树形结构">
+<ul class="org-ul">
+<li>基于多分支排序树，共性是保持到叶结点的所有路径长度相同，并保证每个分支结点至少有两个或更多分支，这样
+n 个结点的树里的路径长度不会超过 O(log n)</li>
+<li>多分支排序树的分支结点保存一些关键码信息，作为检索时的导向
+
+<ul class="org-ul">
+<li>如果一个分支结点有 k 棵子树，就用 k-1
+个关键码区分各子树保存的值。检索时通过与这些关键码比较就能觉得进入哪棵子树</li>
+</ul></li>
+
+<li>实现多分支排序树的一个问题是每个结点的大小可能变动
+
+<ul class="org-ul">
+<li>为便于管理，通常采用统一大小结点，这决定了最大分支树 m</li>
+<li>为保证空间利用率（和良好树结构），规定结点的最小分支数大于或等于 2</li>
+<li>允许结点的分支数在 2~m 范围内变化</li>
+</ul></li>
+
+<li>维持树高度的技术：
+
+<ul class="org-ul">
+<li>加入数据时，若目标结点数据项数将要超出允许范围，则或在兄弟结点间调整数据项（同时修改父结点关键码），或分割结点</li>
+<li>删除数据时，若目标结点数据项数将要低于允许范围，则或在其兄弟结点之间调整，或者合并结点</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="org43d9bdc" class="outline-4">
+<h4 id="a.-b-树"><a id="org43d9bdc"></a>a. B 树</h4>
+<div class="outline-text-4" id="text-a.-b-树">
+<ul class="org-ul">
+<li>一棵 m 阶 B 树或空，或有下面特征：
+
+<ul class="org-ul">
+<li>分支结点至多 m-1
+个排序存放的关键码。根结点至少一个关键码，其它结点至少 ⎣(m-1)/2⎦个关键码</li>
+<li>如果分支结点有 j 个关键码，则包含 j+1
+棵子树，结点信息为序列（\(p_0,k_0,p_1,k_1,...,k_j-1,p_j\)），其中 k
+为关键码，p 为子结点引用，\(k_i\) 大于子树 \(p_i\) 里所有的关键码，小于
+\(p_i+1\) 里的所有关键码</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org283a2b1" class="outline-4">
+<h4 id="b.-b-树"><a id="org283a2b1"></a>b. B+ 树</h4>
+<div class="outline-text-4" id="text-b.-b-树">
+<ul class="org-ul">
+<li>一棵 m 阶 B+ 树或为空，或满足下列条件：
+
+<ul class="org-ul">
+<li>每个分支结点至多有m棵子树，除根外的分支结点至少有 ⎡m/2⎤棵子树，如果根结点不是叶结点则至少有两棵子树</li>
+<li>结点里排序存储关键码，叶结点保存数据项的关键码及其存储位置，分支结点里的一个关键码关联着一个棵子树，这个关键码等于其子树的根结点里的最大关键码</li>
+<li>叶结点可以看作基本索引块，分支结点看作索引的索引</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
