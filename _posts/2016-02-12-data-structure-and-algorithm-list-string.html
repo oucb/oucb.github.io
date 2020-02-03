@@ -60,7 +60,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 <h3 id="字符集"><a id="org7508ff0"></a>1. 字符集</h3>
 <div class="outline-text-3" id="text-字符集">
 <ul class="org-ul">
-<li>=字符=是一个抽象概念，字符集是有穷的一组字符构成的集合</li>
+<li><code>字符</code> 是一个抽象概念，字符集是有穷的一组字符构成的集合</li>
 <li>标准字符集</li>
 </ul>
 </div>
@@ -70,7 +70,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 <h3 id="字符串简称串"><a id="org94d8ff3"></a>2. 字符串（简称串）</h3>
 <div class="outline-text-3" id="text-字符串简称串">
 <p>
-特殊线性表，表中元素取值选定的字符集，=支持一组以串为对象的操作=
+特殊线性表，表中元素取值选定的字符集， <code>支持一组以串为对象的操作</code>
 </p>
 </div>
 </div>
@@ -131,7 +131,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 <h3 id="串运算"><a id="org75b4d8a"></a>6. 串运算</h3>
 <div class="outline-text-3" id="text-串运算">
 <ul class="org-ul">
-<li>拼接：S = S1 + S2。python 里拼接用=+=表示</li>
+<li>拼接：S = S1 + S2。python 里拼接用 <code>+</code> 表示</li>
 <li>幂：串 s 的 n 次幂是连续 n 个 s 拼接而成的串：s＊n</li>
 <li>替换</li>
 </ul>
@@ -242,10 +242,10 @@ n/（m-n+1），所有算法复杂度为 n/m</li>
 <ul class="org-ul">
 <li>核心思想：分析模式串，当在 tj
 处不匹配时，充分利用模式串中已匹配字符的长度 i
-来确定跳转到模式串中的 pk（=其中 0≤k&lt;i=)来与 tj 继续比较。</li>
+来确定跳转到模式串中的 pk（ <code>其中 0≤k&lt;i</code> )来与 tj 继续比较。</li>
 <li>例如模式串为
-<code>abcac=，若比较到模式串最后一个字符不匹配，这时目标串位置为 tj
-    的话，则 tj 继续与模式串中第二个 =b</code>
+<code>abcac</code> ，若比较到模式串最后一个字符不匹配，这时目标串位置为 tj
+的话，则 tj 继续与模式串中第二个 <code>b</code>
 字符进行比较。因为模式串中第一个字符为 <code>a</code>,而匹配的时候已确认 tj
 前一个为 <code>a</code></li>
 </ul>
@@ -264,8 +264,8 @@ n/（m-n+1），所有算法复杂度为 n/m</li>
 <li>假设模式串匹配到 p[i] 时不匹配，实际上只是分析模式串中前缀子串
 p0&#x2026;pi-1 中前缀子串 po&#x2026;px-1 与后缀子串 pi-x&#x2026;pi-1 的相等性及
 p[x] 与 p[i] 是否相等。假定模式串为字符串
-<code>s</code>'abacabad'<code>，则可看其出前缀子串 =aba=、=abacab=、=abacaba</code>
-中的前后缀子串 <code>a=，=ab=，=abc</code> 的重复性，对应的 p[i] 分别为
+<code>s</code>'abacabad'<code>，则可看其出前缀子串 =aba</code> 、 <code>abacab</code> 、 <code>abacaba</code>
+中的前后缀子串 <code>a</code> ， <code>ab</code> ， <code>abc</code> 的重复性，对应的 p[i] 分别为
 p[3]、p[6]、p[7]，相应的 p[x] 分别为
 p[1]、p[2]、p[3]。当模式串匹配到 p[3] 即字符 <code>c</code> 不等时，与 p[1]
 不等，因此可作跳转到 p[1] 继续比较；当匹配到 p[6] 即字符 <code>a</code>
@@ -285,7 +285,7 @@ p[1]、p[2]、p[3]。当模式串匹配到 p[3] 即字符 <code>c</code> 不等�
 假设 pnext[i] 为位置i的跳转位置，其中 <code>0&lt;=pnext[i]&lt;i</code>
 。匹配失败时，可能发现用 pi 之前的所有字符与 tj
 比较都没有价值，下一步应该从头开始用 P0 与 tj+1 比较，这种特殊情况就在
-pnext[i] 里记录 -1，显然对于任何模式都有：=pnext[0] = -1=
+pnext[i] 里记录 -1，显然对于任何模式都有： <code>pnext[0] = -1</code>
 </p>
 </blockquote>
 
@@ -463,16 +463,16 @@ string。返回分割得到的字符串表。
 <h3 id="pattern-模式"><a id="orge2509f2"></a>5. pattern 模式</h3>
 <div class="outline-text-3" id="text-pattern-模式">
 <ul class="org-ul">
-<li><b>字符组表达式 =[&#x2026;]=，匹配括号中的任一个字符</b> =[abc]=：匹配 a 或 b 或
-c 区间形式 =[0-9]=：顺序列出的缩写，匹配所有十进制数字字符
-=[0-9a-zA-Z]=：匹配所有字母（英文）和数字</li>
-<li><b>求补表达式 =[^&#x2026;]=，匹配未在括号里列出的字符</b>
-=[<sup>0</sup>-9]=：匹配所有非十进制数字的字符
-=[^ \t\v\n\f\r]=：匹配所有非空白字符（非空格 / 制表符 / 换行符）</li>
-<li><b>圆点字符=.=匹配任意一个字符</b> =a..b=：匹配所有以 a 开头 b
+<li><b>字符组表达式 [&#x2026;]，匹配括号中的任一个字符</b> <code>[abc]</code> ：匹配 a 或 b 或
+c 区间形式 <code>[0-9]</code> ：顺序列出的缩写，匹配所有十进制数字字符
+<code>[0-9a-zA-Z]</code> ：匹配所有字母（英文）和数字</li>
+<li><b>求补表达式 <code>[^...]</code> ，匹配未在括号里列出的字符</b>
+<code>[^0-9]</code> ：匹配所有非十进制数字的字符
+<code>[^ \t\v\n\f\r]</code> ：匹配所有非空白字符（非空格 / 制表符 / 换行符）</li>
+<li><b>圆点字符 <code>.</code> 匹配任意一个字符</b> <code>a..b</code> ：匹配所有以 a 开头 b
 结束的四字符串</li>
 <li><p>
-<b>重复运算符=*=，=a*= 表示匹配 a 的 0 次或任意多次出现</b>
+<b>重复运算符 <code>*</code> ， <code>a*</code> 表示匹配 a 的 0 次或任意多次出现</b>
 </p>
 
 <div class="org-src-container">
@@ -481,19 +481,19 @@ c 区间形式 =[0-9]=：顺序列出的缩写，匹配所有十进制数字字�
 </pre>
 </div></li>
 
-<li><b>重复运算符 <code>+=，表示 1 次或多次重复。与 =*</code> 略微不同</b> 例如 <code>'\d+'</code>
+<li><b>重复运算符 <code>+</code> ，表示 1 次或多次重复。与 <code>*</code> 略微不同</b> 例如 <code>'\d+'</code>
 等价于 <code>'\d\d*'</code></li>
 <li><b>可选（片段）用 <code>?</code> 运算符表示</b> <code>?</code> 表示 0 次或 1
 次重复，例如描述整数的一种简单模式 <code>'-?\d+'</code></li>
-<li><b>确定次数的重复用 <code>{n}</code> 表示，=a{n}= 与 a 的 n 次重复串匹配</b>
-例如描述北京的常规号码：='(010-)?[2-9][0-9]{7}'=</li>
+<li><b>确定次数的重复用 <code>{n}</code> 表示， <code>a{n}</code> 与 a 的 n 次重复串匹配</b>
+例如描述北京的常规号码： <code>'(010-)?[2-9][0-9]{7}'</code></li>
 <li><b>上述的圆括号是描述 <code>?</code> 的作用范围</b> <code>*,?,{n}</code>
-有作用范围问题（优先级），它们作用于最小表达式，='010-?'<code>表示 =-</code>
-可选，='(010-)?'= 表示整个段可选</li>
-<li><b>重复范围用 <code>{m,n}</code> 表示，=a{m,n}= 表示匹配 m 到 n 个 a 的串</b>
-<code>a{3，7}</code> 与 3 到 7 个 a 构成的串匹配 其中 m 和 n 均可以省略，=a{,n}=
-表示 <code>a{0,n}=，=a{m,}</code> 表示 <code>a{m,inifinity}=，=a{n}</code> 等价于
-<code>a{n,n}=，=a?</code> 等价于 <code>a{0,1}=，=a*</code> 等价于 <code>a{0,inifinity)=，=a+</code>
+有作用范围问题（优先级），它们作用于最小表达式， <code>'010-?'=表示 =-</code>
+可选， <code>'(010-)?'</code> 表示整个段可选</li>
+<li><b>重复范围用 <code>{m,n}</code> 表示， <code>a{m,n}</code> 表示匹配 m 到 n 个 a 的串</b>
+<code>a{3，7}</code> 与 3 到 7 个 a 构成的串匹配 其中 m 和 n 均可以省略， <code>a{,n}</code>
+表示 <code>a{0,n}</code> ， <code>a{m,}</code> 表示 <code>a{m,inifinity}</code> ， <code>a{n}</code> 等价于
+<code>a{n,n}</code> ， <code>a?</code> 等价于 <code>a{0,1}</code> ， <code>a*</code> 等价于 <code>a{0,inifinity)</code> ， <code>a+</code>
 等价于 <code>a{1,inifinity}</code></li>
 <li><b>选择运算符 <code>|</code> 描述两种或多种情况之一的匹配，如果 a 或 b
 与一个串匹配，那么 a|b 就与之匹配</b> <code>a|b|c</code> 可以匹配 a 或 b 或 c，[abc]
@@ -504,16 +504,16 @@ c 区间形式 =[0-9]=：顺序列出的缩写，匹配所有十进制数字字�
 <code>re.search('fisth$', 'cats like to eat fishes')</code> 得到 None</li>
 <li><b>注意，"一行的"前缀 / 后缀包括整个被匹配串的前缀和后缀</b>
 如果串里有换行符，还包括换行符钱的子串（一行的后缀）和其后的子串（前缀）
-=串首匹配=：\A 开头的模式只与被匹配串的前缀匹配
-=串尾匹配=：\Z 结束的模式只与被匹配串的后缀匹配</li>
+<code>串首匹配</code> ：\A 开头的模式只与被匹配串的前缀匹配
+<code>串尾匹配</code> ：\Z 结束的模式只与被匹配串的后缀匹配</li>
 <li><b>贪婪匹配与非贪婪匹配</b> <code>* + ? {m,n}</code>
 都采取贪婪匹配策略，与被匹配串中最长的合适子串匹配 <code>*? +? ?? {m,n}?</code>
 个运算符后加一个问号，采用分贪婪匹配（最小匹配）</li>
-<li><b>如果要在字符组里包括 <code>^=，就不能放在第一个位置，或者写成 =\^=，同理
-  =- ]=，也要写成 =\-</code> 和 <code>\]</code></b></li>
-<li><b>为了方便，re 用转义形式定义了一些常用字符组</b> =\d=：等价于 [0-9]
-=\D=：等价于 [\<sup>0</sup>-9] =\s=：等价于 [ \t\v\n\f\r] =&sect;=：等价于 [\^
-\t\v\n\f\t] =\w=：等价于 [0-9a-zA-Z] =\W=：等价于 [\<sup>0</sup>-9a-zA-Z]</li>
+<li>如果要在字符组里包括 <code>^</code> ，就不能放在第一个位置，或者写成 <code>\^</code> ，同理
+<code>- ]</code> ，也要写成 <code>\-</code> 和 \]</li>
+<li><b>为了方便，re 用转义形式定义了一些常用字符组</b> <code>\d</code> ：等价于 [0-9]
+<code>\D</code> ：等价于 [\^0-9] <code>\s</code> ：等价于 [ \t\v\n\f\r] <code>\S</code> ：等价于 [\^
+\t\v\n\f\t] <code>\w</code> ：等价于 [0-9a-zA-Z] <code>\W</code> ：等价于 [\^0-9a-zA-Z]</li>
 </ul>
 </div>
 </div>
@@ -524,7 +524,7 @@ c 区间形式 =[0-9]=：顺序列出的缩写，匹配所有十进制数字字�
 <ul class="org-ul">
 <li>圆括号阔起的模式段（&#x2026;）也是模式，同时还确定了一个被匹配的‘组'（字符段），该组可在后面使用，要求匹配同样字符串</li>
 <li>可用 <code>\n</code> 形式在模式里‘引用'组，组从 1 开始编号 例如 <code>r'(.{2} \1'</code>
-可匹配 'ok ok' 或 'no no'，不匹配 'no oh'，=\1= 要写成 <code>\\1</code>
+可匹配 'ok ok' 或 'no no'，不匹配 'no oh'， <code>\1</code> 要写成 <code>\\1</code>
 或使用原始字符串形式</li>
 </ul>
 </div>
@@ -543,7 +543,7 @@ match 对象</li>
 里顺序与 pattern 匹配的各非重叠子串用 repl 代换。repl
 是串则直接代换，同时 repl 还可以是以 match
 对象为参数的函数，这时用函数的返回值代换被匹配子串 例如把串 text 里的
-\t 都代换为 4 个空格，=re.sub('\t', '    ', text)=</li>
+\t 都代换为 4 个空格， <code>re.sub('\t', '    ', text)</code></li>
 </ul>
 </div>
 </div>
@@ -553,13 +553,13 @@ match 对象</li>
 <div class="outline-text-3" id="text-匹配对象match-对象操作">
 <ul class="org-ul">
 <li>假设 mat 表示通过匹配得到的一个 match 对象，mat 可用于逻辑判断</li>
-<li>取得被匹配的子串：=mat.group()=</li>
+<li>取得被匹配的子串： <code>mat.group()</code></li>
 <li>在目标串中的匹配位置： <code>mat.start()</code>
-得到成功匹配在目标串里的实际匹配位置，=mat.end()=
+得到成功匹配在目标串里的实际匹配位置， <code>mat.end()</code>
 表示被匹配子串的结束位置 假设 text 是目标串，则
 <code>mat.group() =</code> text[mat.start():mat.end()]=</li>
-<li>目标串里被匹配的区间：=mat.span()=
-得到匹配开始和结束位置形成的二元组，=mat.span() <code>= mat.start(), mat.end()</code></li>
+<li>目标串里被匹配的区间： <code>mat.span()</code>
+得到匹配开始和结束位置形成的二元组， <code>mat.span() =</code> mat.start(), mat.end()=</li>
 </ul>
 </div>
 </div>
@@ -584,8 +584,8 @@ match 对象</li>
 <li>以下两个与 re. 同名且功能类似，但可指定匹配范围
 <code>regex.findall(string[,pos[,endpos]])</code>
 <code>regex.finditer(string[,pos[,endpos]])</code></li>
-<li>下面两个与 re. 同名且功能相同 切分：=regex.split(string, maxsplit=0)=
-替换：=regex.sub(repl, string, count=0)=</li>
+<li>下面两个与 re. 同名且功能相同 切分： <code>regex.split(string, maxsplit=0)</code>
+替换： <code>regex.sub(repl, string, count=0)</code></li>
 <li><code>regex.pattern</code> 取得生成 regex 所用的模式字符串</li>
 </ul>
 </div>

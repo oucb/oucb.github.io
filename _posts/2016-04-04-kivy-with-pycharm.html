@@ -1,0 +1,207 @@
+---
+layout     : post
+title      : "Kivy 的安装以及在 Pycharm 下的配置"
+categories : "Library"
+tags       : GUI Kivy Pycharm
+excerpt    : "Kivy 的安装以及在 Pycharm 下的配置"
+---
+<div id="table-of-contents">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#安装-kivy">安装 kivy</a></li>
+<li><a href="#pycharm-配置">Pycharm 配置</a>
+<ul>
+<li><a href="#方案一后续会出错">方案一，后续会出错</a></li>
+<li><a href="#方案二最终正确步骤">方案二，最终正确步骤</a></li>
+</ul>
+</li>
+<li><a href="#错误问题的分析与解决">错误问题的分析与解决</a>
+<ul>
+<li><a href="#it-is-hard-to-get-pip-working-on-el-capitan-for-several-reasons">It is hard to get pip working on El Capitan for several reasons:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="org918de23" class="outline-2">
+<h2 id="安装-kivy"><a id="org918de23"></a>安装 kivy</h2>
+<div class="outline-text-2" id="text-安装-kivy">
+<ol class="org-ol">
+<li>下载对应 mac 下的官方压缩包 <a href="https://kivy.org/#download">https://kivy.org/#download</a></li>
+<li>解压出来后是 Kivy2.app 或 Kivy3.app（python2 对应 Kivy2，python3 对应
+Kivy3）</li>
+<li><p>
+将解压出来的文件复制到 mac 应用程序文件夹下
+</p>
+
+<pre class="example">
+sudo mv Kivy2.app /Applications/Kivy.app
+</pre></li>
+
+<li><p>
+创建符号链接，以便在终端直接执行 <code>kivy</code> 命令即可启动加载了 kivy 的
+python 解释器
+</p>
+
+<pre class="example">
+ln -s /Applications/Kivy.app/Contents/Resources/script /usr/local/bin/kivy
+</pre>
+
+<p>
+<code>注意系统环境变量应包含/usr/local/bin路径</code> ，解释器为
+/Applications/Kivy.app/Contents/Resources/venv/bin/python
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="orge72d920" class="outline-2">
+<h2 id="pycharm-配置"><a id="orge72d920"></a>Pycharm 配置</h2>
+<div class="outline-text-2" id="text-pycharm-配置">
+</div>
+
+<div id="orga8a2d89" class="outline-3">
+<h3 id="方案一后续会出错"><a id="orga8a2d89"></a>方案一，后续会出错</h3>
+<div class="outline-text-3" id="text-方案一后续会出错">
+<ul class="org-ul">
+<li><p>
+安装完成 kivy 后进入目录
+</p>
+
+<pre class="example">
+$ cd /Applications/Kivy.app/Contents/Resources/kivy
+</pre></li>
+
+<li><p>
+执行如下命令
+</p>
+
+<pre class="example">
+$ USE_OSX_FRAMEWORKS=0 kivy setup.py install
+</pre>
+
+<p>
+其中 <code>USE_OSX_FRAMEWORKS=0</code> 等同于注释掉 setup.py 中的
+c_options['use_osx_frameworks'] = platform == 'darwin' 语句，并添加
+c_options['use_osx_frameworks'] = False 语句；kivy setup.py install
+给 kivy 自带 python 解释器加载 kivy 包，而不用通过 scripy 脚本。
+</p></li>
+<li>在 Pycharm 进行如下设置 找到 Preference-&gt;Project Interpreter-&gt;Add
+Local，选择 /Applications/Kivy.app/Contents/Resources/python</li>
+<li>确认 <code>import kivy</code> 不会报错即可</li>
+</ul>
+</div>
+</div>
+
+<div id="org763e0dc" class="outline-3">
+<h3 id="方案二最终正确步骤"><a id="org763e0dc"></a>方案二，最终正确步骤</h3>
+<div class="outline-text-3" id="text-方案二最终正确步骤">
+<ul class="org-ul">
+<li>需要理解一点，前面安装的 kivy 是一个官方打包好的 Python
+虚拟环境，当在终端执行 kivy 时，实际上是运行 kivy.app 内部的 Python
+解释器，下面安装的 kivy 只是将其加载为 anaconda 中 Python
+解释器的一个模块</li>
+<li>依赖安装 官网下载 SDL2，SDL2_image，SDL2_mixer，SDL2_ttf 最新版本的
+dmg 安装文件，将相应的 framework 复制到资源库中的 Frameworks
+文件夹，官方下载 gstreamer 及其 devel 版的最新 pkg
+安装包，两个都要安装。</li>
+
+<li><p>
+检查 <code>import pygame</code> 是否出现如下错误
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>:
+File <span style="color: #2aa198;">"&lt;stdin&gt;"</span>, line <span style="color: #6c71c4;">1</span>, <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;
+File <span style="color: #2aa198;">"/Users/ejalaa/anaconda/lib/python2.7/site-packages/pygame/__init__.py"</span>, line <span style="color: #6c71c4;">133</span>, <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;
+<span style="color: #859900; font-weight: bold;">from</span> pygame.base <span style="color: #859900; font-weight: bold;">import</span> *
+<span style="color: #b58900;">ImportError</span>: dlopen<span style="color: #2aa198;">(</span>/Users/ejalaa/anaconda/lib/python2.<span style="color: #6c71c4;">7</span>/site-packages/pygame/base.so, <span style="color: #6c71c4;">2</span><span style="color: #2aa198;">)</span>: Library <span style="color: #859900; font-weight: bold;">not</span> loaded: /usr/local/opt/sdl/lib/libSDL-<span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">2</span>.<span style="color: #6c71c4;">0</span>.dylib
+Referenced <span style="color: #859900; font-weight: bold;">from</span>: /Users/ejalaa/anaconda/lib/python2.<span style="color: #6c71c4;">7</span>/site-packages/pygame/base.so
+Reason: image <span style="color: #859900; font-weight: bold;">not</span> found
+<span style="color: #586e75;"># </span><span style="color: #586e75;">&#33509;&#20986;&#29616;&#38169;&#35823;&#65292;&#21017;&#26681;&#25454;&#25552;&#31034;&#23433;&#35013;&#30456;&#24212;&#30340;&#21253;&#65292;&#19978;&#36848;&#38169;&#35823;&#25552;&#31034;&#20026;&#21152;&#36733;libSDL-1.2.0.dylib&#65292;&#19979;&#36733;SDL-1.2.x&#21253;&#65292;&#22797;&#21046;framework</span>
+</pre>
+</div></li>
+
+<li><p>
+下载源码文件
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">git clone http://github.com/kivy/kivy
+cd kivy
+sudo make
+sudo python setup.py install
+<span style="color: #586e75;"># </span><span style="color: #586e75;">&#21069;&#25552;&#26159;&#24050;&#23558;conda&#30340;python&#35299;&#37322;&#22120;&#35774;&#32622;&#20026;&#31995;&#32479;&#40664;&#35748;&#30340;python&#35299;&#37322;&#22120;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org9bfef0d" class="outline-2">
+<h2 id="错误问题的分析与解决"><a id="org9bfef0d"></a>错误问题的分析与解决</h2>
+<div class="outline-text-2" id="text-错误问题的分析与解决">
+<ol class="org-ol">
+<li><p>
+<code>USE_OSX_FRAMEWORKS=0 pip install kivy</code> 出现如下错误
+</p>
+
+<pre class="example">
+creating /System/Library/Frameworks/Python.framework/Versions/2.7/share
+     error: could not create '/System/Library/Frameworks/Python.framework/Versions/2.7/share': Operation not permitted
+</pre>
+
+<ul class="org-ul">
+<li>分析解决</li>
+</ul>
+
+<p>
+权限问题， <code>bash USE_OSX_FRAMEWORKS=0 pip install --user kivy</code>
+</p></li>
+
+<li><p>
+<code>import pygame</code> 出现如下错误
+</p>
+
+<pre class="example">
+Traceback (most recent call last):
+File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+File "/Users/ejalaa/anaconda/lib/python2.7/site-packages/pygame/__init__.py", line 133, in &lt;module&gt;
+from pygame.base import *
+ImportError: dlopen(/Users/ejalaa/anaconda/lib/python2.7/site-packages/pygame/base.so, 2): Library not loaded: /usr/local/opt/sdl/lib/libSDL-1.2.0.dylib
+Referenced from: /Users/ejalaa/anaconda/lib/python2.7/site-packages/pygame/base.so
+Reason: image not found
+</pre>
+
+<ul class="org-ul">
+<li>分析解决</li>
+</ul>
+
+<p>
+缺少 SDL-1.X.X，官方网站下载最新的 SDL-1.2.X，将 frameworks
+复杂到资源库中的 Frameworks 文件夹
+</p></li>
+</ol>
+</div>
+
+<div id="org70a5466" class="outline-3">
+<h3 id="it-is-hard-to-get-pip-working-on-el-capitan-for-several-reasons"><a id="org70a5466"></a>It is hard to get pip working on El Capitan for several reasons:</h3>
+<div class="outline-text-3" id="text-it-is-hard-to-get-pip-working-on-el-capitan-for-several-reasons">
+<ul class="org-ul">
+<li>OS X doesn't set some distutils variables correctly, so pip tries to
+install ancillary files in locations under <i>System/Library</i>. El
+Capitan blocks this, which is the error you are running into.</li>
+<li>OS X includes a number of outdated packages under <i>System/Library</i>.
+pip often wants to upgrade these but cannot on El Capitan.</li>
+<li>OS X places <i>System/Library</i> higher in the python search order than
+/Library/Python/2.7/site-packages (the system-wide python package
+location), so even if you manage to install newer versions of some
+packages, the old ones still get loaded, breaking some dependencies.</li>
+</ul>
+</div>
+</div>
+</div>

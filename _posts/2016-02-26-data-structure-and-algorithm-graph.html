@@ -97,7 +97,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中“�
 <li>V 中顶点也称为图 G 的顶点，E 中的边也称为图 G 的边</li>
 </ul></li>
 
-<li><b><code>有向图&amp;无向图</code></b>
+<li><b>有向图&amp;无向图</b>
 
 <ul class="org-ul">
 <li>有向图：有向图中的边有方向，边是顶点的有序对 有序对用尖括号表示。&lt;
@@ -135,10 +135,10 @@ vi , vj &gt; 表示从 vi 到 vj 的有向边，vi 称为边的始点，vj
 
 <li>注意一个重要事实：|E|≤|V|2，也即 |E|=O(V|2)
 也就是说，边的条数可能达到顶点数的平方</li>
-<li><b><code>度（顶点的度）</code></b>
+<li><b>度（顶点的度）</b>
 与一个顶点邻接的边的条数。对有向图，度数还进一步分为入度和出度，分别表示以该顶点为始点或者终点的边的条数</li>
 <li>顶点数 n，边数 e 和度数满足如下关系： 边数等于各顶点度数之和的一半</li>
-<li><b><code>路径</code></b> 对于图 G=(V,E)，如果存在顶点序列 vi0,vi1&#x2026;vim，使得
+<li><b>路径</b> 对于图 G=(V,E)，如果存在顶点序列 vi0,vi1&#x2026;vim，使得
 (vi0,vi1),(vi1,vi2)&#x2026;(vi(m-1),vim) 都在 E 中（都是 G
 的边，对于有向图是 &lt; vi0,vi1 &gt;,&lt; vi1,vi2 &gt;&#x2026;&lt; vi(m-1),vim &gt; 都在 E
 中）
@@ -148,17 +148,17 @@ vi , vj &gt; 表示从 vi 到 vj 的有向边，vi 称为边的始点，vj
 <li>&lt; vi0,vi1&#x2026;vim &gt; 称为是从 vi0 到 vim 的路径</li>
 </ul></li>
 
-<li><b><code>路径长度</code></b> 路径上边的条数</li>
-<li><b><code>回路（环）</code></b>
+<li><b>路径长度</b> 路径上边的条数</li>
+<li><b>回路（环）</b>
 起点和终点相同的路径。如果除起点和终点外的其他顶点均不相同，则称为简单回路</li>
-<li><b><code>简单路径</code></b>
+<li><b>简单路径</b>
 内部不包含回路的路径，即路径上的顶点除起点和终点可能相同外，其它顶点均不相同，简单回路也是简单路径</li>
-<li><b><code>子图</code></b> 对图 G=(V,E) 和 G'=(V',E')，如果 V'⊆V且E'⊆E，就称 G' 是 G
+<li><b>子图</b> 对图 G=(V,E) 和 G'=(V',E')，如果 V'⊆V且E'⊆E，就称 G' 是 G
 的子图。特别低，G 是自身的子图</li>
-<li><b><code>有根图</code></b> 有向图 G 里存在一个顶点 v，从 v 到图 G
+<li><b>有根图</b> 有向图 G 里存在一个顶点 v，从 v 到图 G
 中其它每个顶点均有路径，则称 G 为一个有根图，称 v 为图 G
 的一个根。有根图中的根可能不唯一</li>
-<li><b><code>连通性</code></b> 如果无向图 G 中有从 vi 到 vj
+<li><b>连通性</b> 如果无向图 G 中有从 vi 到 vj
 的路径，则称它们是连通的（顶点到自身默认连通）
 
 <ul class="org-ul">
@@ -180,7 +180,7 @@ vi , vj &gt; 表示从 vi 到 vj 的有向边，vi 称为边的始点，vj
 </ul></li>
 </ul></li>
 
-<li><b><code>带权图</code></b> 图中的每条边都被赋予一个权值
+<li><b>带权图</b> 图中的每条边都被赋予一个权值
 
 <ul class="org-ul">
 <li>权值可用于表示实际应用中与顶点关联有关的某些信息</li>
@@ -196,12 +196,12 @@ vi , vj &gt; 表示从 vi 到 vj 的有向边，vi 称为边的始点，vj
 <div class="outline-text-3" id="text-图的基本操作">
 <ul class="org-ul">
 <li>创建图，创建空图，或基于顶点和边的数据创建图</li>
-<li>顶点的个数（vertex\<sub>num</sub>)和边的条数</li>
+<li>顶点的个数（vertex_num)和边的条数</li>
 <li>所有顶点的集合 vertices，所有边的集合 edges</li>
 <li>增加一条边 &lt;v1,v2&gt; 或 (v1,v2)，是否存在边 &lt;v1,v2&gt; 或
-(v1,v2)，get\<sub>edge</sub>(g,v1,v2)</li>
+(v1,v2)，get_edge(g,v1,v2)</li>
 <li>顶点 v 的入度和出度(结果用二元序列表示)，vdegree(v)</li>
-<li>找出顶点 v 相邻边(集合或表)，如出边 out\<sub>edges</sub>(v)</li>
+<li>找出顶点 v 相邻边(集合或表)，如出边 out_edges(v)</li>
 </ul>
 </div>
 
@@ -250,12 +250,13 @@ vi , vj &gt; 表示从 vi 到 vj 的有向边，vi 称为边的始点，vj
 </ul>
 
 <p>
-\[  A[i,j] =
+A[i,j] =
+</p>
 \begin{cases}
 1,  & {若(v_i,v_j)或<v_i,v_j>是图G的边} \\
 o, & {若(v_i,v_j)或<v_i,v_j>不是图G的边}
-\end{cases}\]
-</p>
+\end{cases}
+
 
 <ul class="org-ul">
 <li>邻接矩阵只表示图中顶点个数和顶点间联系（边）
@@ -284,18 +285,12 @@ v0------------ v3
 v1------------v4
 </pre>
 
-<p>
-$$
-</p>
 \begin{Bmatrix}
 0 & 1 & 1 & 1 \\
 1 & 0 & 1 & 1 \\
 1 & 1 & 0 & 0 \\
 1 & 1 & 0 & 0 \\
-\end{Bmatrix}
-<p>
-$$
-</p></li>
+\end{Bmatrix}</li>
 
 <li><p>
 带权图的边附带有用信息，用邻接矩阵表示时，可以把权信息记录在矩阵里。矩阵元素是边的权值，无边的情况另行表示。wij
@@ -303,11 +298,15 @@ $$
 </p>
 
 <p>
-\[  A[i,j] =
-    \begin{cases}
-    w_{ij},  & {若(v_i,v_j)或<v_i,v_j>是图G的边} \\
-    o, & {若(v_i,v_j)或<v_i,v_j>不是图G的边}
-    \end{cases}\]
+$$
+  A[i,j] =
+</p>
+\begin{cases}
+w_{ij},  & {若(v_i,v_j)或<v_i,v_j>是图G的边} \\
+o, & {若(v_i,v_j)或<v_i,v_j>不是图G的边}
+\end{cases}
+<p>
+$$
 </p></li>
 </ul>
 </div>
@@ -581,35 +580,34 @@ BFS 序列
 <div class="outline-text-3" id="text-非递归深度优先遍历">
 </div>
 
-<div id="org52317c5" class="outline-4">
-<h4 id="a.-程序实现"><a id="org52317c5"></a>a. 程序实现</h4>
+<div id="org784d1a8" class="outline-4">
+<h4 id="a.-程序实现"><a id="org784d1a8"></a>a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现">
-<pre class="example">
-```python
-def DFS_graph(graph, v0):
-    vnum = graph.vertex.num
-    visited = [0]*vnum
-    visited[v0] = 1
-    DFS_seq = [v0]
-    st = SStack()
-    st.push((0, graph._out_egdes(vo)))
-    while not st.is_empty:
-        i, edges = st.pop()
-        if i &lt; len(edges):
-            v, e = edges[i]
-            st.push((i+1, edges))
-            if not visited[v]:
-                DFS_seq.append(v)
-                visited[v] = 1
-                st.push((0, graph._out_edges(v)))
-    return DFS_seq
-```
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">DFS_graph</span><span style="color: #2aa198;">(</span>graph, v0<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">vnum</span> = graph.vertex.num
+    <span style="color: #268bd2;">visited</span> = <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span>*vnum
+    <span style="color: #268bd2;">visited</span><span style="color: #2aa198;">[</span>v0<span style="color: #2aa198;">]</span> = <span style="color: #6c71c4;">1</span>
+    <span style="color: #268bd2;">DFS_seq</span> = <span style="color: #2aa198;">[</span>v0<span style="color: #2aa198;">]</span>
+    <span style="color: #268bd2;">st</span> = SStack<span style="color: #2aa198;">()</span>
+    st.push<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">0</span>, graph._out_egdes<span style="color: #268bd2;">(</span>vo<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+    <span style="color: #859900; font-weight: bold;">while</span> <span style="color: #859900; font-weight: bold;">not</span> st.is_empty:
+        <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">edges</span> = st.pop<span style="color: #2aa198;">()</span>
+        <span style="color: #859900; font-weight: bold;">if</span> i &lt; <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>edges<span style="color: #2aa198;">)</span>:
+            <span style="color: #268bd2;">v</span>, <span style="color: #268bd2;">e</span> = edges<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
+            st.push<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>i+<span style="color: #6c71c4;">1</span>, edges<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">not</span> visited<span style="color: #2aa198;">[</span>v<span style="color: #2aa198;">]</span>:
+                DFS_seq.append<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+                <span style="color: #268bd2;">visited</span><span style="color: #2aa198;">[</span>v<span style="color: #2aa198;">]</span> = <span style="color: #6c71c4;">1</span>
+                st.push<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">0</span>, graph._out_edges<span style="color: #268bd2;">(</span>v<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+    <span style="color: #859900; font-weight: bold;">return</span> DFS_seq
 </pre>
 </div>
 </div>
+</div>
 
-<div id="orgae7d4b0" class="outline-4">
-<h4 id="b.-x复杂性分析"><a id="orgae7d4b0"></a>b. X复杂性分析</h4>
+<div id="org106cf9b" class="outline-4">
+<h4 id="b.-x复杂性分析"><a id="org106cf9b"></a>b. X复杂性分析</h4>
 <div class="outline-text-4" id="text-b.-x复杂性分析">
 </div>
 </div>
@@ -678,38 +676,37 @@ G 的一棵最小生成树</li>
 </div>
 </div>
 
-<div id="org0a9f676" class="outline-4">
-<h4 id="b.-程序实现"><a id="org0a9f676"></a>b. 程序实现</h4>
+<div id="org6c480f5" class="outline-4">
+<h4 id="b.-程序实现"><a id="org6c480f5"></a>b. 程序实现</h4>
 <div class="outline-text-4" id="text-b.-程序实现">
-<pre class="example">
-```python
-def Kruskal(graph):
-    vnum = graph.vertex_num()
-    reps = [i for i in range(vnum)]
-    mst, edges = [], []
-    for vi in range(vnum):
-        for v, w in graph._out_edges(vi):
-            edges.append((w, (vi, v)))
-    edges.sort()
-    for w, e in edges:
-        if reps[e[0]] != reps[e[1]]:
-            mst.append((e, w))
-            if len(mst) == vnum-1
-                break
-            rep, orep = resp[e[0]], reps[e[1]]
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">Kruskal</span><span style="color: #2aa198;">(</span>graph<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">vnum</span> = graph.vertex_num<span style="color: #2aa198;">()</span>
+    <span style="color: #268bd2;">reps</span> = <span style="color: #2aa198;">[</span>i <span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #b58900;">(</span>vnum<span style="color: #b58900;">)</span><span style="color: #2aa198;">]</span>
+    <span style="color: #268bd2;">mst</span>, <span style="color: #268bd2;">edges</span> = <span style="color: #2aa198;">[]</span>, <span style="color: #2aa198;">[]</span>
+    <span style="color: #859900; font-weight: bold;">for</span> vi <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>vnum<span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">for</span> v, w <span style="color: #859900; font-weight: bold;">in</span> graph._out_edges<span style="color: #2aa198;">(</span>vi<span style="color: #2aa198;">)</span>:
+            edges.append<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>w, <span style="color: #268bd2;">(</span>vi, v<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+    edges.sort<span style="color: #2aa198;">()</span>
+    <span style="color: #859900; font-weight: bold;">for</span> w, e <span style="color: #859900; font-weight: bold;">in</span> edges:
+        <span style="color: #859900; font-weight: bold;">if</span> reps<span style="color: #2aa198;">[</span>e<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">]</span> != reps<span style="color: #2aa198;">[</span>e<span style="color: #b58900;">[</span><span style="color: #6c71c4;">1</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">]</span>:
+            mst.append<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>e, w<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>mst<span style="color: #2aa198;">)</span> == vnum-<span style="color: #6c71c4;">1</span>
+                <span style="color: #859900; font-weight: bold;">break</span>
+            <span style="color: #268bd2;">rep</span>, <span style="color: #268bd2;">orep</span> = resp<span style="color: #2aa198;">[</span>e<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">]</span>, reps<span style="color: #2aa198;">[</span>e<span style="color: #b58900;">[</span><span style="color: #6c71c4;">1</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">]</span>
 
-            for i in range(vnum):
-            # 把顶点v所在连通分量上各顶点的连通分量属性设置为顶点vi的连通分量属性，可互换
-                if reps[i] == orep:
-                    resp[i] = rep
-    return mst
-```
+            <span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>vnum<span style="color: #2aa198;">)</span>:
+            <span style="color: #586e75;"># </span><span style="color: #586e75;">&#25226;&#39030;&#28857;v&#25152;&#22312;&#36830;&#36890;&#20998;&#37327;&#19978;&#21508;&#39030;&#28857;&#30340;&#36830;&#36890;&#20998;&#37327;&#23646;&#24615;&#35774;&#32622;&#20026;&#39030;&#28857;vi&#30340;&#36830;&#36890;&#20998;&#37327;&#23646;&#24615;&#65292;&#21487;&#20114;&#25442;</span>
+                <span style="color: #859900; font-weight: bold;">if</span> reps<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> == orep:
+                    <span style="color: #268bd2;">resp</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = rep
+    <span style="color: #859900; font-weight: bold;">return</span> mst
 </pre>
 </div>
 </div>
+</div>
 
-<div id="org2ff4ac9" class="outline-4">
-<h4 id="c.-x复杂性分析"><a id="org2ff4ac9"></a>c. X复杂性分析</h4>
+<div id="org613b628" class="outline-4">
+<h4 id="c.-x复杂性分析"><a id="org613b628"></a>c. X复杂性分析</h4>
 <div class="outline-text-4" id="text-c.-x复杂性分析">
 </div>
 </div>
@@ -767,34 +764,33 @@ cands，否则直接丢掉</li>
 </div>
 </div>
 
-<div id="org8c895e9" class="outline-4">
-<h4 id="b.-程序实现-1"><a id="org8c895e9"></a>b. 程序实现</h4>
+<div id="org61c1940" class="outline-4">
+<h4 id="b.-程序实现-1"><a id="org61c1940"></a>b. 程序实现</h4>
 <div class="outline-text-4" id="text-b.-程序实现-1">
-<pre class="example">
-```python
-def Prim(graph):
-    vnum = graph.vertex_num()
-    mst = [None]*vnum
-    cands = PriQueue([(0, 0, 0)])
-    count = 0
-    while count &lt; vnum and not cands.is_empty:
-        w, v, vmin = cands.dequeue()
-        if mst[vmin]:
-            contunue # 回到循环开始处
-        count += 1
-        mst[vmin] = ((vmin, v), w)
-        for edge in graph.out_edges(vmin):
-            v, w = edge
-            if not mst[v]:
-                cands.enqueue(w, vmin, v)
-    return mst
-```
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">Prim</span><span style="color: #2aa198;">(</span>graph<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">vnum</span> = graph.vertex_num<span style="color: #2aa198;">()</span>
+    <span style="color: #268bd2;">mst</span> = <span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">]</span>*vnum
+    <span style="color: #268bd2;">cands</span> = PriQueue<span style="color: #2aa198;">(</span><span style="color: #b58900;">[</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">0</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+    <span style="color: #268bd2;">count</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">while</span> count &lt; vnum <span style="color: #859900; font-weight: bold;">and</span> <span style="color: #859900; font-weight: bold;">not</span> cands.is_empty:
+        <span style="color: #268bd2;">w</span>, <span style="color: #268bd2;">v</span>, <span style="color: #268bd2;">vmin</span> = cands.dequeue<span style="color: #2aa198;">()</span>
+        <span style="color: #859900; font-weight: bold;">if</span> mst<span style="color: #2aa198;">[</span>vmin<span style="color: #2aa198;">]</span>:
+            contunue <span style="color: #586e75;"># </span><span style="color: #586e75;">&#22238;&#21040;&#24490;&#29615;&#24320;&#22987;&#22788;</span>
+        <span style="color: #268bd2;">count</span> += <span style="color: #6c71c4;">1</span>
+        <span style="color: #268bd2;">mst</span><span style="color: #2aa198;">[</span>vmin<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>vmin, v<span style="color: #b58900;">)</span>, w<span style="color: #2aa198;">)</span>
+        <span style="color: #859900; font-weight: bold;">for</span> edge <span style="color: #859900; font-weight: bold;">in</span> graph.out_edges<span style="color: #2aa198;">(</span>vmin<span style="color: #2aa198;">)</span>:
+            <span style="color: #268bd2;">v</span>, <span style="color: #268bd2;">w</span> = edge
+            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">not</span> mst<span style="color: #2aa198;">[</span>v<span style="color: #2aa198;">]</span>:
+                cands.enqueue<span style="color: #2aa198;">(</span>w, vmin, v<span style="color: #2aa198;">)</span>
+    <span style="color: #859900; font-weight: bold;">return</span> mst
 </pre>
 </div>
 </div>
+</div>
 
-<div id="org3286c18" class="outline-4">
-<h4 id="c.-x复杂性分析-1"><a id="org3286c18"></a>c. X复杂性分析</h4>
+<div id="org99f96de" class="outline-4">
+<h4 id="c.-x复杂性分析-1"><a id="org99f96de"></a>c. X复杂性分析</h4>
 <div class="outline-text-4" id="text-c.-x复杂性分析-1">
 </div>
 </div>
@@ -906,33 +902,32 @@ U 中为止。如果存在未加入 U 的顶点，说明图不连通</li>
 </ul>
 </div>
 
-<div id="org8f8f188" class="outline-4">
-<h4 id="a.-程序实现-1"><a id="org8f8f188"></a>a. 程序实现</h4>
+<div id="orgc518a14" class="outline-4">
+<h4 id="a.-程序实现-1"><a id="orgc518a14"></a>a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现-1">
-<pre class="example">
-```python
-def dijkstra(graph, v0):
-    vnum = graph.vertex_num()
-    assert 0 &lt;= v0 &lt; vnum
-    paths = [None]*vnum
-    cands = PrioQueue([(0, v0, v0)])
-    count = 0
-    while count &lt; vnum and not cands.is_empty():
-        plen, u, vmin = cands.dequeue()
-        if papths[vmin]: continue
-        paths[vmin] = (u, plen)
-        for v, w in graph.out_edges(vmin):
-            if paths[v] is None:
-                cands.enqueue((plen + w, vmin, v))
-        count += 1
-    return paths
-```
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">dijkstra</span><span style="color: #2aa198;">(</span>graph, v0<span style="color: #2aa198;">)</span>:
+    <span style="color: #268bd2;">vnum</span> = graph.vertex_num<span style="color: #2aa198;">()</span>
+    <span style="color: #859900; font-weight: bold;">assert</span> <span style="color: #6c71c4;">0</span> &lt;= v0 &lt; vnum
+    <span style="color: #268bd2;">paths</span> = <span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">]</span>*vnum
+    <span style="color: #268bd2;">cands</span> = PrioQueue<span style="color: #2aa198;">(</span><span style="color: #b58900;">[</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">0</span>, v0, v0<span style="color: #268bd2;">)</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+    <span style="color: #268bd2;">count</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">while</span> count &lt; vnum <span style="color: #859900; font-weight: bold;">and</span> <span style="color: #859900; font-weight: bold;">not</span> cands.is_empty<span style="color: #2aa198;">()</span>:
+        <span style="color: #268bd2;">plen</span>, <span style="color: #268bd2;">u</span>, <span style="color: #268bd2;">vmin</span> = cands.dequeue<span style="color: #2aa198;">()</span>
+        <span style="color: #859900; font-weight: bold;">if</span> papths<span style="color: #2aa198;">[</span>vmin<span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">continue</span>
+        <span style="color: #268bd2;">paths</span><span style="color: #2aa198;">[</span>vmin<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">(</span>u, plen<span style="color: #2aa198;">)</span>
+        <span style="color: #859900; font-weight: bold;">for</span> v, w <span style="color: #859900; font-weight: bold;">in</span> graph.out_edges<span style="color: #2aa198;">(</span>vmin<span style="color: #2aa198;">)</span>:
+            <span style="color: #859900; font-weight: bold;">if</span> paths<span style="color: #2aa198;">[</span>v<span style="color: #2aa198;">]</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
+                cands.enqueue<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>plen + w, vmin, v<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+        <span style="color: #268bd2;">count</span> += <span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">return</span> paths
 </pre>
 </div>
 </div>
+</div>
 
-<div id="org457bc7c" class="outline-4">
-<h4 id="b.-x复杂性分析-1"><a id="org457bc7c"></a>b. X复杂性分析</h4>
+<div id="org460e6c0" class="outline-4">
+<h4 id="b.-x复杂性分析-1"><a id="org460e6c0"></a>b. X复杂性分析</h4>
 <div class="outline-text-4" id="text-b.-x复杂性分析-1">
 </div>
 </div>

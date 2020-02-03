@@ -160,7 +160,7 @@ E={\(e_0,...,e_{N-1}\)}，其中的元素可能是某个类型的成员</li>
 <ul class="org-ul">
 <li>元素的位置称为其下标，下标从 0 开始编号</li>
 <li>表中元素的个数称为表的长度，长度为 0 的表是空表</li>
-<li>元素间基本关系是下一个关系：$&lt;e<sub>0,e</sub><sub>1</sub>&gt;,&lt;e<sub>1,e</sub><sub>2</sub>&gt;,&#x2026;,&lt;e<sub>n-2</sub>,e<sub>n-1</sub>&gt;$，这是一种顺序关系（线性关系）</li>
+<li>元素间基本关系是下一个关系：$&lt;e_0,e_1&gt;,&lt;e_1,e_2&gt;,&#x2026;,&lt;e_{n-2},e_{n-1}&gt;$，这是一种顺序关系（线性关系）</li>
 </ul></li>
 
 <li>线性表是一种线性结构。在一个非空线性表里：
@@ -438,7 +438,7 @@ O(1) 时间内完成</li>
 </ul></li>
 
 <li>一个数据结构应该具有一个对象的整体形态。对顺序表，就是把上述两块信息组织关联起来</li>
-<li>一块存储连续存放这两部分信息称为=一体式实现=；用两块存储区，通过链接关联，称为=分离式实现=</li>
+<li>一块存储连续存放这两部分信息称为 <code>一体式实现</code> ；用两块存储区，通过链接关联，称为 <code>分离式实现</code></li>
 </ul>
 </div>
 </div>
@@ -851,7 +851,7 @@ class LList(object):
 <div class="outline-text-3" id="text-单链表变形">
 <ul class="org-ul">
 <li><p>
-实际中可根据具体需求做相应调整，例如加入尾端结点的引用,=结构变化应该只影响到表的变动操作，非变动操作不需要修改=，可以重用
+实际中可根据具体需求做相应调整，例如加入尾端结点的引用, <code>结构变化应该只影响到表的变动操作，非变动操作不需要修改</code> ，可以重用
 LList 的一些定义
 </p>
 
@@ -911,8 +911,8 @@ LList 的一些定义
 <li>该设计在结构上有致命的缺点
 
 <ul class="org-ul">
-<li><b><code>首端加入删除不能在 O(1) 时间内完成，因为要修改尾结点的next</code></b></li>
-<li><b><code>让表对象指向概念上的尾结点更有利，可支持 O(1) 的首端加入删除，以及 O(1) 的尾端加入</code></b></li>
+<li><b>首端加入删除不能在 O(1) 时间内完成，因为要修改尾结点的next</b></li>
+<li><b>让表对象指向概念上的尾结点更有利，可支持 O(1) 的首端加入删除，以及 O(1) 的尾端加入</b></li>
 </ul></li>
 
 <li>操作实现的关键是加入、删除后表对象域的正确更新
@@ -924,8 +924,8 @@ LList 的一些定义
 </ul>
 </div>
 
-<div id="org31b978c" class="outline-4">
-<h4 id="a.-程序实现"><a id="org31b978c"></a>a. 程序实现</h4>
+<div id="orgb74f74c" class="outline-4">
+<h4 id="a.-程序实现"><a id="orgb74f74c"></a>a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LCList</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
@@ -1003,8 +1003,8 @@ LList 的一些定义
 </ul>
 </div>
 
-<div id="orgb99c75a" class="outline-4">
-<h4 id="a.-程序实现-1"><a id="orgb99c75a"></a>a. 程序实现</h4>
+<div id="orgc25406a" class="outline-4">
+<h4 id="a.-程序实现-1"><a id="orgc25406a"></a>a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现-1">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LDNode</span><span style="color: #2aa198;">(</span>LNode<span style="color: #2aa198;">)</span>:

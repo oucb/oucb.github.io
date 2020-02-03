@@ -1,0 +1,145 @@
+---
+layout     : post
+title      : "matplotlib 中文显示不正常(方框)"
+categories : "Library"
+tags       : GUI Matplotlib
+excerpt    : "matplotlib 中文显示不正常(方框)"
+---
+<div id="table-of-contents">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#matplotlib-中文显示不正常方框">matplotlib 中文显示不正常(方框)</a>
+<ul>
+<li><a href="#问题概述">问题概述</a></li>
+<li><a href="#问题分析">问题分析</a></li>
+<li><a href="#解决方法">解决方法</a></li>
+<li><a href="#字体名查找注意事项">字体名查找注意事项</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="org044147b" class="outline-2">
+<h2 id="matplotlib-中文显示不正常方框"><a id="org044147b"></a>matplotlib 中文显示不正常(方框)</h2>
+<div class="outline-text-2" id="text-matplotlib-中文显示不正常方框">
+<blockquote>
+<p>
+matplotlib 使用 pylab 绘图时中文显示方框的解决方法(适用各平台)
+</p>
+</blockquote>
+</div>
+
+<div id="orgba39183" class="outline-3">
+<h3 id="问题概述"><a id="orgba39183"></a>问题概述</h3>
+<div class="outline-text-3" id="text-问题概述">
+<ul class="org-ul">
+<li>windows 使用 anaconda 中的 spyder，将 ipython 作为代码解释器</li>
+<li>使用 matplotlib 中的 pylab 绘图时，在 <code>%matplotlib inline</code>
+模式下中文显示方框</li>
+</ul>
+</div>
+</div>
+
+<div id="org081ff9c" class="outline-3">
+<h3 id="问题分析"><a id="org081ff9c"></a>问题分析</h3>
+<div class="outline-text-3" id="text-问题分析">
+<ul class="org-ul">
+<li>默认使用自带的字体，无法使用系统的其他字体，而自带字体库中缺省中文字体</li>
+</ul>
+</div>
+</div>
+
+<div id="org0c97015" class="outline-3">
+<h3 id="解决方法"><a id="org0c97015"></a>解决方法</h3>
+<div class="outline-text-3" id="text-解决方法">
+<ul class="org-ul">
+<li>进入 anaconda 安装目录下的 <code>Lib\site-packages\matplotlib\mpl-data</code></li>
+<li>打开 <code>matplotlibrc</code> 文件，删除
+<code>font.family</code> 、 <code>font.sans-serif =（axes.unicode_minus
+  貌似不必要）前面的 =#</code></li>
+<li><p>
+上述文件中相应行修改后的结果如下所示，其中 <code>xx</code>
+为中文字体名，其后的字体不修改。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">font.family         : sans-serif
+font.sans-serif     : xx, Bitstream Vera Sans, Lucida Grande...
+axes.unicode_minus  : <span style="color: #268bd2; font-weight: bold;">False</span>
+</pre>
+</div></li>
+
+<li>重启 Spyder 或者是重新启动 console 来使更改生效</li>
+</ul>
+</div>
+
+<div id="org746ed8a" class="outline-5">
+<h5 id="字体名查找规则"><a id="org746ed8a"></a>字体名查找规则</h5>
+<div class="outline-text-5" id="text-字体名查找规则">
+<ul class="org-ul">
+<li>到 <code>C:\windows\fonts\</code>
+下找到中文字体文件，文件属性中查看字体文件名，例如仿宋是 <code>simfang</code></li>
+<li><p>
+打开 <code>C:\Users\用户名\.matplotlib\fontList.cache</code> 字体索引文件( mac 是
+home 目录下)，在文件中查找 <code>simfang</code> ，结果如下
+</p>
+
+<pre class="example">
+S'FangSong'
+p522
+sg15
+I400
+sg16
+g12
+sg17
+g12
+sg18
+VC:\u005cWindows\u005cFonts\u005csimfang.ttf
+</pre></li>
+
+<li><code>S'FangSong'</code> 中的 <code>FangSong</code>
+即是字体文件对应的字体名，即要添加的中文字体名。(mac
+下是类似 <code>VKaiti SC</code> ，其中 <code>Kaiti SC</code> 是相应的字体名)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org4f14f09" class="outline-3">
+<h3 id="字体名查找注意事项"><a id="org4f14f09"></a>字体名查找注意事项</h3>
+<div class="outline-text-3" id="text-字体名查找注意事项">
+<ul class="org-ul">
+<li>有些字体在 <code>C:\Users\用户名\.matplotlib/fontList.cache</code>
+文件中查找不到相应字体名，但添加后在 <code>%matplotlib qt</code>
+模式下显示正常，如 Microsoft YaHei</li>
+<li>未查找到字体名的字体，可将其字体文件复制到 anaconda 安装目录
+<code>\Lib\site-packages\matplotlib\mpl-data\fonts\ttf</code> 下，重启 Spyder
+或者是重新启动 console 来更新 <code>fontList.cache</code></li>
+<li><p>
+若复制的字体文件是 ttc 文件则需在 matplotlib 安装目录下找到
+<code>font_manager.py</code> 文件，在如下代码中添加 <code>ttc</code> ，删除
+<code>font_manager.pyc</code> 文件，更新 <code>fontList.cache</code>
+</p>
+
+<pre class="example">
+return {'ttf': ('ttf', 'ttc', 'otf'),
+            'otf': ('ttf', 'otf'),
+            'afm': ('afm',)}[fontext]
+</pre></li>
+
+<li><p>
+执行以下语句也可重新创建字体索引列表
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #859900; font-weight: bold;">from</span> matplotlib.font_manager <span style="color: #859900; font-weight: bold;">import</span> _rebuild
+&gt;&gt;&gt;_rebuild<span style="color: #2aa198;">()</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+---
+layout     : post
+title      : "Python 中 super 的使用"
+categories : Python
+tags       : python
+excerpt    : "Python 中 super 的使用"
+---
+<div id="table-of-contents">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#super-函数">super() 函数</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="orgb7638e4" class="outline-2">
+<h2 id="super-函数"><a id="orgb7638e4"></a>super() 函数</h2>
+<div class="outline-text-2" id="text-super-函数">
+<pre class="example">
+def super(cls, inst):
+    mro = inst.__class__.mro()
+    return mro[mro.index(cls) + 1]
+</pre>
+
+<ul class="org-ul">
+<li>通过 inst 生成 MRO 的 list</li>
+<li>通过 cls 定位当前 MRO 的 index，并返回 mor[index +1]</li>
+</ul>
+
+<p>
+<code>不要一说到 super 就想到父类！super 指的是 MRO 中的下一个类！</code>
+</p>
+
+<p>
+参考：<a href="https://laike9m.com/blog/li-jie-python-super,70/">https://laike9m.com/blog/li-jie-python-super,70/</a>
+</p>
+</div>
+</div>

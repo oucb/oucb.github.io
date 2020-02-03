@@ -90,7 +90,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中“�
 <h2 id="一复杂数据结构"><a id="orgc101da4"></a>一、复杂数据结构</h2>
 <div class="outline-text-2" id="text-一复杂数据结构">
 <ul class="org-ul">
-<li>=非线性，元素之间的关系不是一对一的=，存在更复杂的关系</li>
+<li><code>非线性，元素之间的关系不是一对一的</code> ，存在更复杂的关系</li>
 <li><code>n 个元素的数据结构，元素间的最远距离不是 n，可能小得多</code></li>
 </ul>
 </div>
@@ -131,7 +131,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中“�
 <li><code>每个节点都只有一个前驱（与线性结构一样）</code></li>
 <li><code>一个结点可以有多个后继（不同于线性结构）</code></li>
 <li>从一个树形结构的任意两个结点出发，通过后继关系可达的结点集合，相互之间或者互不相交，或者有子集关系</li>
-<li>树形结构可以表示许多常见的层次性关系，=层次结构=</li>
+<li>树形结构可以表示许多常见的层次性关系， <code>层次结构</code></li>
 </ul>
 </div>
 </div>
@@ -175,7 +175,7 @@ R={&lt;A,B&gt;,&lt;A,C&gt;,&lt;B,D&gt;,&lt;B,E&gt;,&lt;B,F&gt;,&lt;C,G&gt;,&lt;C
 <h3 id="树的定义"><a id="org7f6d63c"></a>4. 树的定义</h3>
 <div class="outline-text-3" id="text-树的定义">
 <ul class="org-ul">
-<li>树是具有=递归性质=的结构，所以树的定义也是=递归的=</li>
+<li>树是具有 <code>递归性质</code> 的结构，所以树的定义也是 <code>递归的</code></li>
 <li>一棵树是 n(n&gt;=0) 个结点的有限集 T（可为空），T 非空时满足：
 
 <ul class="org-ul">
@@ -199,7 +199,7 @@ T1,T2&#x2026;Tm，每个集合各位一颗非空树，称为 r 的子树（subtr
 <div class="outline-text-3" id="text-相关概念">
 <ul class="org-ul">
 <li>根据是否认为子树的排列顺序有意义，可以分为有序树和无序树两种概念</li>
-<li>父结点与子结点（=相对定义=）
+<li>父结点与子结点（ <code>相对定义</code> ）
 
 <ul class="org-ul">
 <li>一棵树的根结点称为该树的子树的根结点的父结点</li>
@@ -260,13 +260,13 @@ T1,T2&#x2026;Tm，每个集合各位一颗非空树，称为 r 的子树（subtr
 <h2 id="三二叉树"><a id="orgb580b17"></a>三、二叉树</h2>
 <div class="outline-text-2" id="text-三二叉树">
 <ul class="org-ul">
-<li>=特点是与每个结点关联的子结点至多有两个=（可为 0，1，2）</li>
+<li><code>特点是与每个结点关联的子结点至多有两个</code> （可为 0，1，2）</li>
 <li>每个结点的子结点关联有位置关系</li>
 </ul>
 </div>
 
-<div id="org72f59de" class="outline-3">
-<h3 id="定义"><a id="org72f59de"></a>1. 定义</h3>
+<div id="org3f3307a" class="outline-3">
+<h3 id="定义"><a id="org3f3307a"></a>1. 定义</h3>
 <div class="outline-text-3" id="text-定义">
 <ul class="org-ul">
 <li>二叉树是结点的有限集合，该集合或为空集，或由一个根元素和两棵不相交的二叉树组成（递归定义）</li>
@@ -280,7 +280,7 @@ T1,T2&#x2026;Tm，每个集合各位一颗非空树，称为 r 的子树（subtr
 <div class="outline-text-3" id="text-特点">
 <ul class="org-ul">
 <li><code>一个结点至多有两棵子树</code></li>
-<li>=子树有左右之分=（因此二叉树与树有不同结构，不是树的特殊情况）</li>
+<li><code>子树有左右之分</code> （因此二叉树与树有不同结构，不是树的特殊情况）</li>
 </ul>
 </div>
 </div>
@@ -318,7 +318,7 @@ T1,T2&#x2026;Tm，每个集合各位一颗非空树，称为 r 的子树（subtr
 <li>如果原树包含根结点r和左右子树</li>
 </ul></li>
 
-<li>扩充二叉树性质（其中n是内部结点的个数）：=E=l+2n=
+<li>扩充二叉树性质（其中n是内部结点的个数）： <code>E=l+2n</code>
 
 <ul class="org-ul">
 <li>E
@@ -345,8 +345,8 @@ n0=n2+1</li>
 
 <ul class="org-ul">
 <li>序号 0 的结点是根；对于 i&gt;0，其父结点是 <code>(i-1)/2</code></li>
-<li>若 =2*i+1&lt;=n=，其左子结点序号为 =2*i+1=；否则它无左子结点</li>
-<li>做=2*2+1&lt;=n=，其右子结点序号为 =2*i+2=；否则它无右子结点</li>
+<li>若 <code>2*i+1&lt;=n</code> ，其左子结点序号为 <code>2*i+1</code> ；否则它无左子结点</li>
+<li>做 <code>2*2+1&lt;=n</code> ，其右子结点序号为 <code>2*i+2</code> ；否则它无右子结点</li>
 </ul></li>
 
 <li>完全二叉树的一个重要性质：
@@ -360,8 +360,8 @@ n0=n2+1</li>
 <li>对于n个结点的二叉树：
 
 <ul class="org-ul">
-<li>如果足够丰满整齐，=树中最长路径的长度将为 O(logn)=</li>
-<li>如果比较畸形，=最长路径的长度可能为 O(n)=</li>
+<li>如果足够丰满整齐， <code>树中最长路径的长度将为 O(logn)</code></li>
+<li>如果比较畸形， <code>最长路径的长度可能为 O(n)</code></li>
 </ul></li>
 </ul>
 </div>
@@ -372,13 +372,13 @@ n0=n2+1</li>
 <div class="outline-text-3" id="text-操作">
 <ul class="org-ul">
 <li>创建二叉树</li>
-<li>一棵二叉树或为空，或是两棵已有二叉树和要存在树根结点的一项数据，构造起的根结点代表构造出的二叉树：=BiTree(dat,left,right)=</li>
-<li>判断树空：=is<sub>empty</sub>(bitree)=</li>
+<li>一棵二叉树或为空，或是两棵已有二叉树和要存在树根结点的一项数据，构造起的根结点代表构造出的二叉树： <code>BiTree(dat,left,right)</code></li>
+<li>判断树空： <code>is_empty(bitree)</code></li>
 <li>访问操作：
 
 <ul class="org-ul">
-<li>访问二叉树的根结点数据元素：=data()=</li>
-<li>取得一棵二叉树的左右子树：=right()=，=left()=</li>
+<li>访问二叉树的根结点数据元素： <code>data()</code></li>
+<li>取得一棵二叉树的左右子树： <code>right()</code> ， <code>left()</code></li>
 </ul></li>
 </ul>
 </div>
@@ -398,7 +398,7 @@ n0=n2+1</li>
 <ul class="org-ul">
 <li>空树用 <code>[]</code> 表示</li>
 <li>非空二叉树用包含三个元素的表 <code>[d,l,r]</code> 表示。其中 <code>d</code>
-为存在根结点的元素，=l= 和 <code>r</code> 是两棵子树</li>
+为存在根结点的元素， <code>l</code> 和 <code>r</code> 是两棵子树</li>
 <li>显然，这种设计是一种递归结构，也就是前面的嵌套括号表示</li>
 </ul>
 </div>
@@ -448,10 +448,10 @@ n0=n2+1</li>
 <div class="outline-text-3" id="text-表达式树">
 <ul class="org-ul">
 <li>基本运算对象作为叶结点的数据</li>
-<li>=运算符作为分支结点的数据，其两棵树是它的运算对象=，可以是基本运算对象，也可以是作为运算对象的两个表达式</li>
+<li><code>运算符作为分支结点的数据，其两棵树是它的运算对象</code> ，可以是基本运算对象，也可以是作为运算对象的两个表达式</li>
 <li>例如表达式 <code>3 * (2 + 5)</code>:
 <code>['*', [3, [], []], ['+', [2, [], []], [5, [], []]]]</code>
-简化为：=['*', 3, ['+', 2, 5]]=</li>
+简化为： <code>['*', 3, ['+', 2, 5]]</code></li>
 <li>上述简化的表达式由两种结构组成：
 
 <ul class="org-ul">
@@ -558,8 +558,8 @@ n0=n2+1</li>
 
 <ul class="org-ul">
 <li>加入新元素时，确定正确插入位置</li>
-<li>为保证 <code>O(1)</code> 的弹出操作，=最优先元素应该出现在尾端=</li>
-<li>注意：=插入元素只能用 insert（或其他类似操作），不能用元素位移，因为 list 超下标范围的赋值会出错=</li>
+<li>为保证 <code>O(1)</code> 的弹出操作， <code>最优先元素应该出现在尾端</code></li>
+<li>注意： <code>插入元素只能用 insert（或其他类似操作），不能用元素位移，因为 list 超下标范围的赋值会出错</code></li>
 </ul></li>
 </ul>
 </div>
@@ -666,8 +666,8 @@ n0=n2+1</li>
 <h4 id="b.-堆的分类"><a id="org0db652f"></a>b. 堆的分类</h4>
 <div class="outline-text-4" id="text-b.-堆的分类">
 <ul class="org-ul">
-<li>小元素在上的称为=小顶堆=</li>
-<li>大元素在上的称为=大顶堆=</li>
+<li>小元素在上的称为 <code>小顶堆</code></li>
+<li>大元素在上的称为 <code>大顶堆</code></li>
 </ul>
 </div>
 </div>
@@ -825,7 +825,7 @@ B(或 C）：
 
 <ul class="org-ul">
 <li>定义一个二叉树的结点类和一个二叉树类</li>
-<li>一个结点通过链接引用到其子结点，=没有子结点用 None 值=</li>
+<li>一个结点通过链接引用到其子结点， <code>没有子结点用 None 值</code></li>
 </ul></li>
 </ul>
 </div>
@@ -1068,7 +1068,7 @@ def preorder(t, proc):
 <h4 id="a.-先根序"><a id="org08e88af"></a>a. 先根序</h4>
 <div class="outline-text-4" id="text-a.-先根序">
 <ul class="org-ul">
-<li>先根序的=非递归遍历=，=需要用一个栈保存树尚未访问过的部分=</li>
+<li>先根序的 <code>非递归遍历</code> ， <code>需要用一个栈保存树尚未访问过的部分</code></li>
 <li>基本想法：
 
 <ul class="org-ul">
@@ -1131,7 +1131,7 @@ O(logn)，如果只将非空右子树进栈，有可能减少空间开销</li>
 <h4 id="b.-后根序"><a id="orgadb1a6c"></a>b. 后根序</h4>
 <div class="outline-text-4" id="text-b.-后根序">
 <ul class="org-ul">
-<li>遍历循环中=维持一种不变关系=：
+<li>遍历循环中 <code>维持一种不变关系</code> ：
 
 <ul class="org-ul">
 <li><code>栈中结点是对二叉树的划分，左边是已遍历过的部分，右边是尚未遍历的部分</code></li>
@@ -1232,13 +1232,13 @@ n-1</li>
 <li>是一种二叉树，在信息领域有重要理论和实际价值</li>
 <li>考虑带权扩充二叉树的"外部路径长度"。这种二叉树的外部结点（叶结点）标有一个权值，称为该结点的权，表示与该叶有关的某种性质</li>
 <li>扩充二叉树的外部路径长度： \[E=\sum_{i=1}^ml_i\]
-$l<sub>i</sub>$：从根到外部结点i的路径长度 m：外部结点个数</li>
-<li>带权外部路径长度： \[WPL=\sum_{i=1}^mw_il_i\] $w<sub>i</sub>$：外部结点i的权</li>
+$l_i$：从根到外部结点i的路径长度 m：外部结点个数</li>
+<li>带权外部路径长度： \[WPL=\sum_{i=1}^mw_il_i\] $w_i$：外部结点i的权</li>
 </ul>
 </div>
 
-<div id="orgb96eb92" class="outline-3">
-<h3 id="定义-1"><a id="orgb96eb92"></a>1. 定义</h3>
+<div id="org04a1592" class="outline-3">
+<h3 id="定义-1"><a id="org04a1592"></a>1. 定义</h3>
 <div class="outline-text-3" id="text-定义-1">
 <ul class="org-ul">
 <li>有实数集 W={\(w_1,w_2,...,w_m\)}，T 是一棵扩充二叉树，包含m个分别以
@@ -1282,7 +1282,7 @@ F={\(T_1,T_2,...,T_M\)}，其中 \(T_i\) 是只把韩权为 \(w_i\)
 其中 D 是需要编码的字符集合，W 为 D
 中各个字符在实际信息传输中出现的概率。要求为 D
 设计一套二进制编码，使得：1）用此编码存储、传输时的平均开销最小；2）对任意不同
-\(d_i\) 和 $d<sub>j</sub>$，\(d_i\) 编码不是 \(d_j\) 编码的前缀</li>
+\(d_i\) 和 $d_j$，\(d_i\) 编码不是 \(d_j\) 编码的前缀</li>
 <li>上述第二个条件使解码时容易判断是否已得到一个字符的编码因为任意字符编码不是另一字符编码的前缀，看到了对应于一个字符的一段编码，就可以确定是该字符</li>
 <li>注意：这里考虑的编码优化问题，允许各字符的编码长度不同。</li>
 <li>哈夫曼提出的方法是通过构造哈夫曼树实现哈夫曼编码：

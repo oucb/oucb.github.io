@@ -106,18 +106,18 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 <h3 id="概念"><a id="orgd4a79a7"></a>1. 概念</h3>
 <div class="outline-text-3" id="text-概念">
 <ul class="org-ul">
-<li>栈，有些地方称为堆栈，是一种容器，可存入数据元素、访问元素、删除元素。=没有位置概念=</li>
+<li>栈，有些地方称为堆栈，是一种容器，可存入数据元素、访问元素、删除元素。 <code>没有位置概念</code></li>
 <li><code>保证任何时候可以访问、删除的元素都是此前最后存入的那个元素。确定了一种默认的访问顺序</code></li>
 </ul>
 </div>
 </div>
 
-<div id="orge4c2223" class="outline-3">
-<h3 id="基本操作"><a id="orge4c2223"></a>2. 基本操作</h3>
+<div id="org3257fb4" class="outline-3">
+<h3 id="基本操作"><a id="org3257fb4"></a>2. 基本操作</h3>
 <div class="outline-text-3" id="text-基本操作">
 <ul class="org-ul">
 <li>创建空栈</li>
-<li>判断栈是否为空(可能还需判断满)，is\<sub>empty</sub>()</li>
+<li>判断栈是否为空(可能还需判断满)，is_empty()</li>
 <li>向栈中插入(通常称推入/压入)一个元素，push(&#x2026;)</li>
 <li>从栈中删除(弹出)一个元素，空栈弹出报错，pop()</li>
 <li>取当前元素的值(并不删除)，top()</li>
@@ -490,7 +490,7 @@ O(1) 操作</li>
 <ul class="org-ul">
 <li>如果一个定义或结构（如 python
 函数，数据结构）中的某个或几个部分具有与整体同样的结构，则称其为递归定义或递归结构</li>
-<li>=递归定义中的递归部分必须比整体简单，这样最后才能有终结点=（称为递归定义的出口）；=递归结构中也必须存在由非递归的基本结构构成的部分=。否则就是无限递归。</li>
+<li><code>递归定义中的递归部分必须比整体简单，这样最后才能有终结点</code> （称为递归定义的出口）； <code>递归结构中也必须存在由非递归的基本结构构成的部分</code> 。否则就是无限递归。</li>
 <li>例如：
 
 <ul class="org-ul">
@@ -563,7 +563,7 @@ def fact(n)
 <h5 id="函数调用"><a id="orgdf2880b"></a>函数调用</h5>
 <div class="outline-text-5" id="text-函数调用">
 <ul class="org-ul">
-<li>程序里函数调用是按先=后调用先返回=的规则进行</li>
+<li>程序里函数调用是按先 <code>后调用先返回</code> 的规则进行</li>
 <li>支持函数调用的进行，语言实现需要做一些内部动作
 
 <ul class="org-ul">
@@ -596,7 +596,7 @@ def fact(n)
 </div>
 
 <ul class="org-ul">
-<li>递归定义的函数每次递归函数调用，都将自动执行上述动作，若要转为非递归，需要自己做这些事情，=用一个栈保存使用的中间信息=</li>
+<li>递归定义的函数每次递归函数调用，都将自动执行上述动作，若要转为非递归，需要自己做这些事情， <code>用一个栈保存使用的中间信息</code></li>
 <li><p>
 考虑阶乘函数的非递归形式：
 </p>
@@ -620,7 +620,7 @@ def norec_fact(n):
 <h5 id="递归与非递归"><a id="orga60f3ab"></a>递归与非递归</h5>
 <div class="outline-text-5" id="text-递归与非递归">
 <ul class="org-ul">
-<li>可以证明：=任何递归定义的函数，都可以通过引入一个栈保存中间结果，翻译为一个非递归过程。任何一个包含循环的程序都可翻译为一个不包含循环的递归程序=</li>
+<li>可以证明： <code>任何递归定义的函数，都可以通过引入一个栈保存中间结果，翻译为一个非递归过程。任何一个包含循环的程序都可翻译为一个不包含循环的递归程序</code></li>
 </ul>
 </div>
 </div>
@@ -632,7 +632,7 @@ def norec_fact(n):
 <div class="outline-text-3" id="text-应用背包问题">
 <ul class="org-ul">
 <li>假设 knap(W,n) 表示 n 件物品相对于 W 的背包问题，s 表示 n 件物品的集合</li>
-<li>重点：=对每一种重量的物体要么选择要么不选择=
+<li>重点： <code>对每一种重量的物体要么选择要么不选择</code>
 
 <ul class="org-ul">
 <li>若选择 wn，则 knap(W-wn,n-1) 的解就是 knap(W,n) 的解</li>
@@ -690,8 +690,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org95549c6" class="outline-3">
-<h3 id="基本操作-1"><a id="org95549c6"></a>2. 基本操作</h3>
+<div id="org0d5c6f9" class="outline-3">
+<h3 id="基本操作-1"><a id="org0d5c6f9"></a>2. 基本操作</h3>
 <div class="outline-text-3" id="text-基本操作-1">
 <ul class="org-ul">
 <li>创建空队列</li>
@@ -721,7 +721,7 @@ def norec_fact(n):
 <div class="outline-text-3" id="text-队列实现">
 <ul class="org-ul">
 <li>用线性表实现，因为要在两端操作，比栈麻烦一些</li>
-<li>用链接表的话，=应该考虑带尾指针的链接表=</li>
+<li>用链接表的话， <code>应该考虑带尾指针的链接表</code></li>
 <li>环形队列</li>
 </ul>
 </div>

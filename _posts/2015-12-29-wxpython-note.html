@@ -1,0 +1,190 @@
+---
+layout     : post
+title      : "wxPython 学习笔记"
+categories : Library
+tags       : GUI wxPython
+excerpt    : "wxPython 学习笔记"
+---
+<div id="table-of-contents">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#boxsizer">BoxSizer</a>
+<ul>
+<li><a href="#向-boxsizer-添加控件">1.向 boxsizer 添加控件</a></li>
+<li><a href="#flag-参数如下可选">2.flag 参数如下可选：</a></li>
+<li><a href="#总结">3.总结：</a></li>
+</ul>
+</li>
+<li><a href="#window-identifiers">Window identifiers</a></li>
+<li><a href="#buffereddc">BufferedDC</a></li>
+<li><a href="#standard-id">standard ID</a></li>
+<li><a href="#evt_motion">EVT_MOTION</a></li>
+<li><a href="#filedialog">FileDialog</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="org361a6c8" class="outline-2">
+<h2 id="boxsizer"><a id="org361a6c8"></a>BoxSizer</h2>
+<div class="outline-text-2" id="text-boxsizer">
+<pre class="example">
+boxsizer = wx.BoxSizer(integer origent)
+#origent可以是wx.VERTICAL或wx.HORIZONTAL,默认为wx.HORIZONTAL
+</pre>
+</div>
+
+<div id="orgbae3355" class="outline-3">
+<h3 id="向-boxsizer-添加控件"><a id="orgbae3355"></a>1.向 boxsizer 添加控件</h3>
+<div class="outline-text-3" id="text-向-boxsizer-添加控件">
+<pre class="example">
+box.Add(wx.Window window, integer proportion=0, integer flag = 0, integer border = 0)
+</pre>
+
+<ul class="org-ul">
+<li>proportion 参数表示控件在既定方向所占空间的比例，相对于其他控件</li>
+<li>flag 参数定义了对齐方式及外边距 border 的作用对象</li>
+<li>border 定义了外边距的统一值</li>
+</ul>
+</div>
+</div>
+
+<div id="orga2783c7" class="outline-3">
+<h3 id="flag-参数如下可选"><a id="orga2783c7"></a>2.flag 参数如下可选：</h3>
+<div class="outline-text-3" id="text-flag-参数如下可选">
+<ul class="org-ul">
+<li><p>
+以下几个为对齐标签。
+</p>
+
+<blockquote>
+<p>
+wx.ALIGN_LEFT 、wx.ALIGN_RIGHT 、wx.ALIGN_TOP 、wx.ALIGN_BOTTOM
+、wx.ALIGN_CENTER_VERTICAL 、wx.ALIGN_CENTER_HORIZONTAL
+、wx.ALIGN_CENTER
+</p>
+</blockquote></li>
+
+<li>box 中 statictext 的对齐规则：当 box 方向是 wx.HORIZONTAL
+水平时且垂直方向有未被控件占用的 panel 空间时，wx.ALIGN_CENTER
+为垂直方向居中，因水平方向要么有其它控件，要么或是被自身占满；是
+wx.VERTICAL 时且水平方向有未被占用的 panel 空间时，wx.ALIGN_CENTER
+为水平方向居中，同理</li>
+<li><p>
+statictext 自身的对齐规则：水平方向被扩展时，wx.ALIGN_CENTER
+为水平方向居中；垂直方向被扩展时，wx.ALIGN_CENTER 为垂直方向居中。
+</p>
+
+<blockquote>
+<p>
+wx.TOP、wx.BOTTOM、wx.LEFT、wx.RIGHT、wx.ALL
+</p>
+</blockquote></li>
+
+<li>以上 5 个为边界标签,边界值设置要注意情形，通过设置 wx.ALL
+可以达到水平和垂直方向同时居中，前提是四边的 border 设置都有效</li>
+</ul>
+</div>
+</div>
+
+<div id="orge1da9fe" class="outline-3">
+<h3 id="总结"><a id="orge1da9fe"></a>3.总结：</h3>
+<div class="outline-text-3" id="text-总结">
+<ul class="org-ul">
+<li>box 中是作用于居中控件，statictext 中是作用于居中文字</li>
+<li>设置控件比例大小的指定边间距的前提条件是该边与其它控件比例大小边界间距为
+0，或是该边与 panel 边界间距为 0。否则设置无效</li>
+<li>注意：分清控件实际大小，通过设置 proportion 值之后的比例大小，panle
+中未被控件占用的空间（即除去控件比例占用）。比如将一个大小(19, 7)的
+statictext 添加到 panel 的唯一 box 中：若 box 为水平，proportion
+默认，那么所占比例大小就是实际大小，只有 wx.UP、wx.LEFT 的 border
+设置有效；若 proportion 设为 1，则比例大小为(panel 长度, 7），这时
+wx.UP、wx.LEFT、wx.RIGHT 的 border 设置有效；若 flag 添加 wx.EXPAND
+标签，则四边都有效。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org8adf589" class="outline-2">
+<h2 id="window-identifiers"><a id="org8adf589"></a>Window identifiers</h2>
+<div class="outline-text-2" id="text-window-identifiers">
+<pre class="example">
+wx.Button(parent, -1)
+wx.Button(parent, wx.ID_ANY)
+</pre>
+
+<p>
+If we provide -1 or wx.ID_ANY for the id parameter, we let the wxPython
+automatically create an id for us. The automatically created id's are
+always negative, whereas user specified id's must always be positive. We
+usually use this option when we do not need to change the widget state.
+For example a static text that will never be changed during the life of
+the application. We can still get the id if we want. There is a method
+<code>GetId()</code>, which will determine the id for us.
+</p>
+</div>
+</div>
+
+<div id="org5059c52" class="outline-2">
+<h2 id="buffereddc"><a id="org5059c52"></a>BufferedDC</h2>
+<div class="outline-text-2" id="text-buffereddc">
+<p>
+This simple class provides a simple way to avoid flicker: when drawing
+on it, everything is in fact first drawn on an in-memory buffer (a
+wx.Bitmap) and then copied to the screen only once, when this object is
+destroyed. You can either provide a buffer bitmap yourself, and reuse it
+the next time something needs painted, or you can let the buffered DC
+create and provide a buffer bitmap itself. Buffered DCs can be used in
+the same way as any other device context. wx.BufferedDC itself typically
+replaces wx.ClientDC, if you want to use it in your <code>EVT_PAINT</code> handler,
+you should look at <code>wx.BufferedPaintDC</code>. You can also use a
+wx.BufferedDC without providing a target DC. In this case the operations
+done on the dc will only be written to the buffer bitmap and not to any
+window, so you will want to have provided the buffer bitmap and then
+reuse it when it needs painted to the window.
+</p>
+
+<p>
+<code>__init__(self, dc, buffer=NullBitmap, style=BUFFER_CLIENT_AREA)</code> dc -
+The underlying DC: everything drawn to this object will be flushed to
+this DC when this object is destroyed.
+<code>You may pass None in order to just initialize the buffer, and not flush it.</code>
+</p>
+</div>
+</div>
+
+<div id="org31cf77a" class="outline-2">
+<h2 id="standard-id"><a id="org31cf77a"></a>standard ID</h2>
+<div class="outline-text-2" id="text-standard-id">
+<p>
+Menus for standard IDs didn't dispaly on
+Mac， <code>wx.ID_EXIT</code> 、 <code>wx.ID_ABOUT</code>&#x2026;using the ID defined by youself. The menu was appearing in the "taskbar" or something because the OS had
+been configured for that, kind of like a Mac.
+</p>
+</div>
+</div>
+
+<div id="org636e4d6" class="outline-2">
+<h2 id="evt_motion"><a id="org636e4d6"></a>EVT_MOTION</h2>
+<div class="outline-text-2" id="text-evt_motion">
+<p>
+根据时间间隔取点
+</p>
+</div>
+</div>
+
+<div id="org9e8d081" class="outline-2">
+<h2 id="filedialog"><a id="org9e8d081"></a>FileDialog</h2>
+<div class="outline-text-2" id="text-filedialog">
+<p>
+wx.FileDialog 窗口必须被事件绑定，才能正常打开以操作文件，不然会crash
+</p>
+
+<p>
+参考： wxPython开发总结&#x2014;将Python源代码打包成exe可执行文件
+<a href="https://blog.csdn.net/tianmaxingkong_/article/details/54318224">https://blog.csdn.net/tianmaxingkong_/article/details/54318224</a>
+</p>
+</div>
+</div>
