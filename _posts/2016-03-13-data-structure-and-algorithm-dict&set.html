@@ -545,10 +545,10 @@ frozenset),都是基于散列表实现的数据结构，采用内消除技术
 TypeError：unhashable type&#x2026;</li>
 </ul></li>
 
-<li>调用时 hash 到参数所属的类里找名为 <span class="underline">__hash__</span> 的方法
+<li>调用时 hash 到参数所属的类里找名为 <code>__hash__</code> 的方法
 
 <ul class="org-ul">
-<li>hash 有定义的内置类型都有自己的 <span class="underline">__hash__</span> 方法</li>
+<li>hash 有定义的内置类型都有自己的 <code>__hash__</code> 方法</li>
 <li>自定义类里也可以定义这个方法</li>
 </ul></li>
 </ul>
@@ -849,8 +849,8 @@ a 里是按关键码排序的一组字典项
 </ul>
 </div>
 
-<div id="org6b4bdf4" class="outline-5">
-<h5 id="x程序实现"><a id="org6b4bdf4"></a>X程序实现</h5>
+<div id="org70dfb1b" class="outline-5">
+<h5 id="x程序实现"><a id="org70dfb1b"></a>X程序实现</h5>
 <div class="outline-text-5" id="text-x程序实现">
 </div>
 </div>
@@ -876,8 +876,8 @@ T(0,i)、T(i+1,n)，该二叉排序树即为该序列的最佳二叉排序树</l
 </ul>
 </div>
 
-<div id="org316a2bb" class="outline-5">
-<h5 id="x程序实现-1"><a id="org316a2bb"></a>X程序实现</h5>
+<div id="orgeb5ddcf" class="outline-5">
+<h5 id="x程序实现-1"><a id="orgeb5ddcf"></a>X程序实现</h5>
 <div class="outline-text-5" id="text-x程序实现-1">
 </div>
 </div>
@@ -1064,10 +1064,10 @@ n 个结点的树里的路径长度不会超过 O(log n)</li>
 <ul class="org-ul">
 <li>分支结点至多 m-1
 个排序存放的关键码。根结点至少一个关键码，其它结点至少 ⎣(m-1)/2⎦个关键码</li>
-<li>如果分支结点有 j 个关键码，则包含 j+1
-棵子树，结点信息为序列（\(p_0,k_0,p_1,k_1,...,k_j-1,p_j\)），其中 k
-为关键码，p 为子结点引用，\(k_i\) 大于子树 \(p_i\) 里所有的关键码，小于
-\(p_i+1\) 里的所有关键码</li>
+<li>如果分支结点有 j 个关键码，则包含 j+1 棵子树，结点信息为序列
+\((p_0,k_0,p_1,k_1,...,k_{j-1},p_j)\) ，其中 k 为关键码，p
+为子结点引用， \(k_i\) 大于子树 \(p_i\) 里所有的关键码，小于 \(p_{i+1}\)
+里的所有关键码</li>
 </ul></li>
 </ul>
 </div>

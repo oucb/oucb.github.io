@@ -36,7 +36,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “L
 <ul>
 <li><a href="#单链表">1. 单链表</a></li>
 <li><a href="#基本操作">2. 基本操作</a></li>
-<li><a href="#python实现">3 .python实现</a></li>
+<li><a href="#python实现">3. python实现</a></li>
 <li><a href="#单链表变形">4. 单链表变形</a></li>
 <li><a href="#循环单链表">5. 循环单链表</a></li>
 <li><a href="#双向链接表">6. 双向链接表</a></li>
@@ -49,7 +49,7 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “L
 <li><a href="#josephus-问题">1. Josephus 问题</a></li>
 </ul>
 </li>
-<li><a href="#思考"><b>思考</b></a></li>
+<li><a href="#思考">思考</a></li>
 </ul>
 </div>
 </div>
@@ -103,8 +103,8 @@ O(1) 时间访问</li>
 <ul class="org-ul">
 <li>变量也在内存安排位置，每个变量占用若干存储单元</li>
 <li>程序运行中总能找到根据作用域可见的那些变量，取得或修改其值</li>
-<li>python
-里通过初始化给变量约束一个值（对象），就是*把该对象的标识（内存位置）保存在变量里*</li>
+<li>python 里通过初始化给变量约束一个值（对象），就是
+<code>把该对象的标识（内存位置）保存在变量里</code></li>
 </ul>
 </div>
 </div>
@@ -123,12 +123,13 @@ O(1) 时间访问</li>
 <li>上述做法有所欠缺
 
 <ul class="org-ul">
-<li>内存单元里存储的都是二进制编码，*仅从单元里存储的内容无法判断这一字符串到哪里结束*</li>
+<li>内存单元里存储的都是二进制编码，=仅从单元里存储的内容无法判断这一字符串到哪里结束=</li>
 <li>需要有一种安排（约定）。由于字符串可以有任意长度，一种可能安排是在相应存储块的开始记录字符串长度</li>
 </ul></li>
 
-<li><b>程序中生成和处理的对象都要以某种方式保存，因此要设计好它们的存储方式，这种方式及其效果称为该对象的"表示"</b></li>
-<li>python 系统的实现基于一套精心设计的*链接结构*</li>
+<li>程序中生成和处理的对象都要以某种方式保存，因此要设计好它们的存储方式，这种方式及其效果称为该对象的
+<code>表示</code></li>
+<li>python 系统的实现基于一套精心设计的 <code>链接结构</code></li>
 </ul>
 </div>
 </div>
@@ -142,7 +143,8 @@ O(1) 时间访问</li>
 
 <ul class="org-ul">
 <li>元素个数可能变化</li>
-<li>可能需要把这样一组元素看成一个序列，*元素在序列里的位置和顺序可能表示实际应用中某种意义的信息或关系*</li>
+<li>可能需要把这样一组元素看成一个序列，
+<code>元素在序列里的位置和顺序可能表示实际应用中某种意义的信息或关系</code></li>
 <li>这样一组元素的抽象就是线性表（简称表）。</li>
 <li><b>线性表是一种元素集合，其中记录着元素间的一种顺序关系</b></li>
 </ul></li>
@@ -153,14 +155,15 @@ O(1) 时间访问</li>
 <h3 id="概念和术语"><a id="org98846c6"></a>1. 概念和术语</h3>
 <div class="outline-text-3" id="text-概念和术语">
 <ul class="org-ul">
-<li>抽象讨论线性表时，考虑一个基本元素集合
-E={\(e_0,...,e_{N-1}\)}，其中的元素可能是某个类型的成员</li>
+<li>抽象讨论线性表时，考虑一个基本元素集合 \(E={e_0,...,e_{N-1}}\)
+，其中的元素可能是某个类型的成员</li>
 <li>表是元素的有穷序列，有 0 个或多个元素
 
 <ul class="org-ul">
 <li>元素的位置称为其下标，下标从 0 开始编号</li>
 <li>表中元素的个数称为表的长度，长度为 0 的表是空表</li>
-<li>元素间基本关系是下一个关系：$&lt;e_0,e_1&gt;,&lt;e_1,e_2&gt;,&#x2026;,&lt;e_{n-2},e_{n-1}&gt;$，这是一种顺序关系（线性关系）</li>
+<li>元素间基本关系是下一个关系：\({<}e_0,e_1{>},{<}e_1,e_2{>},...,{<}e_{n-2},e_{n-1}{>}\)
+，这是一种顺序关系（线性关系）</li>
 </ul></li>
 
 <li>线性表是一种线性结构。在一个非空线性表里：
@@ -312,8 +315,8 @@ sortList: List -&gt; List              <span style="color: #586e75;"># </span><s
 <li>表内容变化的操作有两种考虑
 
 <ul class="org-ul">
-<li>*总构造一个新表作为操作的结果*。语义清晰，适合不变的表</li>
-<li>*按操作的需要直接修改作为参数的表*。效率可能更高</li>
+<li><code>总构造一个新表作为操作的结果</code> 。语义清晰，适合不变的表</li>
+<li><code>按操作的需要直接修改作为参数的表</code> 。效率可能更高</li>
 </ul></li>
 </ul>
 </div>
@@ -438,7 +441,8 @@ O(1) 时间内完成</li>
 </ul></li>
 
 <li>一个数据结构应该具有一个对象的整体形态。对顺序表，就是把上述两块信息组织关联起来</li>
-<li>一块存储连续存放这两部分信息称为 <code>一体式实现</code> ；用两块存储区，通过链接关联，称为 <code>分离式实现</code></li>
+<li>一块存储连续存放这两部分信息称为 <code>一体式实现</code>
+；用两块存储区，通过链接关联，称为 <code>分离式实现</code></li>
 </ul>
 </div>
 </div>
@@ -472,7 +476,7 @@ id 不变，只能采用分离式实现</b></li>
 </ul></li>
 
 <li>一次高开销操作后，保证有很多次低开销操作，称为‘分期付款式'的常量复杂性</li>
-<li>python 中 list 采用上述设计，因此 lst.insert(len(lst)， x)
+<li>python 中 list 采用上述设计，因此 lst.insert(len(lst), x)
 比一般位置加入的效率高，等价写法 lst.append(x)，如何使，应优先使用</li>
 </ul>
 </div>
@@ -503,8 +507,8 @@ id 不变，只能采用分离式实现</b></li>
 <li>特殊操作
 
 <ul class="org-ul">
-<li>list 仅有的特殊方法是
-sort，对表中元素进行排序。*最好的排序算法复杂性是 O(nlogn)*</li>
+<li>list 仅有的特殊方法是 sort，对表中元素进行排序。
+<code>最好的排序算法复杂性是 O(nlogn)</code></li>
 <li><p>
 lst.reverse() 修改
 lst，将其元素倒置。如下实现，假设元素存储区的域名为 elements，复杂性
@@ -538,7 +542,8 @@ O(n)
 <li>也是许多其他数据结构的实现基础</li>
 </ul></li>
 
-<li>如果一个表在使用中经常需要修改结构，使用顺序表操作代价可能很高，根源在于*元素存储的集中方式和连续性*</li>
+<li>如果一个表在使用中经常需要修改结构，使用顺序表操作代价可能很高，根源在于
+<code>元素存储的集中方式和连续性</code></li>
 <li>线性表实现的基本需要：
 
 <ul class="org-ul">
@@ -714,8 +719,8 @@ None；若不存在则将表头变量设为 None</li>
 </div>
 </div>
 
-<div id="org78ca102" class="outline-3">
-<h3 id="python实现"><a id="org78ca102"></a>3 .python实现</h3>
+<div id="orga0afee4" class="outline-3">
+<h3 id="python实现"><a id="orga0afee4"></a>3. python实现</h3>
 <div class="outline-text-3" id="text-python实现">
 <ul class="org-ul">
 <li><p>
@@ -757,18 +762,19 @@ None；若不存在则将表头变量设为 None</li>
 我们希望基于结点 LNode 定义一种链接表类型，为此定义一个表类
 </p>
 
-<pre class="example">
-class LList(object):
-    def __init__(self):
-        self.head = None
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LList</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #268bd2; font-weight: bold;">None</span>
 
-    def isEmpty(self):
-        return self.head == None
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">isEmpty</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">self</span>.head == <span style="color: #268bd2; font-weight: bold;">None</span>
 
-    # 首端加入
-    def prepend(self, elem):
-        self.head = LNode(elem, self.head)
-</pre></li>
+    <span style="color: #586e75;"># </span><span style="color: #586e75;">&#39318;&#31471;&#21152;&#20837;</span>
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">prepend</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elem<span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">self</span>.head = LNode<span style="color: #2aa198;">(</span>elem, <span style="color: #859900; font-weight: bold;">self</span>.head<span style="color: #2aa198;">)</span>
+</pre>
+</div></li>
 
 <li><p>
 尾端加入，复杂性（最坏情况）为 O(n)，需要循环找到最后一个结点
@@ -851,7 +857,8 @@ class LList(object):
 <div class="outline-text-3" id="text-单链表变形">
 <ul class="org-ul">
 <li><p>
-实际中可根据具体需求做相应调整，例如加入尾端结点的引用, <code>结构变化应该只影响到表的变动操作，非变动操作不需要修改</code> ，可以重用
+实际中可根据具体需求做相应调整，例如加入尾端结点的引用，
+<code>结构变化应该只影响到表的变动操作，非变动操作不需要修改</code> ，可以重用
 LList 的一些定义
 </p>
 
@@ -911,8 +918,9 @@ LList 的一些定义
 <li>该设计在结构上有致命的缺点
 
 <ul class="org-ul">
-<li><b>首端加入删除不能在 O(1) 时间内完成，因为要修改尾结点的next</b></li>
-<li><b>让表对象指向概念上的尾结点更有利，可支持 O(1) 的首端加入删除，以及 O(1) 的尾端加入</b></li>
+<li><b>首端加入删除不能在 O(1) 时间内完成，因为要修改尾结点的 next</b></li>
+<li><b>让表对象指向概念上的尾结点更有利，可支持 O(1) 的首端加入删除，以及
+O(1) 的尾端加入</b></li>
 </ul></li>
 
 <li>操作实现的关键是加入、删除后表对象域的正确更新
@@ -924,8 +932,8 @@ LList 的一些定义
 </ul>
 </div>
 
-<div id="orgb74f74c" class="outline-4">
-<h4 id="a.-程序实现"><a id="orgb74f74c"></a>a. 程序实现</h4>
+<div id="org0bf6e2f" class="outline-4">
+<h4 id="a.-程序实现"><a id="org0bf6e2f"></a>a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LCList</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
@@ -1003,8 +1011,8 @@ LList 的一些定义
 </ul>
 </div>
 
-<div id="orgc25406a" class="outline-4">
-<h4 id="a.-程序实现-1"><a id="orgc25406a"></a>a. 程序实现</h4>
+<div id="org907db90" class="outline-4">
+<h4 id="a.-程序实现-1"><a id="org907db90"></a>a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现-1">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LDNode</span><span style="color: #2aa198;">(</span>LNode<span style="color: #2aa198;">)</span>:
@@ -1261,7 +1269,7 @@ LList 的一些定义
 <li>算出应该退出的人后，将其从表里删除</li>
 <li>元素计数与下标计数统一，下标更新可用 i=(i+m-1)%num</li>
 <li>该算法重点是pop()弹出操作，弹出后下标i后面的所有元素前移一位，因此还是从下标i位置开始记录报数，只是表长度减一</li>
-<li>由于pop操作为$O(n)$，因此算法复杂性为\(O(n^2)\)</li>
+<li>由于pop操作为 \(O(n)\) ，因此算法复杂性为 \(O(n^2)\)</li>
 </ul>
 </div>
 </div>
@@ -1307,20 +1315,21 @@ self.rear 的 next 域所指向的结点，因此应将 self.rear
 </div>
 </div>
 
-<div id="orgee8c003" class="outline-2">
-<h2 id="思考"><a id="orgee8c003"></a><b>思考</b></h2>
+<div id="org9e06e7d" class="outline-2">
+<h2 id="思考"><a id="org9e06e7d"></a>思考</h2>
 <div class="outline-text-2" id="text-思考">
 <ul class="org-ul">
-<li><b>1.
-数据结构是一种结合数据在内存中的存储方式（连续存储或分散存储）与实际应用的抽象化数据组织方式</b></li>
-<li><b>2.
-下标有时等效于数据在内存中的位置，即存储地址。访问数据只能通过存储地址访问</b></li>
-<li><b>3.
-数据通过预先组织形成一种关联性，然后存入内存，该关联性体现在从内存中取出数据</b></li>
-<li><b>4. 数据结构首先应定义好结构单元</b></li>
-<li><b>5. 数据结构的实现是一系列结构单元的内在联系及外部组织的体现</b></li>
-<li><b>6.
-如单链表，预先定义好结点的结构，在构建一序列相关结点时，形成内部的链接关系，通过外部指定表头变量，从而体现出单链表的结构完整性</b></li>
+<li>数据结构是一种结合数据在内存中的存储方式（连续存储或分散存储）与实际应用的抽象化数据组织方式</li>
+
+<li>下标有时等效于数据在内存中的位置，即存储地址。访问数据只能通过存储地址访问</li>
+
+<li>数据通过预先组织形成一种关联性，然后存入内存，该关联性体现在从内存中取出数据</li>
+
+<li>数据结构首先应定义好结构单元</li>
+
+<li>数据结构的实现是一系列结构单元的内在联系及外部组织的体现</li>
+
+<li>如单链表，预先定义好结点的结构，在构建一序列相关结点时，形成内部的链接关系，通过外部指定表头变量，从而体现出单链表的结构完整性</li>
 </ul>
 </div>
 </div>

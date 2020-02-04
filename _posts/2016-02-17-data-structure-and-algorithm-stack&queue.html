@@ -49,13 +49,13 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 
 
-<div id="orga2ca46d" class="outline-2">
-<h2 id="一stackqueue-概述"><a id="orga2ca46d"></a>一、stack&amp;queue 概述</h2>
+<div id="orgf46f6b7" class="outline-2">
+<h2 id="一stackqueue-概述"><a id="orgf46f6b7"></a>一、stack&amp;queue 概述</h2>
 <div class="outline-text-2" id="text-一stackqueue-概述">
 </div>
 
-<div id="org026ecc7" class="outline-3">
-<h3 id="stackqueue-1"><a id="org026ecc7"></a>1. stack&amp;queue</h3>
+<div id="org89dec23" class="outline-3">
+<h3 id="stackqueue-1"><a id="org89dec23"></a>1. stack&amp;queue</h3>
 <div class="outline-text-3" id="text-stackqueue-1">
 <ul class="org-ul">
 <li>保存数据元素的容器，元素存入，查看元素，弹出元素（取得元素的同时将其从容器中删除）</li>
@@ -68,8 +68,8 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 </div>
 
-<div id="org55a7e39" class="outline-3">
-<h3 id="stackqueue-的区别"><a id="org55a7e39"></a>2. stack&amp;queue 的区别</h3>
+<div id="org1a1c62a" class="outline-3">
+<h3 id="stackqueue-的区别"><a id="org1a1c62a"></a>2. stack&amp;queue 的区别</h3>
 <div class="outline-text-3" id="text-stackqueue-的区别">
 <ul class="org-ul">
 <li><code>stack</code> 是保证缓存元素的后进先出 (LIFO) 的结构</li>
@@ -78,8 +78,8 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 </div>
 
-<div id="org132689c" class="outline-3">
-<h3 id="实现与应用"><a id="org132689c"></a>3. 实现与应用</h3>
+<div id="org1263314" class="outline-3">
+<h3 id="实现与应用"><a id="org1263314"></a>3. 实现与应用</h3>
 <div class="outline-text-3" id="text-实现与应用">
 <ul class="org-ul">
 <li>stack&amp;queue 的特点完全是抽象的逻辑，对于实现没有约束</li>
@@ -97,27 +97,28 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 </div>
 
-<div id="org158d5b8" class="outline-2">
-<h2 id="二stack"><a id="org158d5b8"></a>二、stack</h2>
+<div id="orgd17596c" class="outline-2">
+<h2 id="二stack"><a id="orgd17596c"></a>二、stack</h2>
 <div class="outline-text-2" id="text-二stack">
 </div>
 
-<div id="orgd4a79a7" class="outline-3">
-<h3 id="概念"><a id="orgd4a79a7"></a>1. 概念</h3>
+<div id="orgb442bb3" class="outline-3">
+<h3 id="概念"><a id="orgb442bb3"></a>1. 概念</h3>
 <div class="outline-text-3" id="text-概念">
 <ul class="org-ul">
-<li>栈，有些地方称为堆栈，是一种容器，可存入数据元素、访问元素、删除元素。 <code>没有位置概念</code></li>
+<li>栈，有些地方称为堆栈，是一种容器，可存入数据元素、访问元素、删除元素。
+<code>没有位置概念</code></li>
 <li><code>保证任何时候可以访问、删除的元素都是此前最后存入的那个元素。确定了一种默认的访问顺序</code></li>
 </ul>
 </div>
 </div>
 
-<div id="org3257fb4" class="outline-3">
-<h3 id="基本操作"><a id="org3257fb4"></a>2. 基本操作</h3>
+<div id="org33695c9" class="outline-3">
+<h3 id="基本操作"><a id="org33695c9"></a>2. 基本操作</h3>
 <div class="outline-text-3" id="text-基本操作">
 <ul class="org-ul">
 <li>创建空栈</li>
-<li>判断栈是否为空(可能还需判断满)，is_empty()</li>
+<li>判断栈是否为空(可能还需判断满)，is\_empty()</li>
 <li>向栈中插入(通常称推入/压入)一个元素，push(&#x2026;)</li>
 <li>从栈中删除(弹出)一个元素，空栈弹出报错，pop()</li>
 <li>取当前元素的值(并不删除)，top()</li>
@@ -125,8 +126,8 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 </div>
 
-<div id="org2820079" class="outline-3">
-<h3 id="特性及实现考虑"><a id="org2820079"></a>3. 特性及实现考虑</h3>
+<div id="orgf968bcc" class="outline-3">
+<h3 id="特性及实现考虑"><a id="orgf968bcc"></a>3. 特性及实现考虑</h3>
 <div class="outline-text-3" id="text-特性及实现考虑">
 <ul class="org-ul">
 <li>可以实现为只在一端插入和删除的表
@@ -158,8 +159,8 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 </div>
 
-<div id="org55ded00" class="outline-3">
-<h3 id="连续表实现"><a id="org55ded00"></a>4. 连续表实现</h3>
+<div id="orga98dcb6" class="outline-3">
+<h3 id="连续表实现"><a id="orga98dcb6"></a>4. 连续表实现</h3>
 <div class="outline-text-3" id="text-连续表实现">
 <ul class="org-ul">
 <li>问题
@@ -182,8 +183,8 @@ O(1) 操作</li>
 </ul>
 </div>
 
-<div id="orge10fd88" class="outline-4">
-<h4 id="a.-程序实现利用-list"><a id="orge10fd88"></a>a. 程序实现，利用 list</h4>
+<div id="orgcdf02d9" class="outline-4">
+<h4 id="a.-程序实现利用-list"><a id="orgcdf02d9"></a>a. 程序实现，利用 list</h4>
 <div class="outline-text-4" id="text-a.-程序实现利用-list">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Sstack</span><span style="color: #2aa198;">()</span>:
@@ -206,8 +207,8 @@ O(1) 操作</li>
 </div>
 </div>
 
-<div id="org77b16bf" class="outline-4">
-<h4 id="b.-程序实现用链接技术"><a id="org77b16bf"></a>b. 程序实现，用链接技术</h4>
+<div id="org2782b74" class="outline-4">
+<h4 id="b.-程序实现用链接技术"><a id="org2782b74"></a>b. 程序实现，用链接技术</h4>
 <div class="outline-text-4" id="text-b.-程序实现用链接技术">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LStack</span><span style="color: #2aa198;">()</span>:
@@ -233,8 +234,8 @@ O(1) 操作</li>
 </div>
 </div>
 
-<div id="orgd573c2f" class="outline-3">
-<h3 id="栈的应用"><a id="orgd573c2f"></a>5. 栈的应用</h3>
+<div id="orgfeec992" class="outline-3">
+<h3 id="栈的应用"><a id="orgfeec992"></a>5. 栈的应用</h3>
 <div class="outline-text-3" id="text-栈的应用">
 <ul class="org-ul">
 <li>栈是算法和程序里最常用的辅助结构，基本用途基于两个方面：
@@ -253,8 +254,8 @@ O(1) 操作</li>
 </ul>
 </div>
 
-<div id="org301a7d5" class="outline-4">
-<h4 id="a.-括号配对问题"><a id="org301a7d5"></a>a. 括号配对问题</h4>
+<div id="org1ecda9a" class="outline-4">
+<h4 id="a.-括号配对问题"><a id="org1ecda9a"></a>a. 括号配对问题</h4>
 <div class="outline-text-4" id="text-a.-括号配对问题">
 <p>
 括号有圆括号、方括号、花括号，每种还分开括号与闭括号，括号里面的片段可能相互嵌套
@@ -321,8 +322,8 @@ O(1) 操作</li>
 </ul>
 </div>
 
-<div id="orgfe3286b" class="outline-5">
-<h5 id="x检查python或c程序里的括号"><a id="orgfe3286b"></a>X检查python或c程序里的括号</h5>
+<div id="orgf133a24" class="outline-5">
+<h5 id="x检查python或c程序里的括号"><a id="orgf133a24"></a>X检查python或c程序里的括号</h5>
 <div class="outline-text-5" id="text-x检查python或c程序里的括号">
 <ul class="org-ul">
 <li>需要跳过注释和字符串</li>
@@ -331,8 +332,8 @@ O(1) 操作</li>
 </div>
 </div>
 
-<div id="org6f6eb04" class="outline-4">
-<h4 id="b.-表达式的表示计算和变换"><a id="org6f6eb04"></a>b. 表达式的表示、计算和变换</h4>
+<div id="org19f6f87" class="outline-4">
+<h4 id="b.-表达式的表示计算和变换"><a id="org19f6f87"></a>b. 表达式的表示、计算和变换</h4>
 <div class="outline-text-4" id="text-b.-表达式的表示计算和变换">
 <ul class="org-ul">
 <li>表达式种类：
@@ -416,8 +417,8 @@ O(1) 操作</li>
 </div>
 </div>
 
-<div id="org24d3bab" class="outline-4">
-<h4 id="c.-中缀表达式转换为后缀表达式"><a id="org24d3bab"></a>c. 中缀表达式转换为后缀表达式</h4>
+<div id="org848c044" class="outline-4">
+<h4 id="c.-中缀表达式转换为后缀表达式"><a id="org848c044"></a>c. 中缀表达式转换为后缀表达式</h4>
 <div class="outline-text-4" id="text-c.-中缀表达式转换为后缀表达式">
 <ul class="org-ul">
 <li>若本次运算符的优先级不高于上次，则先输出上次的运算符，然后记录本次运算符。</li>
@@ -484,13 +485,16 @@ O(1) 操作</li>
 </div>
 </div>
 
-<div id="orgab00ca9" class="outline-4">
-<h4 id="d.-栈与递归"><a id="orgab00ca9"></a>d. 栈与递归</h4>
+<div id="org0215657" class="outline-4">
+<h4 id="d.-栈与递归"><a id="org0215657"></a>d. 栈与递归</h4>
 <div class="outline-text-4" id="text-d.-栈与递归">
 <ul class="org-ul">
 <li>如果一个定义或结构（如 python
 函数，数据结构）中的某个或几个部分具有与整体同样的结构，则称其为递归定义或递归结构</li>
-<li><code>递归定义中的递归部分必须比整体简单，这样最后才能有终结点</code> （称为递归定义的出口）； <code>递归结构中也必须存在由非递归的基本结构构成的部分</code> 。否则就是无限递归。</li>
+<li><code>递归定义中的递归部分必须比整体简单，这样最后才能有终结点</code>
+（称为递归定义的出口）；
+<code>递归结构中也必须存在由非递归的基本结构构成的部分</code>
+。否则就是无限递归。</li>
 <li>例如：
 
 <ul class="org-ul">
@@ -500,8 +504,8 @@ O(1) 操作</li>
 
 <ul class="org-ul">
 <li>常数、变量是表达式</li>
-<li>若 e1，e2 是表达式，op 是运算符，则 e1 op e2，op
-e2，（e1）也是表达式</li>
+<li>若 \(e_1\) ， \(e_2\) 是表达式，op 是运算符，则 \(e_1\) op \(e_2\) ，op
+\(e_2\) ， ( \(e_1\) ) 也是表达式</li>
 </ul></li>
 
 <li><p>
@@ -521,8 +525,8 @@ e2，（e1）也是表达式</li>
 </div>
 </div>
 
-<div id="org154365b" class="outline-4">
-<h4 id="e.-递归算法与函数调用"><a id="org154365b"></a>e. 递归算法与函数调用</h4>
+<div id="org22c290a" class="outline-4">
+<h4 id="e.-递归算法与函数调用"><a id="org22c290a"></a>e. 递归算法与函数调用</h4>
 <div class="outline-text-4" id="text-e.-递归算法与函数调用">
 <ul class="org-ul">
 <li>问题：在递归函数执行中将会递归调用自己，而且还可能继续这样递归调用。这种过程在计算机上如何实现？</li>
@@ -559,8 +563,8 @@ def fact(n)
 </ul>
 </div>
 
-<div id="orgdf2880b" class="outline-5">
-<h5 id="函数调用"><a id="orgdf2880b"></a>函数调用</h5>
+<div id="orgb82b959" class="outline-5">
+<h5 id="函数调用"><a id="orgb82b959"></a>函数调用</h5>
 <div class="outline-text-5" id="text-函数调用">
 <ul class="org-ul">
 <li>程序里函数调用是按先 <code>后调用先返回</code> 的规则进行</li>
@@ -596,7 +600,8 @@ def fact(n)
 </div>
 
 <ul class="org-ul">
-<li>递归定义的函数每次递归函数调用，都将自动执行上述动作，若要转为非递归，需要自己做这些事情， <code>用一个栈保存使用的中间信息</code></li>
+<li>递归定义的函数每次递归函数调用，都将自动执行上述动作，若要转为非递归，需要自己做这些事情，
+<code>用一个栈保存使用的中间信息</code></li>
 <li><p>
 考虑阶乘函数的非递归形式：
 </p>
@@ -616,36 +621,38 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="orga60f3ab" class="outline-5">
-<h5 id="递归与非递归"><a id="orga60f3ab"></a>递归与非递归</h5>
+<div id="org4c06aab" class="outline-5">
+<h5 id="递归与非递归"><a id="org4c06aab"></a>递归与非递归</h5>
 <div class="outline-text-5" id="text-递归与非递归">
 <ul class="org-ul">
-<li>可以证明： <code>任何递归定义的函数，都可以通过引入一个栈保存中间结果，翻译为一个非递归过程。任何一个包含循环的程序都可翻译为一个不包含循环的递归程序</code></li>
+<li>可以证明：
+<code>任何递归定义的函数，都可以通过引入一个栈保存中间结果，翻译为一个非递归过程。任何一个包含循环的程序都可翻译为一个不包含循环的递归程序</code></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 
-<div id="org207ec7a" class="outline-3">
-<h3 id="应用背包问题"><a id="org207ec7a"></a>6. 应用:背包问题</h3>
+<div id="org8a5e1e7" class="outline-3">
+<h3 id="应用背包问题"><a id="org8a5e1e7"></a>6. 应用:背包问题</h3>
 <div class="outline-text-3" id="text-应用背包问题">
 <ul class="org-ul">
-<li>假设 knap(W,n) 表示 n 件物品相对于 W 的背包问题，s 表示 n 件物品的集合</li>
+<li>假设 knap(W, n) 表示 n 件物品相对于 W 的背包问题，s 表示 n
+件物品的集合</li>
 <li>重点： <code>对每一种重量的物体要么选择要么不选择</code>
 
 <ul class="org-ul">
-<li>若选择 wn，则 knap(W-wn,n-1) 的解就是 knap(W,n) 的解</li>
-<li>若不选择 wn，则 knap(W,n-1) 的解就是 knap(W,n) 的解</li>
+<li>若选择 \(W_n\) ，则 \(knap(W-W_n, n-1)\) 的解就是 knap(W, n) 的解</li>
+<li>若不选择 \(W_n\) ，则 knap(W, n-1) 的解就是 knap(W, n) 的解</li>
 </ul></li>
 
 <li>情况分析：
 
 <ul class="org-ul">
 <li>当 W = 0；True</li>
-<li>当 w &lt; 0；False</li>
-<li>当 w &gt; 0, n &lt; 1；False</li>
-<li>当 s &gt; 0, n &gt;= 1； knap(W,n-1) 或 knap(W-wn,n-1)</li>
+<li>当 W &lt; 0；False</li>
+<li>当 W &gt; 0, n &lt; 1；False</li>
+<li>当 s &gt; 0, n &gt;= 1； knap(W, n-1) 或 \(knap(W-W_n, n-1)\)</li>
 </ul></li>
 
 <li><p>
@@ -674,13 +681,13 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="orged31d4a" class="outline-2">
-<h2 id="三队列"><a id="orged31d4a"></a>三、队列</h2>
+<div id="orgd159132" class="outline-2">
+<h2 id="三队列"><a id="orgd159132"></a>三、队列</h2>
 <div class="outline-text-2" id="text-三队列">
 </div>
 
-<div id="org82b9e70" class="outline-3">
-<h3 id="基本概念"><a id="org82b9e70"></a>1. 基本概念</h3>
+<div id="org8495392" class="outline-3">
+<h3 id="基本概念"><a id="org8495392"></a>1. 基本概念</h3>
 <div class="outline-text-3" id="text-基本概念">
 <ul class="org-ul">
 <li>可存入、访问、删除数据元素</li>
@@ -690,8 +697,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org0d5c6f9" class="outline-3">
-<h3 id="基本操作-1"><a id="org0d5c6f9"></a>2. 基本操作</h3>
+<div id="org1f8191f" class="outline-3">
+<h3 id="基本操作-1"><a id="org1f8191f"></a>2. 基本操作</h3>
 <div class="outline-text-3" id="text-基本操作-1">
 <ul class="org-ul">
 <li>创建空队列</li>
@@ -703,8 +710,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org60a2557" class="outline-3">
-<h3 id="队列特性"><a id="org60a2557"></a>3. 队列特性</h3>
+<div id="orge05768c" class="outline-3">
+<h3 id="队列特性"><a id="orge05768c"></a>3. 队列特性</h3>
 <div class="outline-text-3" id="text-队列特性">
 <ul class="org-ul">
 <li>保证访问或删除元素的 "FIFO" 原则</li>
@@ -716,8 +723,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="orgf12b518" class="outline-3">
-<h3 id="队列实现"><a id="orgf12b518"></a>4. 队列实现</h3>
+<div id="org9f34431" class="outline-3">
+<h3 id="队列实现"><a id="org9f34431"></a>4. 队列实现</h3>
 <div class="outline-text-3" id="text-队列实现">
 <ul class="org-ul">
 <li>用线性表实现，因为要在两端操作，比栈麻烦一些</li>
@@ -726,8 +733,8 @@ def norec_fact(n):
 </ul>
 </div>
 
-<div id="orgf8731e7" class="outline-4">
-<h4 id="a.-list-实现"><a id="orgf8731e7"></a>a. list 实现</h4>
+<div id="orgad90f38" class="outline-4">
+<h4 id="a.-list-实现"><a id="orgad90f38"></a>a. list 实现</h4>
 <div class="outline-text-4" id="text-a.-list-实现">
 <ul class="org-ul">
 <li>基于 python 的 list 实现顺序表示的队列
@@ -760,8 +767,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org1fae6df" class="outline-4">
-<h4 id="xb.-数据不变式"><a id="org1fae6df"></a>Xb. 数据不变式</h4>
+<div id="org08c90d9" class="outline-4">
+<h4 id="xb.-数据不变式"><a id="org08c90d9"></a>Xb. 数据不变式</h4>
 <div class="outline-text-4" id="text-xb.-数据不变式">
 <ul class="org-ul">
 <li>数据结构的之间的协调统一性，待补充</li>
@@ -770,13 +777,13 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org019da28" class="outline-3">
-<h3 id="队列的应用"><a id="org019da28"></a>4. 队列的应用</h3>
+<div id="org7c1d7c7" class="outline-3">
+<h3 id="队列的应用"><a id="org7c1d7c7"></a>4. 队列的应用</h3>
 <div class="outline-text-3" id="text-队列的应用">
 </div>
 
-<div id="orgaee1aa3" class="outline-4">
-<h4 id="a.-离散事件模拟"><a id="orgaee1aa3"></a>a. 离散事件模拟</h4>
+<div id="org728f571" class="outline-4">
+<h4 id="a.-离散事件模拟"><a id="org728f571"></a>a. 离散事件模拟</h4>
 <div class="outline-text-4" id="text-a.-离散事件模拟">
 <ul class="org-ul">
 <li>初步分析 <img src="https://ooo.0o0.ooo/2016/05/24/5743ed05c02fa.jpg" alt="5743ed05c02fa.jpg" /></li>
@@ -790,13 +797,13 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org637bdf4" class="outline-2">
-<h2 id="四迷宫问题"><a id="org637bdf4"></a>四、迷宫问题</h2>
+<div id="org498e867" class="outline-2">
+<h2 id="四迷宫问题"><a id="org498e867"></a>四、迷宫问题</h2>
 <div class="outline-text-2" id="text-四迷宫问题">
 </div>
 
-<div id="org37763b1" class="outline-3">
-<h3 id="问题分析"><a id="org37763b1"></a>1. 问题分析</h3>
+<div id="orgf7b5155" class="outline-3">
+<h3 id="问题分析"><a id="orgf7b5155"></a>1. 问题分析</h3>
 <div class="outline-text-3" id="text-问题分析">
 <ul class="org-ul">
 <li>将迷宫直接映射到二维的 0/1 矩阵，用嵌套的表 [[&#x2026;],&#x2026;,[&#x2026;]]</li>
@@ -807,8 +814,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org4cb3b9c" class="outline-3">
-<h3 id="实现方式"><a id="org4cb3b9c"></a>2. 实现方式</h3>
+<div id="org34517b8" class="outline-3">
+<h3 id="实现方式"><a id="org34517b8"></a>2. 实现方式</h3>
 <div class="outline-text-3" id="text-实现方式">
 <ul class="org-ul">
 <li>无路可走时退回到最开始出现分支的位置上搜索另一个分支，递归</li>
@@ -817,8 +824,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org3f3f91f" class="outline-3">
-<h3 id="x3.-递归实现"><a id="org3f3f91f"></a>X3. 递归实现</h3>
+<div id="org58e9301" class="outline-3">
+<h3 id="x3.-递归实现"><a id="org58e9301"></a>X3. 递归实现</h3>
 <div class="outline-text-3" id="text-x3.-递归实现">
 <p>
 待补充
@@ -826,16 +833,16 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="org41918d9" class="outline-3">
-<h3 id="x4.-回溯实现"><a id="org41918d9"></a>X4. 回溯实现</h3>
+<div id="orgf3b02d9" class="outline-3">
+<h3 id="x4.-回溯实现"><a id="orgf3b02d9"></a>X4. 回溯实现</h3>
 <div class="outline-text-3" id="text-x4.-回溯实现">
 <p>
 待补充
 </p>
 </div>
 
-<div id="org03d0b3b" class="outline-4">
-<h4 id="a.-回溯法和栈"><a id="org03d0b3b"></a>a. 回溯法和栈</h4>
+<div id="orga6aa8e4" class="outline-4">
+<h4 id="a.-回溯法和栈"><a id="orga6aa8e4"></a>a. 回溯法和栈</h4>
 <div class="outline-text-4" id="text-a.-回溯法和栈">
 <ul class="org-ul">
 <li>都是从一个出发点开始，设法找到目标（搜索）</li>
@@ -845,8 +852,8 @@ def norec_fact(n):
 </div>
 </div>
 
-<div id="orgdbe6769" class="outline-3">
-<h3 id="搜索性质"><a id="orgdbe6769"></a>5. 搜索性质</h3>
+<div id="org59fc931" class="outline-3">
+<h3 id="搜索性质"><a id="org59fc931"></a>5. 搜索性质</h3>
 <div class="outline-text-3" id="text-搜索性质">
 <ul class="org-ul">
 <li><code>基于栈的搜索被称为“深度优先搜索”（depth-first search）</code></li>
