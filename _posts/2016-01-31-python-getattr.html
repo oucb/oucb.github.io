@@ -16,16 +16,16 @@ excerpt    : "Python 中 getattr 的使用"
 </div>
 
 
-<div id="org37ed954" class="outline-2">
-<h2 id="getattr-使用"><a id="org37ed954"></a>getattr 使用</h2>
+<div id="outline-container-orgaba55f9" class="outline-2">
+<h2 id="getattr-使用">getattr 使用</h2>
 <div class="outline-text-2" id="text-getattr-使用">
 <p>
-getattr() 是 python 自省的核心函数，其本身的 doc 介绍如下：
+getattr() 是 python 自省的核心函数，其本身的 doc 介绍如下：<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span>...<span style="color: #2aa198;">)</span>
-    <span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span>, name<span style="color: #b58900;">[</span>, default<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span> -&gt; value
+<pre class="src src-python"><span class="org-builtin">getattr</span>(...)
+    <span class="org-builtin">getattr</span>(<span class="org-builtin">object</span>, name[, default]) -&gt; value
 </pre>
 </div>
 
@@ -36,78 +36,78 @@ exist; without it, an exception is raised in that case.
 </pre>
 
 <p>
-获得对象中一个名为 name 的属性本身，一般情况下等同于
-object.name。不同的是当 name 属性不存在时，getattr() 将返回给定的
-default 值;而直接访问一个不存在的属性，将会抛出 attributeError 异常。
+获得对象中一个名为 name 的属性本身，一般情况下等同于<br>
+object.name。不同的是当 name 属性不存在时，getattr() 将返回给定的<br>
+default 值;而直接访问一个不存在的属性，将会抛出 attributeError 异常。<br>
 </p>
 
 <ol class="org-ol">
 <li><p>
-实现工厂模式 例：一个模块支持 html、text、xml
-等格式的打印，根据传入的 formate
-参数的不同，调用不同的函数实现相应格式的打印
+实现工厂模式 例：一个模块支持 html、text、xml<br>
+等格式的打印，根据传入的 formate<br>
+参数的不同，调用不同的函数实现相应格式的打印<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">import</span> statsout
-<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">output</span><span style="color: #2aa198;">(</span>data, <span style="color: #839496; font-weight: bold;">format</span>=<span style="color: #2aa198;">"text"</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">output_function</span> = <span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span>statsout, <span style="color: #2aa198;">"output_%s"</span> %<span style="color: #839496; font-weight: bold;">format</span><span style="color: #2aa198;">)</span>
-    <span style="color: #859900; font-weight: bold;">return</span> output_function<span style="color: #2aa198;">(</span>data<span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">import</span> statsout 
+<span class="org-keyword">def</span> <span class="org-function-name">output</span>(data, <span class="org-builtin">format</span>=<span class="org-string">"text"</span>):                           
+    <span class="org-variable-name">output_function</span> = <span class="org-builtin">getattr</span>(statsout, <span class="org-string">"output_%s"</span> %<span class="org-builtin">format</span>) 
+    <span class="org-keyword">return</span> output_function(data)
 </pre>
 </div></li>
 
 <li><p>
-注意 &gt; getattr 返回的是方法本身或是函数的引用，而不是调用
+注意 &gt; getattr 返回的是方法本身或是函数的引用，而不是调用<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #268bd2;">result</span> = obj.method<span style="color: #2aa198;">(</span>args<span style="color: #2aa198;">)</span>
-<span style="color: #586e75;">#</span><span style="color: #586e75;">func&#21482;&#26159;&#20989;&#25968;&#36820;&#22238;&#30340;&#26041;&#27861;&#26412;&#36523;</span>
-<span style="color: #268bd2;">func</span> = <span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span>obj, <span style="color: #2aa198;">"method"</span><span style="color: #2aa198;">)</span>
-<span style="color: #586e75;">#</span><span style="color: #586e75;">&#36825;&#25165;&#26159;&#35843;&#29992;func&#26041;&#27861;</span>
-<span style="color: #268bd2;">result</span> = func<span style="color: #2aa198;">(</span>args<span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-variable-name">result</span> = obj.method(args)
+<span class="org-comment-delimiter">#</span><span class="org-comment">func&#21482;&#26159;&#20989;&#25968;&#36820;&#22238;&#30340;&#26041;&#27861;&#26412;&#36523;</span>
+<span class="org-variable-name">func</span> = <span class="org-builtin">getattr</span>(obj, <span class="org-string">"method"</span>)
+<span class="org-comment-delimiter">#</span><span class="org-comment">&#36825;&#25165;&#26159;&#35843;&#29992;func&#26041;&#27861;</span>
+<span class="org-variable-name">result</span> = func(args)
 </pre>
 </div></li>
 
 <li><p>
-特殊处理 Calling both getattr and the method on the same line can
-make it hard to handle exceptions properly. To avoid confusing
-AttributeError exceptions raised by getattr with similar exceptions
-raised inside the method, you can use the following pattern:
+特殊处理 Calling both getattr and the method on the same line can<br>
+make it hard to handle exceptions properly. To avoid confusing<br>
+AttributeError exceptions raised by getattr with similar exceptions<br>
+raised inside the method, you can use the following pattern:<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">try</span>:
-    <span style="color: #268bd2;">func</span> = <span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span>obj, <span style="color: #2aa198;">"method"</span><span style="color: #2aa198;">)</span>
-<span style="color: #859900; font-weight: bold;">except</span> <span style="color: #b58900;">AttributeError</span>:
-    ... deal <span style="color: #859900; font-weight: bold;">with</span> missing method ...
-<span style="color: #859900; font-weight: bold;">else</span>:
-    <span style="color: #268bd2;">result</span> = func<span style="color: #2aa198;">(</span>args<span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">try</span>:
+    <span class="org-variable-name">func</span> = <span class="org-builtin">getattr</span>(obj, <span class="org-string">"method"</span>)
+<span class="org-keyword">except</span> <span class="org-type">AttributeError</span>:
+    ... deal <span class="org-keyword">with</span> missing method ...
+<span class="org-keyword">else</span>:
+    <span class="org-variable-name">result</span> = func(args)
 </pre>
 </div>
 
 <p>
-The function takes an optional default value, which is used if the
-attribute doesn't exist. The following example only calls the method
-if it exists:
+The function takes an optional default value, which is used if the<br>
+attribute doesn't exist. The following example only calls the method<br>
+if it exists:<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #268bd2;">func</span> = <span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span>obj, <span style="color: #2aa198;">"method"</span>, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-<span style="color: #859900; font-weight: bold;">if</span> func:
-    func<span style="color: #2aa198;">(</span>args<span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-variable-name">func</span> = <span class="org-builtin">getattr</span>(obj, <span class="org-string">"method"</span>, <span class="org-constant">None</span>)
+<span class="org-keyword">if</span> func:
+    func(args)
 </pre>
 </div>
 
 <p>
-Here's a variation, which checks that the attribute is indeed a
-callable object before calling it.
+Here's a variation, which checks that the attribute is indeed a<br>
+callable object before calling it.<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #268bd2;">func</span> = <span style="color: #839496; font-weight: bold;">getattr</span><span style="color: #2aa198;">(</span>obj, <span style="color: #2aa198;">"method"</span>, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-<span style="color: #859900; font-weight: bold;">if</span> <span style="color: #839496; font-weight: bold;">callable</span><span style="color: #2aa198;">(</span>func<span style="color: #2aa198;">)</span>:
-    func<span style="color: #2aa198;">(</span>args<span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-variable-name">func</span> = <span class="org-builtin">getattr</span>(obj, <span class="org-string">"method"</span>, <span class="org-constant">None</span>)
+<span class="org-keyword">if</span> <span class="org-builtin">callable</span>(func):
+    func(args)
 </pre>
 </div></li>
 </ol>

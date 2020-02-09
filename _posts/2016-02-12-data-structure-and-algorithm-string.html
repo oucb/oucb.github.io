@@ -3,7 +3,7 @@ layout     : post
 title      : "《数据结构与算法:python语言描述》之 String"
 categories : 数据结构与算法
 tags       : 数据结构 算法 String
-excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “String” 部分所写笔记"
+excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “String” 部分所写笔记" 
 ---
 <div id="table-of-contents">
 <h2>&#30446;&#24405;</h2>
@@ -51,343 +51,343 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “S
 </div>
 
 
-<div id="org12de1ad" class="outline-2">
-<h2 id="一字符串相关概念"><a id="org12de1ad"></a>一、字符串相关概念</h2>
+<div id="outline-container-org99956e1" class="outline-2">
+<h2 id="一字符串相关概念">一、字符串相关概念</h2>
 <div class="outline-text-2" id="text-一字符串相关概念">
 </div>
 
-<div id="org5e70bd2" class="outline-3">
-<h3 id="字符集"><a id="org5e70bd2"></a>1. 字符集</h3>
+<div id="outline-container-org711e735" class="outline-3">
+<h3 id="字符集">1. 字符集</h3>
 <div class="outline-text-3" id="text-字符集">
 <ul class="org-ul">
-<li><code>字符</code> 是一个抽象概念，字符集是有穷的一组字符构成的集合</li>
-<li>标准字符集</li>
+<li><code>字符</code> 是一个抽象概念，字符集是有穷的一组字符构成的集合<br></li>
+<li>标准字符集<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org4a8ea5b" class="outline-3">
-<h3 id="字符串简称串"><a id="org4a8ea5b"></a>2. 字符串（简称串）</h3>
+<div id="outline-container-org42a8971" class="outline-3">
+<h3 id="字符串简称串">2. 字符串（简称串）</h3>
 <div class="outline-text-3" id="text-字符串简称串">
 <p>
-特殊线性表，表中元素取值选定的字符集， <code>支持一组以串为对象的操作</code>
+特殊线性表，表中元素取值选定的字符集， <code>支持一组以串为对象的操作</code><br>
 </p>
 </div>
 </div>
 
-<div id="orgca83b83" class="outline-3">
-<h3 id="串长度"><a id="orgca83b83"></a>3. 串长度</h3>
+<div id="outline-container-org6f42516" class="outline-3">
+<h3 id="串长度">3. 串长度</h3>
 <div class="outline-text-3" id="text-串长度">
 <ul class="org-ul">
-<li>字符个数</li>
-<li>长度为 0 的串称为空串</li>
-<li>任意字符集里空串的唯一性</li>
+<li>字符个数<br></li>
+<li>长度为 0 的串称为空串<br></li>
+<li>任意字符集里空串的唯一性<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org35c2ec8" class="outline-3">
-<h3 id="一般性"><a id="org35c2ec8"></a>4. 一般性</h3>
+<div id="outline-container-org7f2b8da" class="outline-3">
+<h3 id="一般性">4. 一般性</h3>
 <div class="outline-text-3" id="text-一般性">
 <ul class="org-ul">
-<li>每个字符的位置确定</li>
-<li>用 0 开始的自然数表示位置</li>
+<li>每个字符的位置确定<br></li>
+<li>用 0 开始的自然数表示位置<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org50f69e9" class="outline-3">
-<h3 id="串判断"><a id="org50f69e9"></a>5. 串判断</h3>
+<div id="outline-container-org8c2f001" class="outline-3">
+<h3 id="串判断">5. 串判断</h3>
 <div class="outline-text-3" id="text-串判断">
 <ul class="org-ul">
-<li>相等：长度相等，且对应位置的字符分别相等</li>
-<li>小于或大于：若第一个字符不相等，那就以第一个字符的比较结果为准，若第一个相等，那就比较第二个，以此类推。两串最终比较结果字符前的各字符应都对应相等。</li>
-<li>子串：存在 S 和 S' 使得 S2 = S + S1 + S', 则 S1 是 S2 的字串
+<li>相等：长度相等，且对应位置的字符分别相等<br></li>
+<li>小于或大于：若第一个字符不相等，那就以第一个字符的比较结果为准，若第一个相等，那就比较第二个，以此类推。两串最终比较结果字符前的各字符应都对应相等。<br></li>
+<li>子串：存在 S 和 S' 使得 S2 = S + S1 + S', 则 S1 是 S2 的字串<br>
 
 <ul class="org-ul">
 <li><ol class="org-ol">
-<li>子串也是串</li>
+<li>子串也是串<br></li>
 </ol></li>
 
 <li><ol class="org-ol">
-<li>子串第一次出现时的第一个字符位置为子串出现的位置；</li>
+<li>子串第一次出现时的第一个字符位置为子串出现的位置；<br></li>
 </ol></li>
 
 <li><ol class="org-ol">
-<li>子串可能多处出现，注意重叠情况不算</li>
+<li>子串可能多处出现，注意重叠情况不算<br></li>
 </ol></li>
 
 <li><ol class="org-ol">
-<li>空串是任何字符串的子串，任何字符串是本身的子串</li>
+<li>空串是任何字符串的子串，任何字符串是本身的子串<br></li>
 </ol></li>
 </ul></li>
 
-<li>特殊子串：前缀是串开头的一段字符构成的子串，后缀是串最后的一段字符构成的子串</li>
+<li>特殊子串：前缀是串开头的一段字符构成的子串，后缀是串最后的一段字符构成的子串<br></li>
 </ul>
 </div>
 </div>
 
-<div id="orgcb83594" class="outline-3">
-<h3 id="串运算"><a id="orgcb83594"></a>6. 串运算</h3>
+<div id="outline-container-org3d2318b" class="outline-3">
+<h3 id="串运算">6. 串运算</h3>
 <div class="outline-text-3" id="text-串运算">
 <ul class="org-ul">
-<li>拼接：S = S1 + S2。python 里拼接用=+=表示</li>
-<li>幂：串 s 的 n 次幂是连续 n 个 s 拼接而成的串：s＊n</li>
-<li>替换</li>
+<li>拼接：S = S1 + S2。python 里拼接用=+=表示<br></li>
+<li>幂：串 s 的 n 次幂是连续 n 个 s 拼接而成的串：s＊n<br></li>
+<li>替换<br></li>
 </ul>
 </div>
 </div>
 
-<div id="orga6bfe68" class="outline-3">
-<h3 id="代数结构"><a id="orga6bfe68"></a>7. 代数结构</h3>
+<div id="outline-container-org0dee8dc" class="outline-3">
+<h3 id="代数结构">7. 代数结构</h3>
 <div class="outline-text-3" id="text-代数结构">
 <ul class="org-ul">
-<li>空串是拼接操作的"单位元"（幺元） 有结合律，无交换律</li>
-<li>串集合加上拼接操作，构成一个半群 典型的半交换半群</li>
-<li>有单位元，因此是一个幺半群</li>
+<li>空串是拼接操作的"单位元"（幺元） 有结合律，无交换律<br></li>
+<li>串集合加上拼接操作，构成一个半群 典型的半交换半群<br></li>
+<li>有单位元，因此是一个幺半群<br></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="orgc33338d" class="outline-2">
-<h2 id="二字符串研究"><a id="orgc33338d"></a>二、字符串研究</h2>
+<div id="outline-container-orgdb5b5c8" class="outline-2">
+<h2 id="二字符串研究">二、字符串研究</h2>
 <div class="outline-text-2" id="text-二字符串研究">
 </div>
 
-<div id="org3533ad4" class="outline-3">
-<h3 id="串表示的两个问题"><a id="org3533ad4"></a>1. 串表示的两个问题</h3>
+<div id="outline-container-org8ce0680" class="outline-3">
+<h3 id="串表示的两个问题">1. 串表示的两个问题</h3>
 <div class="outline-text-3" id="text-串表示的两个问题">
 <ul class="org-ul">
-<li>串内容存储：1. 连续存储。2. 字符独立存储，链接起来</li>
-<li>串结束表示：1. 专门数据域记录串长度。2. 特殊符号表示结束</li>
+<li>串内容存储：1. 连续存储。2. 字符独立存储，链接起来<br></li>
+<li>串结束表示：1. 专门数据域记录串长度。2. 特殊符号表示结束<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org491a334" class="outline-3">
-<h3 id="串替换"><a id="org491a334"></a>2. 串替换</h3>
+<div id="outline-container-org16cc512" class="outline-3">
+<h3 id="串替换">2. 串替换</h3>
 <div class="outline-text-3" id="text-串替换">
 <ul class="org-ul">
-<li>子串多次出现</li>
-<li>多次出现可能重叠，只能规定一种代换顺序（如从左到右），一次代换破坏的子串不应再代入新串</li>
-<li>一次子串代换后，应从代入得新串之后继续工作。即使代入新串之后形成的部分能与子串匹配，也不应在本次替换中考虑</li>
+<li>子串多次出现<br></li>
+<li>多次出现可能重叠，只能规定一种代换顺序（如从左到右），一次代换破坏的子串不应再代入新串<br></li>
+<li>一次子串代换后，应从代入得新串之后继续工作。即使代入新串之后形成的部分能与子串匹配，也不应在本次替换中考虑<br></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="orgadb53c3" class="outline-2">
-<h2 id="三串匹配"><a id="orgadb53c3"></a>三、串匹配</h2>
+<div id="outline-container-org38191b9" class="outline-2">
+<h2 id="三串匹配">三、串匹配</h2>
 <div class="outline-text-2" id="text-三串匹配">
 </div>
 
-<div id="org2782405" class="outline-3">
-<h3 id="算法设计的关键"><a id="org2782405"></a>1. 算法设计的关键</h3>
+<div id="outline-container-org16f1f15" class="outline-3">
+<h3 id="算法设计的关键">1. 算法设计的关键</h3>
 <div class="outline-text-3" id="text-算法设计的关键">
 <ul class="org-ul">
-<li>怎样比较字符</li>
-<li>发现不匹配后下一步怎么做</li>
+<li>怎样比较字符<br></li>
+<li>发现不匹配后下一步怎么做<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org434598b" class="outline-3">
-<h3 id="朴素匹配算法"><a id="org434598b"></a>2. 朴素匹配算法</h3>
+<div id="outline-container-orga78c344" class="outline-3">
+<h3 id="朴素匹配算法">2. 朴素匹配算法</h3>
 <div class="outline-text-3" id="text-朴素匹配算法">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">nmatching</span><span style="color: #2aa198;">(</span>t, p<span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">j</span> = <span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">0</span>
-    <span style="color: #268bd2;">m</span>, <span style="color: #268bd2;">n</span> = <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>t<span style="color: #2aa198;">)</span>, <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>p<span style="color: #2aa198;">)</span>
-    <span style="color: #859900; font-weight: bold;">while</span> i &lt; m <span style="color: #859900; font-weight: bold;">and</span> j &lt; n:
-        <span style="color: #859900; font-weight: bold;">if</span> t<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> == p<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>:
-            <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">j</span> = i+<span style="color: #6c71c4;">1</span>, j+<span style="color: #6c71c4;">1</span>
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">j</span> = i-j+<span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">0</span>
-            <span style="color: #586e75;"># </span><span style="color: #586e75;">i=i-j+1, having matched i characters, but not matching string p. need to set the position after the first matched character for the next matching</span>
-    <span style="color: #859900; font-weight: bold;">if</span> j == n:
-        <span style="color: #859900; font-weight: bold;">return</span> i-j
-    <span style="color: #859900; font-weight: bold;">return</span> -<span style="color: #6c71c4;">1</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">nmatching</span>(t, p):
+    <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span> = 0, 0
+    <span class="org-variable-name">m</span>, <span class="org-variable-name">n</span> = <span class="org-builtin">len</span>(t), <span class="org-builtin">len</span>(p)
+    <span class="org-keyword">while</span> i &lt; m <span class="org-keyword">and</span> j &lt; n:
+        <span class="org-keyword">if</span> t[i] == p[j]:
+            <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span> = i+1, j+1
+        <span class="org-keyword">else</span>:
+            <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span> = i-j+1, 0
+            <span class="org-comment-delimiter"># </span><span class="org-comment">i=i-j+1, having matched i characters, but not matching string p. need to set the position after the first matched character for the next matching</span>
+    <span class="org-keyword">if</span> j == n:
+        <span class="org-keyword">return</span> i-j
+    <span class="org-keyword">return</span> -1
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>从左至右</li>
-<li>发现不匹配时，考虑目标串的下一位置</li>
+<li>从左至右<br></li>
+<li>发现不匹配时，考虑目标串的下一位置<br></li>
 </ul>
 
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <ul class="org-ul">
-<li>可能出现回溯：遇字符不相等时，目标串每次与模式串第一个字符作比较处的位置右移一个字符，并再次从
-\(p_0\)（重置 j=0 后）开始比较</li>
-<li>最坏的情况是每趟比较都在最后出现不等，最多比较 m-n+1 趟，总共比较
-n*(m-n+1)， <code>算法复杂度为 n*m</code></li>
+<li>可能出现回溯：遇字符不相等时，目标串每次与模式串第一个字符作比较处的位置右移一个字符，并再次从<br>
+\(p_0\)（重置 j=0 后）开始比较<br></li>
+<li>最坏的情况是每趟比较都在最后出现不等，最多比较 m-n+1 趟，总共比较<br>
+n*(m-n+1)， <code>算法复杂度为 n*m</code><br></li>
 </ul>
 </blockquote>
 </div>
 </div>
 
-<div id="orga1a61f5" class="outline-3">
-<h3 id="kmp-算法"><a id="orga1a61f5"></a>3. KMP 算法</h3>
+<div id="outline-container-orga16ce70" class="outline-3">
+<h3 id="kmp-算法">3. KMP 算法</h3>
 <div class="outline-text-3" id="text-kmp-算法">
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <ul class="org-ul">
-<li>核心思想：分析模式串，当在 \(t_j\)
-处不匹配时，充分利用模式串中已匹配字符的长度 i
-来确定跳转到模式串中的 \(p_k\)（=其中 0≤k&lt;i=)来与 \(t_j\) 继续比较。</li>
-<li>例如模式串为
+<li>核心思想：分析模式串，当在 \(t_j\)<br>
+处不匹配时，充分利用模式串中已匹配字符的长度 i<br>
+来确定跳转到模式串中的 \(p_k\)（=其中 0≤k&lt;i=)来与 \(t_j\) 继续比较。<br></li>
+<li>例如模式串为<br>
 <code>abcac=，若比较到模式串最后一个字符不匹配，这时目标串位置为 $t_j$
-    的话，则 $t_j$ 继续与模式串中第二个 =b</code>
-字符进行比较。因为模式串中第一个字符为 <code>a</code>,而匹配的时候已确认 \(t_j\)
-前一个为 <code>a</code></li>
+    的话，则 $t_j$ 继续与模式串中第二个 =b</code><br>
+字符进行比较。因为模式串中第一个字符为 <code>a</code>,而匹配的时候已确认 \(t_j\)<br>
+前一个为 <code>a</code><br></li>
 </ul>
 </blockquote>
 
 <p>
-解析：
+解析：<br>
 </p>
 
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <ul class="org-ul">
-<li>假设模式串匹配到 p[i] 时不匹配，实际上只是分析模式串中前缀子串
-\(p_0...p_{i-1}\) 中前缀子串 \(p_o...p_{x-1}\) 与后缀子串
-\(p_{i-x}...p_{i-1}\) 的相等性及 p[x] 与 p[i]
+<li>假设模式串匹配到 p[i] 时不匹配，实际上只是分析模式串中前缀子串<br>
+\(p_0...p_{i-1}\) 中前缀子串 \(p_o...p_{x-1}\) 与后缀子串<br>
+\(p_{i-x}...p_{i-1}\) 的相等性及 p[x] 与 p[i]<br>
 是否相等。假定模式串为字符串 <code>s</code>'abacabad'<code>，则可看其出前缀子串
-    =aba=、=abacab=、=abacaba</code> 中的前后缀子串 <code>a=，=ab=，=abc</code>
-的重复性，对应的 p[i] 分别为 p[3]、p[6]、p[7]，相应的 p[x] 分别为
-p[1]、p[2]、p[3]。当模式串匹配到 p[3] 即字符 <code>c</code> 不等时，与 p[1]
-不等，因此可作跳转到 p[1] 继续比较；当匹配到 p[6] 即字符 <code>a</code>
-时，由于与 p[2] 相等，不能跳转。</li>
-<li>假设模式串匹配到 <code>p[i]</code> 位置时不匹配，即判断 <code>p[:y]</code> 与
-<code>p[i-y:i](0&lt;y&lt;i)</code> 是否匹配，选择最长的匹配，然后判断后 <code>p[y]</code> 与
-<code>p[i]</code> 是否相等，以 <code>ababac</code> 为例做分析</li>
+    =aba=、=abacab=、=abacaba</code> 中的前后缀子串 <code>a=，=ab=，=abc</code><br>
+的重复性，对应的 p[i] 分别为 p[3]、p[6]、p[7]，相应的 p[x] 分别为<br>
+p[1]、p[2]、p[3]。当模式串匹配到 p[3] 即字符 <code>c</code> 不等时，与 p[1]<br>
+不等，因此可作跳转到 p[1] 继续比较；当匹配到 p[6] 即字符 <code>a</code><br>
+时，由于与 p[2] 相等，不能跳转。<br></li>
+<li>假设模式串匹配到 <code>p[i]</code> 位置时不匹配，即判断 <code>p[:y]</code> 与<br>
+<code>p[i-y:i](0&lt;y&lt;i)</code> 是否匹配，选择最长的匹配，然后判断后 <code>p[y]</code> 与<br>
+<code>p[i]</code> 是否相等，以 <code>ababac</code> 为例做分析<br></li>
 </ul>
 </blockquote>
 
 <p>
-实现分析：
+实现分析：<br>
 </p>
 
 <blockquote>
 <p>
-假设 pnext[i] 为位置i的跳转位置，其中 <code>0&lt;=pnext[i]&lt;i</code>
-。匹配失败时，可能发现用 \(p_i\) 之前的所有字符与 \(t_j\)
-比较都没有价值，下一步应该从头开始用 \(P_0\) 与 \(t_{j+1}\)
-比较，这种特殊情况就在 pnext[i] 里记录 -1，显然对于任何模式都有：
-<code>pnext[0] = -1</code>
+假设 pnext[i] 为位置i的跳转位置，其中 <code>0&lt;=pnext[i]&lt;i</code><br>
+。匹配失败时，可能发现用 \(p_i\) 之前的所有字符与 \(t_j\)<br>
+比较都没有价值，下一步应该从头开始用 \(P_0\) 与 \(t_{j+1}\)<br>
+比较，这种特殊情况就在 pnext[i] 里记录 -1，显然对于任何模式都有：<br>
+<code>pnext[0] = -1</code><br>
 </p>
 </blockquote>
 
 <p>
-代码如下：
+代码如下：<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">kmpmatch</span><span style="color: #2aa198;">(</span>t, p, pnext<span style="color: #2aa198;">)</span>:
-<span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">j</span> = <span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">0</span>
-<span style="color: #268bd2;">m</span>, <span style="color: #268bd2;">n</span> = <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>t<span style="color: #2aa198;">)</span>, <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>p<span style="color: #2aa198;">)</span>
-<span style="color: #859900; font-weight: bold;">while</span> i &lt; m <span style="color: #859900; font-weight: bold;">and</span> j &lt; n:
-    <span style="color: #859900; font-weight: bold;">if</span> i == -<span style="color: #6c71c4;">1</span> <span style="color: #859900; font-weight: bold;">or</span> t<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> == p<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>:
-        <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">j</span> = i+<span style="color: #6c71c4;">1</span>, j+<span style="color: #6c71c4;">1</span>
-    <span style="color: #859900; font-weight: bold;">else</span>:
-        <span style="color: #268bd2;">j</span> = pnext<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
-<span style="color: #859900; font-weight: bold;">if</span> j ==n:
-    <span style="color: #859900; font-weight: bold;">return</span> i-j
-<span style="color: #859900; font-weight: bold;">return</span> -<span style="color: #6c71c4;">1</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">kmpmatch</span>(t, p, pnext):
+<span class="org-variable-name">i</span>, <span class="org-variable-name">j</span> = 0, 0
+<span class="org-variable-name">m</span>, <span class="org-variable-name">n</span> = <span class="org-builtin">len</span>(t), <span class="org-builtin">len</span>(p)
+<span class="org-keyword">while</span> i &lt; m <span class="org-keyword">and</span> j &lt; n:
+    <span class="org-keyword">if</span> i == -1 <span class="org-keyword">or</span> t[i] == p[j]:
+        <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span> = i+1, j+1
+    <span class="org-keyword">else</span>:
+        <span class="org-variable-name">j</span> = pnext[j]
+<span class="org-keyword">if</span> j ==n:
+    <span class="org-keyword">return</span> i-j
+<span class="org-keyword">return</span> -1
 </pre>
 </div>
 </div>
 
-<div id="org2b69f81" class="outline-4">
-<h4 id="a.-kmp-算法-pnext-表分析"><a id="org2b69f81"></a>a. KMP 算法 pnext 表分析</h4>
+<div id="outline-container-org75abae5" class="outline-4">
+<h4 id="a.-kmp-算法-pnext-表分析">a. KMP 算法 pnext 表分析</h4>
 <div class="outline-text-4" id="text-a.-kmp-算法-pnext-表分析">
 <ul class="org-ul">
-<li>当模式串匹配到 \(p_i\) 不相等时，则计算 \(p_0...p_{i-1}\)
-的最长相等的前后缀子串的长度，假设长度为 k，则
-pnext[i]=k，即将模式串右移 i-k 个字符用 \(p_k\) 去继续与 \(t_j\) 比较</li>
-<li>等价于对每个 i 求 \(p_0...p_{i-1}\) 的最长相等前后缀子串的长度</li>
+<li>当模式串匹配到 \(p_i\) 不相等时，则计算 \(p_0...p_{i-1}\)<br>
+的最长相等的前后缀子串的长度，假设长度为 k，则<br>
+pnext[i]=k，即将模式串右移 i-k 个字符用 \(p_k\) 去继续与 \(t_j\) 比较<br></li>
+<li>等价于对每个 i 求 \(p_0...p_{i-1}\) 的最长相等前后缀子串的长度<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org1d2d395" class="outline-4">
-<h4 id="b.-pnext-递推分析"><a id="org1d2d395"></a>b. pnext 递推分析</h4>
+<div id="outline-container-org4c42a8f" class="outline-4">
+<h4 id="b.-pnext-递推分析">b. pnext 递推分析</h4>
 <div class="outline-text-4" id="text-b.-pnext-递推分析">
 <ul class="org-ul">
-<li>假设 pnext[i]=k，则 \(p_0...p_{i-1}\) 的前缀子串 \(p_0...p_{k-1}\)
-和后缀子串 \(p_{i-k}...p_{i-1}\) 相同，若 \(p_k\) 与 \(p_i\) 相同，则
-\(p_0...p_i\) 的前缀子串 \(p_0...p_k\) 和后缀子串 \(p_{i-k}...p_i\) 相同，即
-pnext[i+1]=k+1。</li>
-<li>若 \(p_k\) 与 \(p_i\) 不相等，则试着在 \(p_0...p_{i-1}\)
-中更短的前后缀相同子串中检查新的 \(p_k\) 是否与 \(p_i\) 相等，若相等，则
-pnext[i+1]=k+1</li>
+<li>假设 pnext[i]=k，则 \(p_0...p_{i-1}\) 的前缀子串 \(p_0...p_{k-1}\)<br>
+和后缀子串 \(p_{i-k}...p_{i-1}\) 相同，若 \(p_k\) 与 \(p_i\) 相同，则<br>
+\(p_0...p_i\) 的前缀子串 \(p_0...p_k\) 和后缀子串 \(p_{i-k}...p_i\) 相同，即<br>
+pnext[i+1]=k+1。<br></li>
+<li>若 \(p_k\) 与 \(p_i\) 不相等，则试着在 \(p_0...p_{i-1}\)<br>
+中更短的前后缀相同子串中检查新的 \(p_k\) 是否与 \(p_i\) 相等，若相等，则<br>
+pnext[i+1]=k+1<br></li>
 </ul>
 
 <blockquote>
 <p>
-通过分析最长前后缀相同子串 \(p_0...p_{k-1}\) 和 \(p_{i-k}...p_{i-1}\)
-可知，\(p_0...p_{i-1}\) 中更短的前后缀相同子串必是 \(p_0...p_{k-1}\)
-的最长前后缀相同子串，因此 k=pnext[k],p[k] 中的 k 代表 \(p_0...p_{i-1}\)
-的最长相等前后缀子串长度，即每次 p[k] 与 p[i] 不相等就去最长前缀子串
-\(p_0...p_{k-1}\) 找最长的前后缀相同子串长度 k（即 p[k] 的 pnext 值
-pnext[k]），若新的 p[k] 值与 p[i] 还是不相等，则以此类推循环查找，直到
-pnext[k]=-1 表示到了 \(p_0\) ，此时退出循环。若循环中找到使得 p[k]=p[i]
-的 k 值则退出循环。最后 pnext[i+1]=k+1
+通过分析最长前后缀相同子串 \(p_0...p_{k-1}\) 和 \(p_{i-k}...p_{i-1}\)<br>
+可知，\(p_0...p_{i-1}\) 中更短的前后缀相同子串必是 \(p_0...p_{k-1}\)<br>
+的最长前后缀相同子串，因此 k=pnext[k],p[k] 中的 k 代表 \(p_0...p_{i-1}\)<br>
+的最长相等前后缀子串长度，即每次 p[k] 与 p[i] 不相等就去最长前缀子串<br>
+\(p_0...p_{k-1}\) 找最长的前后缀相同子串长度 k（即 p[k] 的 pnext 值<br>
+pnext[k]），若新的 p[k] 值与 p[i] 还是不相等，则以此类推循环查找，直到<br>
+pnext[k]=-1 表示到了 \(p_0\) ，此时退出循环。若循环中找到使得 p[k]=p[i]<br>
+的 k 值则退出循环。最后 pnext[i+1]=k+1<br>
 </p>
 </blockquote>
 
 <ul class="org-ul">
-<li>假设 pnext[0]=x，p[0] 前是空串，因此不作跳转，而 p[1] 一定会跳转到
-p[0] 即 pnext[1]=0，由上述 pnext[i+1]=k+1 分析可知，定义 x=-1
-能保证循环的一致性，所以定义模式串所有位置 p[i] 的 pnext 默认值为
--1，然后从 i=0 往后递推</li>
+<li>假设 pnext[0]=x，p[0] 前是空串，因此不作跳转，而 p[1] 一定会跳转到<br>
+p[0] 即 pnext[1]=0，由上述 pnext[i+1]=k+1 分析可知，定义 x=-1<br>
+能保证循环的一致性，所以定义模式串所有位置 p[i] 的 pnext 默认值为<br>
+-1，然后从 i=0 往后递推<br></li>
 <li><p>
-程序实现如下：
+程序实现如下：<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">genPnext</span><span style="color: #2aa198;">(</span>p<span style="color: #2aa198;">)</span>:
-<span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">k</span>, <span style="color: #268bd2;">m</span> = <span style="color: #6c71c4;">0</span>, -<span style="color: #6c71c4;">1</span>, <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>p<span style="color: #2aa198;">)</span>
-<span style="color: #268bd2;">pnext</span> = <span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span> * m
-<span style="color: #859900; font-weight: bold;">while</span> i &lt; m-<span style="color: #6c71c4;">1</span>:
-    <span style="color: #859900; font-weight: bold;">while</span> k &gt;= <span style="color: #6c71c4;">0</span> <span style="color: #859900; font-weight: bold;">and</span> p<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> p<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>:
-        <span style="color: #268bd2;">k</span> = pnext<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span>
-    <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">k</span> = i+<span style="color: #6c71c4;">1</span>, k+<span style="color: #6c71c4;">1</span>
-    <span style="color: #268bd2;">pnext</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = k
-<span style="color: #859900; font-weight: bold;">return</span> pnext
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">genPnext</span>(p):
+<span class="org-variable-name">i</span>, <span class="org-variable-name">k</span>, <span class="org-variable-name">m</span> = 0, -1, <span class="org-builtin">len</span>(p)
+<span class="org-variable-name">pnext</span> = [-1] * m
+<span class="org-keyword">while</span> i &lt; m-1:
+    <span class="org-keyword">while</span> k &gt;= 0 <span class="org-keyword">and</span> p[k] <span class="org-keyword">is</span> <span class="org-keyword">not</span> p[i]:
+        <span class="org-variable-name">k</span> = pnext[k]
+    <span class="org-variable-name">i</span>, <span class="org-variable-name">k</span> = i+1, k+1
+    <span class="org-variable-name">pnext</span>[i] = k
+<span class="org-keyword">return</span> pnext
 </pre>
 </div></li>
 
 <li><p>
-程序改进，当确认 pnext[i] 的值为 k 时，若 p[k] 与 p[i] 相同，则 p[k]
-与 \(t_j\) 也不相同，所以继续查找 pnext[k]
+程序改进，当确认 pnext[i] 的值为 k 时，若 p[k] 与 p[i] 相同，则 p[k]<br>
+与 \(t_j\) 也不相同，所以继续查找 pnext[k]<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">genPnext</span><span style="color: #2aa198;">(</span>p<span style="color: #2aa198;">)</span>:
-<span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">k</span>, <span style="color: #268bd2;">m</span> = <span style="color: #6c71c4;">0</span>, -<span style="color: #6c71c4;">1</span>, <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>p<span style="color: #2aa198;">)</span>
-<span style="color: #268bd2;">pnext</span> = <span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span> * m
-<span style="color: #859900; font-weight: bold;">while</span> i &lt; m-<span style="color: #6c71c4;">1</span>:
-    <span style="color: #859900; font-weight: bold;">while</span> k &gt;= <span style="color: #6c71c4;">0</span> <span style="color: #859900; font-weight: bold;">and</span> p<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> p<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>:
-        <span style="color: #268bd2;">k</span> = pnext<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span>
-    <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">k</span> = i+<span style="color: #6c71c4;">1</span>, k+<span style="color: #6c71c4;">1</span>
-    <span style="color: #859900; font-weight: bold;">if</span> p<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span> == p<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>:
-        <span style="color: #268bd2;">pnext</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = pnext<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span>
-    <span style="color: #859900; font-weight: bold;">else</span>:
-        <span style="color: #268bd2;">pnext</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = k
-<span style="color: #859900; font-weight: bold;">return</span> pnext
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">genPnext</span>(p):
+<span class="org-variable-name">i</span>, <span class="org-variable-name">k</span>, <span class="org-variable-name">m</span> = 0, -1, <span class="org-builtin">len</span>(p)
+<span class="org-variable-name">pnext</span> = [-1] * m
+<span class="org-keyword">while</span> i &lt; m-1:
+    <span class="org-keyword">while</span> k &gt;= 0 <span class="org-keyword">and</span> p[k] <span class="org-keyword">is</span> <span class="org-keyword">not</span> p[i]:
+        <span class="org-variable-name">k</span> = pnext[k]
+    <span class="org-variable-name">i</span>, <span class="org-variable-name">k</span> = i+1, k+1
+    <span class="org-keyword">if</span> p[k] == p[i]:
+        <span class="org-variable-name">pnext</span>[i] = pnext[k]
+    <span class="org-keyword">else</span>:
+        <span class="org-variable-name">pnext</span>[i] = k
+<span class="org-keyword">return</span> pnext
 </pre>
 </div></li>
 </ul>
@@ -396,208 +396,210 @@ p[0] 即 pnext[1]=0，由上述 pnext[i+1]=k+1 分析可知，定义 x=-1
 </div>
 </div>
 
-<div id="org9ddcab0" class="outline-2">
-<h2 id="四正则表达式"><a id="org9ddcab0"></a>四、正则表达式</h2>
+<div id="outline-container-org9a5a215" class="outline-2">
+<h2 id="四正则表达式">四、正则表达式</h2>
 <div class="outline-text-2" id="text-四正则表达式">
 </div>
 
-<div id="orgb69d69c" class="outline-3">
-<h3 id="原始字符串"><a id="orgb69d69c"></a>1. 原始字符串</h3>
+<div id="outline-container-orgb33a6db" class="outline-3">
+<h3 id="原始字符串">1. 原始字符串</h3>
 <div class="outline-text-3" id="text-原始字符串">
 <ul class="org-ul">
-<li>在普通字符串前加r或R前缀，如 <code>r"abadef", R"c:\text\x"</code></li>
-<li>原始字符串中的  不作为转义符</li>
-<li>为了使一些字符串写法简单</li>
+<li>在普通字符串前加r或R前缀，如 <code>r"abadef", R"c:\text\x"</code><br></li>
+<li>原始字符串中的  不作为转义符<br></li>
+<li>为了使一些字符串写法简单<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org9d8dc3f" class="outline-3">
-<h3 id="元字符"><a id="org9d8dc3f"></a>2. 元字符</h3>
+<div id="outline-container-orgad09c02" class="outline-3">
+<h3 id="元字符">2. 元字符</h3>
 <div class="outline-text-3" id="text-元字符">
 <p>
-<code>. ^ $ * + ? \ | { } [ ] ( )</code>
+<code>. ^ $ * + ? \ | { } [ ] ( )</code><br>
 </p>
 </div>
 </div>
 
-<div id="orgc6ff9e2" class="outline-3">
-<h3 id="正则表达式对象"><a id="orgc6ff9e2"></a>3. 正则表达式对象</h3>
+<div id="outline-container-org94c3a90" class="outline-3">
+<h3 id="正则表达式对象">3. 正则表达式对象</h3>
 <div class="outline-text-3" id="text-正则表达式对象">
 <ul class="org-ul">
-<li>通过 <code>re.compile(pattern, flag = 0)</code> 从 pattern
-生成正则表达式对象，例如 r1 =
-re.compile("abc")，将生成的正则表达式对象赋给变量 r1</li>
-<li>避免在重复使用中重复生成</li>
+<li>通过 <code>re.compile(pattern, flag = 0)</code> 从 pattern<br>
+生成正则表达式对象，例如 r1 =<br>
+re.compile("abc")，将生成的正则表达式对象赋给变量 r1<br></li>
+<li>避免在重复使用中重复生成<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org514f428" class="outline-3">
-<h3 id="正则表达式函数"><a id="org514f428"></a>4. 正则表达式函数</h3>
+<div id="outline-container-org72a3cf3" class="outline-3">
+<h3 id="正则表达式函数">4. 正则表达式函数</h3>
 <div class="outline-text-3" id="text-正则表达式函数">
 <ul class="org-ul">
-<li><code>re.search(pattern, string, flag=0)</code> 在 string 里检索与 pattern
-匹配的子串，找到就返回一个 match 类型的对象，没有就返回 None，match
-记录成功匹配的相关信息，可把它作为一个真值用于逻辑判断</li>
-<li><code>re.match(pattern, string, flag=0)</code> 检查 string 中是否有与 pattern
-匹配的前缀，成功返回 match 对象，否则返回 None</li>
+<li><code>re.search(pattern, string, flag=0)</code> 在 string 里检索与 pattern<br>
+匹配的子串，找到就返回一个 match 类型的对象，没有就返回 None，match<br>
+记录成功匹配的相关信息，可把它作为一个真值用于逻辑判断<br></li>
+<li><code>re.match(pattern, string, flag=0)</code> 检查 string 中是否有与 pattern<br>
+匹配的前缀，成功返回 match 对象，否则返回 None<br></li>
 <li><p>
-<code>re.split(pattern, string, maxsplit=0, flags=0)</code> 以 pattern
-作为分割串将 string 分段，maxsplit 指明分割数，0 表示做完整个
-string。返回分割得到的字符串表。
+<code>re.split(pattern, string, maxsplit=0, flags=0)</code> 以 pattern<br>
+作为分割串将 string 分段，maxsplit 指明分割数，0 表示做完整个<br>
+string。返回分割得到的字符串表。<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">&gt;&gt;&gt; re.split<span style="color: #2aa198;">(</span><span style="color: #2aa198;">' '</span>, <span style="color: #2aa198;">"abc abb are not the same"</span><span style="color: #2aa198;">)</span>
-&gt;&gt;&gt; <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'abc'</span>, <span style="color: #2aa198;">'abb'</span>, <span style="color: #2aa198;">'are'</span>, <span style="color: #2aa198;">'not'</span>, <span style="color: #2aa198;">'the'</span>, <span style="color: #2aa198;">'same'</span><span style="color: #2aa198;">]</span>
-&gt;&gt;&gt; re.split<span style="color: #2aa198;">(</span><span style="color: #2aa198;">' '</span>, <span style="color: #2aa198;">"1 2  3  4 "</span><span style="color: #2aa198;">)</span>
-&gt;&gt;&gt; <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'1'</span>, <span style="color: #2aa198;">'2'</span>, <span style="color: #2aa198;">''</span>, <span style="color: #2aa198;">'3'</span>, <span style="color: #2aa198;">''</span>, <span style="color: #2aa198;">'4'</span>, <span style="color: #2aa198;">''</span><span style="color: #2aa198;">]</span>
+<pre class="src src-python">&gt;&gt;&gt; re.split(<span class="org-string">' '</span>, <span class="org-string">"abc abb are not the same"</span>)
+&gt;&gt;&gt; [<span class="org-string">'abc'</span>, <span class="org-string">'abb'</span>, <span class="org-string">'are'</span>, <span class="org-string">'not'</span>, <span class="org-string">'the'</span>, <span class="org-string">'same'</span>]
+&gt;&gt;&gt; re.split(<span class="org-string">' '</span>, <span class="org-string">"1 2  3  4 "</span>)
+&gt;&gt;&gt; [<span class="org-string">'1'</span>, <span class="org-string">'2'</span>, <span class="org-string">''</span>, <span class="org-string">'3'</span>, <span class="org-string">''</span>, <span class="org-string">'4'</span>, <span class="org-string">''</span>]
 </pre>
 </div></li>
 
-<li><code>re.findall(pattern, string, flags=0)</code> 返回一个表，按顺序给出 string
-里与 pattern 匹配的各个子串</li>
+<li><code>re.findall(pattern, string, flags=0)</code> 返回一个表，按顺序给出 string<br>
+里与 pattern 匹配的各个子串<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org816a35f" class="outline-3">
-<h3 id="pattern-模式"><a id="org816a35f"></a>5. pattern 模式</h3>
+<div id="outline-container-orgac1be23" class="outline-3">
+<h3 id="pattern-模式">5. pattern 模式</h3>
 <div class="outline-text-3" id="text-pattern-模式">
 <ul class="org-ul">
-<li>字符组表达式 <code>[...]</code> ，匹配括号中的任一个字符 <code>[abc]</code> ：匹配 a 或 b 或
-c 区间形式 <code>[0-9]</code> ：顺序列出的缩写，匹配所有十进制数字字符
-<code>[0-9a-zA-Z]</code> ：匹配所有字母（英文）和数字</li>
-<li>求补表达式 <code>[^...]</code> ，匹配未在括号里列出的字符 <code>[^0-9]</code>
-：匹配所有非十进制数字的字符 <code>[^ \t\v\n\f\r]</code>
-：匹配所有非空白字符（非空格 / 制表符 / 换行符）</li>
-<li>圆点字符=.=匹配任意一个字符 <code>a..b</code> ：匹配所有以 a 开头 b
-结束的四字符串</li>
+<li>字符组表达式 <code>[...]</code> ，匹配括号中的任一个字符 <code>[abc]</code> ：匹配 a 或 b 或<br>
+c 区间形式 <code>[0-9]</code> ：顺序列出的缩写，匹配所有十进制数字字符<br>
+<code>[0-9a-zA-Z]</code> ：匹配所有字母（英文）和数字<br></li>
+<li>求补表达式 <code>[^...]</code> ，匹配未在括号里列出的字符 <code>[^0-9]</code><br>
+：匹配所有非十进制数字的字符 <code>[^ \t\v\n\f\r]</code><br>
+：匹配所有非空白字符（非空格 / 制表符 / 换行符）<br></li>
+<li>圆点字符=.=匹配任意一个字符 <code>a..b</code> ：匹配所有以 a 开头 b<br>
+结束的四字符串<br></li>
 <li><p>
-重复运算符 <code>*</code> ， <code>a*</code> 表示匹配 a 的 0 次或任意多次出现
+重复运算符 <code>*</code> ， <code>a*</code> 表示匹配 a 的 0 次或任意多次出现<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">&gt;&gt;&gt; re.split<span style="color: #2aa198;">[</span><span style="color: #2aa198;">'[ ,]*'</span>, <span style="color: #2aa198;">'1 2, 3   4, , 5'</span><span style="color: #2aa198;">]</span>
-&gt;&gt;&gt; <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'1'</span>, <span style="color: #2aa198;">'2'</span>, <span style="color: #2aa198;">'3'</span>, <span style="color: #2aa198;">'4'</span>, <span style="color: #2aa198;">'5'</span><span style="color: #2aa198;">]</span>
+<pre class="src src-python">&gt;&gt;&gt; re.split[<span class="org-string">'[ ,]*'</span>, <span class="org-string">'1 2, 3   4, , 5'</span>]
+&gt;&gt;&gt; [<span class="org-string">'1'</span>, <span class="org-string">'2'</span>, <span class="org-string">'3'</span>, <span class="org-string">'4'</span>, <span class="org-string">'5'</span>]
 </pre>
 </div></li>
 
-<li>重复运算符 <code>+</code> ，表示 1 次或多次重复。与 <code>*</code> 略微不同 例如 <code>'\d+'</code>
-等价于 <code>'\d\d*'</code></li>
-<li>可选（片段）用 <code>?</code> 运算符表示 <code>?</code> 表示 0 次或 1
-次重复，例如描述整数的一种简单模式 <code>'-?\d+'</code></li>
-<li>确定次数的重复用 <code>{n}</code> 表示，=a{n}= 与 a 的 n 次重复串匹配例如描述北京的常规号码： <code>'(010-)?[2-9][0-9]{7}'</code></li>
-<li>上述的圆括号是描述 <code>?</code> 的作用范围 <code>*,?,{n}</code>
-有作用范围问题（优先级），它们作用于最小表达式， <code>'010-?'=表示 =-</code>
-可选， <code>'(010-)?'</code> 表示整个段可选</li>
-<li>重复范围用 <code>{m,n}</code> 表示， <code>a{m,n}</code> 表示匹配 m 到 n 个 a 的串 <code>a{3，7}</code>
-与 3 到 7 个 a 构成的串匹配 其中 m 和 n 均可以省略， <code>a{,n}</code> 表示
-<code>a{0,n}</code> ， <code>a{m,}</code> 表示 <code>a{m,inifinity}</code> ， <code>a{n}</code> 等价于 <code>a{n,n}</code> ，
-<code>a?</code> 等价于 <code>a{0,1}</code> ， <code>a*</code> 等价于 <code>a{0,inifinity)</code> ， <code>a+</code> 等价于
-<code>a{1,inifinity}</code></li>
-<li>选择运算符 <code>|</code> 描述两种或多种情况之一的匹配，如果 a 或 b
-与一个串匹配，那么 a|b 就与之匹配 <code>a|b|c</code> 可以匹配 a 或 b 或 c，[abc]
-可看作其简写</li>
-<li>行首匹配：以 \^ 符号开头的模式，只能与一行的前缀子串匹配
-<code>re.search('^for', 'books for children')</code> 得到 None</li>
-<li>行尾匹配：以 $ 符号结尾的模式，只能与一行的后缀子串匹配
-<code>re.search('fisth$', 'cats like to eat fishes')</code> 得到 None</li>
-<li>注意，=一行的= 前缀/后缀包括整个被匹配串的前缀和后缀如果串里有换行符，还包括换行符钱的子串（一行的后缀）和其后的子串（前缀）
-<code>串首匹配</code> ：\A 开头的模式只与被匹配串的前缀匹配 <code>串尾匹配</code>
-：\Z 结束的模式只与被匹配串的后缀匹配</li>
-<li>贪婪匹配与非贪婪匹配 <code>* + ? {m,n}</code>
-都采取贪婪匹配策略，与被匹配串中最长的合适子串匹配 <code>*? +? ?? {m,n}?</code>
-个运算符后加一个问号，采用分贪婪匹配（最小匹配）</li>
-<li>如果要在字符组里包括 <code>^</code> ，就不能放在第一个位置，或者写成 <code>\^</code> ，同理
-<code>- ]</code> ，也要写成 <code>\-</code> 和 <code>\]</code></li>
-<li>为了方便，re 用转义形式定义了一些常用字符组 <code>\d</code> ：等价于 [0-9] <code>\D</code>
-：等价于 [\^0-9] <code>\s</code> ：等价于 [ \t\v\n\f\r] <code>\S</code> ：等价于 [\^
-\t\v\n\f\t] <code>\w</code> ：等价于 [0-9a-zA-Z] <code>\W</code> ：等价于 [\^0-9a-zA-Z]</li>
+<li>重复运算符 <code>+</code> ，表示 1 次或多次重复。与 <code>*</code> 略微不同 例如 <code>'\d+'</code><br>
+等价于 <code>'\d\d*'</code><br></li>
+<li>可选（片段）用 <code>?</code> 运算符表示 <code>?</code> 表示 0 次或 1<br>
+次重复，例如描述整数的一种简单模式 <code>'-?\d+'</code><br></li>
+<li>确定次数的重复用 <code>{n}</code> 表示，=a{n}= 与 a 的 n 次重复串匹配<br>
+例如描述北京的常规号码： <code>'(010-)?[2-9][0-9]{7}'</code><br></li>
+<li>上述的圆括号是描述 <code>?</code> 的作用范围 <code>*,?,{n}</code><br>
+有作用范围问题（优先级），它们作用于最小表达式， <code>'010-?'=表示 =-</code><br>
+可选， <code>'(010-)?'</code> 表示整个段可选<br></li>
+<li>重复范围用 <code>{m,n}</code> 表示， <code>a{m,n}</code> 表示匹配 m 到 n 个 a 的串 <code>a{3，7}</code><br>
+与 3 到 7 个 a 构成的串匹配 其中 m 和 n 均可以省略， <code>a{,n}</code> 表示<br>
+<code>a{0,n}</code> ， <code>a{m,}</code> 表示 <code>a{m,inifinity}</code> ， <code>a{n}</code> 等价于 <code>a{n,n}</code> ，<br>
+<code>a?</code> 等价于 <code>a{0,1}</code> ， <code>a*</code> 等价于 <code>a{0,inifinity)</code> ， <code>a+</code> 等价于<br>
+<code>a{1,inifinity}</code><br></li>
+<li>选择运算符 <code>|</code> 描述两种或多种情况之一的匹配，如果 a 或 b<br>
+与一个串匹配，那么 a|b 就与之匹配 <code>a|b|c</code> 可以匹配 a 或 b 或 c，[abc]<br>
+可看作其简写<br></li>
+<li>行首匹配：以 \^ 符号开头的模式，只能与一行的前缀子串匹配<br>
+<code>re.search('^for', 'books for children')</code> 得到 None<br></li>
+<li>行尾匹配：以 $ 符号结尾的模式，只能与一行的后缀子串匹配<br>
+<code>re.search('fisth$', 'cats like to eat fishes')</code> 得到 None<br></li>
+<li>注意，=一行的= 前缀/后缀包括整个被匹配串的前缀和后缀<br>
+如果串里有换行符，还包括换行符钱的子串（一行的后缀）和其后的子串（前缀）<br>
+<code>串首匹配</code> ：\A 开头的模式只与被匹配串的前缀匹配 <code>串尾匹配</code><br>
+：\Z 结束的模式只与被匹配串的后缀匹配<br></li>
+<li>贪婪匹配与非贪婪匹配 <code>* + ? {m,n}</code><br>
+都采取贪婪匹配策略，与被匹配串中最长的合适子串匹配 <code>*? +? ?? {m,n}?</code><br>
+个运算符后加一个问号，采用分贪婪匹配（最小匹配）<br></li>
+<li>如果要在字符组里包括 <code>^</code> ，就不能放在第一个位置，或者写成 <code>\^</code> ，同理<br>
+<code>- ]</code> ，也要写成 <code>\-</code> 和 <code>\]</code><br></li>
+<li>为了方便，re 用转义形式定义了一些常用字符组 <code>\d</code> ：等价于 [0-9] <code>\D</code><br>
+：等价于 [\^0-9] <code>\s</code> ：等价于 [ \t\v\n\f\r] <code>\S</code> ：等价于 [\^<br>
+\t\v\n\f\t] <code>\w</code> ：等价于 [0-9a-zA-Z] <code>\W</code> ：等价于 [\^0-9a-zA-Z]<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org775d1ea" class="outline-3">
-<h3 id="组group"><a id="org775d1ea"></a>6. 组（group）</h3>
+<div id="outline-container-org6cdc2b0" class="outline-3">
+<h3 id="组group">6. 组（group）</h3>
 <div class="outline-text-3" id="text-组group">
 <ul class="org-ul">
-<li>圆括号阔起的模式段（&#x2026;）也是模式，同时还确定了一个被匹配的‘组'（字符段），该组可在后面使用，要求匹配同样字符串</li>
-<li>可用 <code>\n</code> 形式在模式里‘引用'组，组从 1 开始编号 例如 <code>r'(.{2} \1'</code>
-可匹配 'ok ok' 或 'no no'，不匹配 'no oh'，=\1= 要写成 <code>\\1</code>
-或使用原始字符串形式</li>
+<li>圆括号阔起的模式段（&#x2026;）也是模式，同时还确定了一个被匹配的‘组'（字符段），该组可在后面使用，要求匹配同样字符串<br></li>
+<li>可用 <code>\n</code> 形式在模式里‘引用'组，组从 1 开始编号 例如 <code>r'(.{2} \1'</code><br>
+可匹配 'ok ok' 或 'no no'，不匹配 'no oh'，=\1= 要写成 <code>\\1</code><br>
+或使用原始字符串形式<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org8a5ed22" class="outline-3">
-<h3 id="其他匹配操作"><a id="org8a5ed22"></a>7. 其他匹配操作</h3>
+<div id="outline-container-org5deb560" class="outline-3">
+<h3 id="其他匹配操作">7. 其他匹配操作</h3>
 <div class="outline-text-3" id="text-其他匹配操作">
 <ul class="org-ul">
-<li><code>re.fullmatch(pattern, string, flags=0)</code> 若整个 string 与 pattern
-匹配成功将返回相应的 match 对象，否则返回 None</li>
-<li><code>re.finditer(pattern, string, flags=0)</code> 与 findall
-类似，但返回的不是表而是一个迭代器，使用该迭代器可顺序取得表示各非重叠匹配的
-match 对象</li>
-<li><code>re.sub(pattern, repl, string, count=0, flags=0)</code> 做替换，把 string
-里顺序与 pattern 匹配的各非重叠子串用 repl 代换。repl
-是串则直接代换，同时 repl 还可以是以 match
-对象为参数的函数，这时用函数的返回值代换被匹配子串 例如把串 text 里的
-\t 都代换为 4 个空格，=re.sub('\t', '    ', text)=</li>
+<li><code>re.fullmatch(pattern, string, flags=0)</code> 若整个 string 与 pattern<br>
+匹配成功将返回相应的 match 对象，否则返回 None<br></li>
+<li><code>re.finditer(pattern, string, flags=0)</code> 与 findall<br>
+类似，但返回的不是表而是一个迭代器，使用该迭代器可顺序取得表示各非重叠匹配的<br>
+match 对象<br></li>
+<li><code>re.sub(pattern, repl, string, count=0, flags=0)</code> 做替换，把 string<br>
+里顺序与 pattern 匹配的各非重叠子串用 repl 代换。repl<br>
+是串则直接代换，同时 repl 还可以是以 match<br>
+对象为参数的函数，这时用函数的返回值代换被匹配子串 例如把串 text 里的<br>
+\t 都代换为 4 个空格，=re.sub('\t', '    ', text)=<br></li>
 </ul>
 </div>
 </div>
 
-<div id="orgf23e0a7" class="outline-3">
-<h3 id="匹配对象match-对象操作"><a id="orgf23e0a7"></a>8. 匹配对象（match 对象操作）</h3>
+<div id="outline-container-org3146ddb" class="outline-3">
+<h3 id="匹配对象match-对象操作">8. 匹配对象（match 对象操作）</h3>
 <div class="outline-text-3" id="text-匹配对象match-对象操作">
 <ul class="org-ul">
-<li>假设 mat 表示通过匹配得到的一个 match 对象，mat 可用于逻辑判断</li>
-<li>取得被匹配的子串： <code>mat.group()</code></li>
-<li>在目标串中的匹配位置： <code>mat.start()</code>
-得到成功匹配在目标串里的实际匹配位置， <code>mat.end()</code>
-表示被匹配子串的结束位置 假设 text 是目标串，则
-<code>mat.group() =</code> text[mat.start():mat.end()]=</li>
-<li>目标串里被匹配的区间： <code>mat.span()</code>
-得到匹配开始和结束位置形成的二元组，
-<code>mat.span() =</code> mat.start(), mat.end()=</li>
+<li>假设 mat 表示通过匹配得到的一个 match 对象，mat 可用于逻辑判断<br></li>
+<li>取得被匹配的子串： <code>mat.group()</code><br></li>
+<li>在目标串中的匹配位置： <code>mat.start()</code><br>
+得到成功匹配在目标串里的实际匹配位置， <code>mat.end()</code><br>
+表示被匹配子串的结束位置 假设 text 是目标串，则<br>
+<code>mat.group() =</code> text[mat.start():mat.end()]=<br></li>
+<li>目标串里被匹配的区间： <code>mat.span()</code><br>
+得到匹配开始和结束位置形成的二元组，<br>
+<code>mat.span() =</code> mat.start(), mat.end()=<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org3fe5431" class="outline-3">
-<h3 id="正则表达式对象-1"><a id="org3fe5431"></a>9. 正则表达式对象</h3>
+<div id="outline-container-org47a8713" class="outline-3">
+<h3 id="正则表达式对象-1">9. 正则表达式对象</h3>
 <div class="outline-text-3" id="text-正则表达式对象-1">
 <p>
-正则表达式对象支持一组方法，与直接使用 re.xxx
-形式相比较，这组方法功能更多，使用更灵活。假设 regex
-代表一个正则表达式对象
+正则表达式对象支持一组方法，与直接使用 re.xxx<br>
+形式相比较，这组方法功能更多，使用更灵活。假设 regex<br>
+代表一个正则表达式对象<br>
 </p>
 
 <ul class="org-ul">
-<li><code>regex.search(string[,pos[,endpos]])</code> 在给定的串 string
-里检索，可指定开始和结束位置。默认从头到尾，pos 指定开始位置，endpos
-指定结束位置</li>
-<li><code>regex.match(string[,pos[,endpos]])</code> 检查给定 string 串是否有与 regex
-匹配的前缀</li>
-<li><code>regex.fullmatch(string[,pos[,endpos]])</code> 检查 string
-指定范围构成的子串是否与 regex 匹配，默认范围是整个串</li>
-<li>以下两个与 re. 同名且功能类似，但可指定匹配范围
-<code>regex.findall(string[,pos[,endpos]])</code>
-<code>regex.finditer(string[,pos[,endpos]])</code></li>
-<li>下面两个与 re. 同名且功能相同 切分： <code>regex.split(string, maxsplit=0)</code>
-替换： <code>regex.sub(repl, string, count=0)</code></li>
-<li><code>regex.pattern</code> 取得生成 regex 所用的模式字符串</li>
+<li><code>regex.search(string[,pos[,endpos]])</code> 在给定的串 string<br>
+里检索，可指定开始和结束位置。默认从头到尾，pos 指定开始位置，endpos<br>
+指定结束位置<br></li>
+<li><code>regex.match(string[,pos[,endpos]])</code> 检查给定 string 串是否有与 regex<br>
+匹配的前缀<br></li>
+<li><code>regex.fullmatch(string[,pos[,endpos]])</code> 检查 string<br>
+指定范围构成的子串是否与 regex 匹配，默认范围是整个串<br></li>
+<li>以下两个与 re. 同名且功能类似，但可指定匹配范围<br>
+<code>regex.findall(string[,pos[,endpos]])</code><br>
+<code>regex.finditer(string[,pos[,endpos]])</code><br></li>
+<li>下面两个与 re. 同名且功能相同 切分： <code>regex.split(string, maxsplit=0)</code><br>
+替换： <code>regex.sub(repl, string, count=0)</code><br></li>
+<li><code>regex.pattern</code> 取得生成 regex 所用的模式字符串<br></li>
 </ul>
 </div>
 
-<div id="org3bc2d3d" class="outline-4">
-<h4 id="思考"><a id="org3bc2d3d"></a>思考</h4>
+<div id="outline-container-org993a92d" class="outline-4">
+<h4 id="思考">思考</h4>
 <div class="outline-text-4" id="text-思考">
 <p>
-推导 pnext
-最关键的是循环在前一字符的最长前后缀字串中查找当前字符的最长前后缀字串
+推导 pnext<br>
+最关键的是循环在前一字符的最长前后缀字串中查找当前字符的最长前后缀字串<br>
 </p>
 </div>
 </div>

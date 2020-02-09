@@ -3,7 +3,7 @@ layout     : post
 title      : "《数据结构与算法:python语言描述》之 List"
 categories : 数据结构与算法
 tags       : 数据结构 算法 List
-excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “List” 部分所写笔记"
+excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “List” 部分所写笔记" 
 ---
 <div id="table-of-contents">
 <h2>&#30446;&#24405;</h2>
@@ -55,473 +55,474 @@ excerpt    : "阅读《数据结构与算法:python语言描述》课件中 “L
 </div>
 
 
-<div id="org17ca022" class="outline-2">
-<h2 id="一计算机内存结构"><a id="org17ca022"></a>一、计算机内存结构</h2>
+<div id="outline-container-orgb402d0d" class="outline-2">
+<h2 id="一计算机内存结构">一、计算机内存结构</h2>
 <div class="outline-text-2" id="text-一计算机内存结构">
 </div>
 
-<div id="org00bfd1f" class="outline-3">
-<h3 id="内存结构模型"><a id="org00bfd1f"></a>1. 内存结构模型</h3>
+<div id="outline-container-orgf989fa2" class="outline-3">
+<h3 id="内存结构模型">1. 内存结构模型</h3>
 <div class="outline-text-3" id="text-内存结构模型">
 <ul class="org-ul">
-<li>内存是线性排列的一批存储单元，单元有唯一编号，称为单元地址</li>
-<li>单元地址从 0 开始连续排列，可用地址是一个连续整数区</li>
-<li><b>对内存单元的访问都是通过单元地址进行</b></li>
-<li>基于地址访问单元是 O(1) 操作，与单元位置或内存大小无关</li>
+<li>内存是线性排列的一批存储单元，单元有唯一编号，称为单元地址<br></li>
+<li>单元地址从 0 开始连续排列，可用地址是一个连续整数区<br></li>
+<li><b>对内存单元的访问都是通过单元地址进行</b><br></li>
+<li>基于地址访问单元是 O(1) 操作，与单元位置或内存大小无关<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org34a4f16" class="outline-3">
-<h3 id="内存和对象存储"><a id="org34a4f16"></a>2. 内存和对象存储</h3>
+<div id="outline-container-org4c473de" class="outline-3">
+<h3 id="内存和对象存储">2. 内存和对象存储</h3>
 <div class="outline-text-3" id="text-内存和对象存储">
 <ul class="org-ul">
-<li>程序运行中建立/存在的每个对象都要占用一块内存
+<li>程序运行中建立/存在的每个对象都要占用一块内存<br>
 
 <ul class="org-ul">
-<li><b>建立的每个对象都有唯一标识，在其存续期间保持不变，这是一个基本原则</b></li>
-<li>知道一个对象的位置就能访问它，访问操作在常量时间完成</li>
+<li><b>建立的每个对象都有唯一标识，在其存续期间保持不变，这是一个基本原则</b><br></li>
+<li>知道一个对象的位置就能访问它，访问操作在常量时间完成<br></li>
 </ul></li>
 
-<li>如果一个组合对象包含一组元素，在一块存储区连续存储，每个元素的存储量相同，基于存储区位置和编号访问元素是
-O(1) 操作
+<li>如果一个组合对象包含一组元素，在一块存储区连续存储，每个元素的存储量相同，基于存储区位置和编号访问元素是<br>
+O(1) 操作<br>
 
 <ul class="org-ul">
-<li>设存储区起始位置是 p，每个元素占用 a 个内存单元，若第一个元素编号为
-0</li>
-<li>要访问编号为k的元素，其位置为 \[loc = p + k*a\]</li>
-<li>计算元素位置所用时间与元素编号无关，也与组合对象的元素个数无关，连续存储可以
-O(1) 时间访问</li>
+<li>设存储区起始位置是 p，每个元素占用 a 个内存单元，若第一个元素编号为<br>
+0<br></li>
+<li>要访问编号为k的元素，其位置为 \[loc = p + k*a\]<br></li>
+<li>计算元素位置所用时间与元素编号无关，也与组合对象的元素个数无关，连续存储可以<br>
+O(1) 时间访问<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="orgf2a9eb1" class="outline-3">
-<h3 id="变量和对象"><a id="orgf2a9eb1"></a>3. 变量和对象</h3>
+<div id="outline-container-org1212c37" class="outline-3">
+<h3 id="变量和对象">3. 变量和对象</h3>
 <div class="outline-text-3" id="text-变量和对象">
 <ul class="org-ul">
-<li>变量也在内存安排位置，每个变量占用若干存储单元</li>
-<li>程序运行中总能找到根据作用域可见的那些变量，取得或修改其值</li>
-<li>python 里通过初始化给变量约束一个值（对象），就是
-<code>把该对象的标识（内存位置）保存在变量里</code></li>
+<li>变量也在内存安排位置，每个变量占用若干存储单元<br></li>
+<li>程序运行中总能找到根据作用域可见的那些变量，取得或修改其值<br></li>
+<li>python 里通过初始化给变量约束一个值（对象），就是<br>
+<code>把该对象的标识（内存位置）保存在变量里</code><br></li>
 </ul>
 </div>
 </div>
 
-<div id="org6e786bb" class="outline-3">
-<h3 id="表示及其设计"><a id="org6e786bb"></a>4. 表示及其设计</h3>
+<div id="outline-container-org06b7cb6" class="outline-3">
+<h3 id="表示及其设计">4. 表示及其设计</h3>
 <div class="outline-text-3" id="text-表示及其设计">
 <ul class="org-ul">
-<li>假设要给变量 s 赋值一个字符串，系统需要：
+<li>假设要给变量 s 赋值一个字符串，系统需要：<br>
 
 <ul class="org-ul">
-<li>找一块足够大的内存快，把字符串的内容复制进去</li>
-<li>把内存地址信息存入变量s</li>
+<li>找一块足够大的内存快，把字符串的内容复制进去<br></li>
+<li>把内存地址信息存入变量s<br></li>
 </ul></li>
 
-<li>上述做法有所欠缺
+<li>上述做法有所欠缺<br>
 
 <ul class="org-ul">
-<li>内存单元里存储的都是二进制编码，=仅从单元里存储的内容无法判断这一字符串到哪里结束=</li>
-<li>需要有一种安排（约定）。由于字符串可以有任意长度，一种可能安排是在相应存储块的开始记录字符串长度</li>
+<li>内存单元里存储的都是二进制编码，=仅从单元里存储的内容无法判断这一字符串到哪里结束=<br></li>
+<li>需要有一种安排（约定）。由于字符串可以有任意长度，一种可能安排是在相应存储块的开始记录字符串长度<br></li>
 </ul></li>
 
-<li>程序中生成和处理的对象都要以某种方式保存，因此要设计好它们的存储方式，这种方式及其效果称为该对象的
-<code>表示</code></li>
-<li>python 系统的实现基于一套精心设计的 <code>链接结构</code></li>
+<li>程序中生成和处理的对象都要以某种方式保存，因此要设计好它们的存储方式，这种方式及其效果称为该对象的<br>
+<code>表示</code><br></li>
+<li>python 系统的实现基于一套精心设计的 <code>链接结构</code><br></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="org0298dcc" class="outline-2">
-<h2 id="二线性表"><a id="org0298dcc"></a>二、线性表</h2>
+<div id="outline-container-org2398c73" class="outline-2">
+<h2 id="二线性表">二、线性表</h2>
 <div class="outline-text-2" id="text-二线性表">
 <ul class="org-ul">
-<li>程序里经常需要将一组元素作为整体管理和使用
+<li>程序里经常需要将一组元素作为整体管理和使用<br>
 
 <ul class="org-ul">
-<li>元素个数可能变化</li>
-<li>可能需要把这样一组元素看成一个序列，
-<code>元素在序列里的位置和顺序可能表示实际应用中某种意义的信息或关系</code></li>
-<li>这样一组元素的抽象就是线性表（简称表）。</li>
-<li><b>线性表是一种元素集合，其中记录着元素间的一种顺序关系</b></li>
+<li>元素个数可能变化<br></li>
+<li>可能需要把这样一组元素看成一个序列，<br>
+<code>元素在序列里的位置和顺序可能表示实际应用中某种意义的信息或关系</code><br></li>
+<li>这样一组元素的抽象就是线性表（简称表）。<br></li>
+<li><b>线性表是一种元素集合，其中记录着元素间的一种顺序关系</b><br></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="org98846c6" class="outline-3">
-<h3 id="概念和术语"><a id="org98846c6"></a>1. 概念和术语</h3>
+<div id="outline-container-orgf4da4f6" class="outline-3">
+<h3 id="概念和术语">1. 概念和术语</h3>
 <div class="outline-text-3" id="text-概念和术语">
 <ul class="org-ul">
-<li>抽象讨论线性表时，考虑一个基本元素集合 \(E={e_0,...,e_{N-1}}\)
-，其中的元素可能是某个类型的成员</li>
-<li>表是元素的有穷序列，有 0 个或多个元素
+<li>抽象讨论线性表时，考虑一个基本元素集合 \(E={e_0,...,e_{N-1}}\)<br>
+，其中的元素可能是某个类型的成员<br></li>
+<li>表是元素的有穷序列，有 0 个或多个元素<br>
 
 <ul class="org-ul">
-<li>元素的位置称为其下标，下标从 0 开始编号</li>
-<li>表中元素的个数称为表的长度，长度为 0 的表是空表</li>
-<li>元素间基本关系是下一个关系：\({<}e_0,e_1{>},{<}e_1,e_2{>},...,{<}e_{n-2},e_{n-1}{>}\)
-，这是一种顺序关系（线性关系）</li>
+<li>元素的位置称为其下标，下标从 0 开始编号<br></li>
+<li>表中元素的个数称为表的长度，长度为 0 的表是空表<br></li>
+<li>元素间基本关系是下一个关系：\({<}e_0,e_1{>},{<}e_1,e_2{>},...,{<}e_{n-2},e_{n-1}{>}\)<br>
+，这是一种顺序关系（线性关系）<br></li>
 </ul></li>
 
-<li>线性表是一种线性结构。在一个非空线性表里：
+<li>线性表是一种线性结构。在一个非空线性表里：<br>
 
 <ul class="org-ul">
-<li>存在唯一的‘首元素'，唯一的‘尾元素'</li>
-<li>除首元素外，表中每个元素有且只有一个前驱元素</li>
-<li>除尾元素外，表中每个元素有且只有一个后驱元素</li>
+<li>存在唯一的‘首元素'，唯一的‘尾元素'<br></li>
+<li>除首元素外，表中每个元素有且只有一个前驱元素<br></li>
+<li>除尾元素外，表中每个元素有且只有一个后驱元素<br></li>
 </ul></li>
 
-<li>从实际角度看，线性表是一种组织数据元素的结果。作为一种抽象的数据结构，需要从两个角度考虑
+<li>从实际角度看，线性表是一种组织数据元素的结果。作为一种抽象的数据结构，需要从两个角度考虑<br>
 
 <ul class="org-ul">
-<li>从实现角度需要考虑两个问题：
+<li>从实现角度需要考虑两个问题：<br>
 
 <ul class="org-ul">
-<li><b>如何把该结构内部的数据组织好</b></li>
-<li><b>如何提供一套有用而且必要的操作，并有效实现这些操作</b></li>
+<li><b>如何把该结构内部的数据组织好</b><br></li>
+<li><b>如何提供一套有用而且必要的操作，并有效实现这些操作</b><br></li>
 </ul></li>
 
-<li>从使用者角度，需要考虑该结构提供了哪些操作，如何有效使用以解决自己的问题。</li>
+<li>从使用者角度，需要考虑该结构提供了哪些操作，如何有效使用以解决自己的问题。<br></li>
 </ul></li>
 
-<li>上述两种角度既有统一又有分工。情况与函数的定义与使用类似
+<li>上述两种角度既有统一又有分工。情况与函数的定义与使用类似<br>
 
 <ul class="org-ul">
-<li><b>数据结构的表示完全是内部的东西，外面看不到。但它会对这一数据结构上各种操作的实现和性质产生重要影响</b></li>
-<li>对复杂的数据结构，由于存在多种可能表示，设计时需要考虑的因素很多</li>
+<li><b>数据结构的表示完全是内部的东西，外面看不到。但它会对这一数据结构上各种操作的实现和性质产生重要影响</b><br></li>
+<li>对复杂的数据结构，由于存在多种可能表示，设计时需要考虑的因素很多<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="orge210721" class="outline-3">
-<h3 id="数据结构的操作"><a id="orge210721"></a>2. 数据结构的操作</h3>
+<div id="outline-container-org7210d0d" class="outline-3">
+<h3 id="数据结构的操作">2. 数据结构的操作</h3>
 <div class="outline-text-3" id="text-数据结构的操作">
 <ul class="org-ul">
-<li>作为一种包含元素的数据结构，需要提供一些"标准"操作
+<li>作为一种包含元素的数据结构，需要提供一些"标准"操作<br>
 
 <ul class="org-ul">
-<li>创建和销毁</li>
-<li>判断是否空。如果容量有限，还需判断是否满</li>
-<li>向结构中加入元素或从中删除</li>
-<li>访问结构里的元素</li>
+<li>创建和销毁<br></li>
+<li>判断是否空。如果容量有限，还需判断是否满<br></li>
+<li>向结构中加入元素或从中删除<br></li>
+<li>访问结构里的元素<br></li>
 </ul></li>
 
-<li>不同的编程语言可能影响需要实现的操作
+<li>不同的编程语言可能影响需要实现的操作<br>
 
 <ul class="org-ul">
-<li><b>由于 python 能自动回收不用的对象，因此不需要销毁结构的操作</b></li>
+<li><b>由于 python 能自动回收不用的对象，因此不需要销毁结构的操作</b><br></li>
 </ul></li>
 
-<li>除上述共性操作外，具体数据结构还需要一些特殊操作
+<li>除上述共性操作外，具体数据结构还需要一些特殊操作<br>
 
 <ul class="org-ul">
-<li>集合数据结构需要支持各种集合运算（求并集，交集等）</li>
-<li>图数据结构要提供判断结点是否相邻的操作（两点间是否有边）</li>
+<li>集合数据结构需要支持各种集合运算（求并集，交集等）<br></li>
+<li>图数据结构要提供判断结点是否相邻的操作（两点间是否有边）<br></li>
 </ul></li>
 
-<li>从作用看，数据结构的操作分为三类：
+<li>从作用看，数据结构的操作分为三类：<br>
 
 <ul class="org-ul">
-<li><b>构造操作</b></li>
-<li><b>访问操作</b></li>
-<li><b>变动操作</b></li>
+<li><b>构造操作</b><br></li>
+<li><b>访问操作</b><br></li>
+<li><b>变动操作</b><br></li>
 </ul></li>
 
-<li>从支持操作类型的角度看，数据结构可分为两类：
+<li>从支持操作类型的角度看，数据结构可分为两类：<br>
 
 <ul class="org-ul">
-<li><b>不变数据结构，如 python 中的 tuple 和 frozenset</b></li>
-<li><b>变动数据结构，如 python 中的 list，dict，set</b></li>
+<li><b>不变数据结构，如 python 中的 tuple 和 frozenset</b><br></li>
+<li><b>变动数据结构，如 python 中的 list，dict，set</b><br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="orge0c6284" class="outline-3">
-<h3 id="线性表的操作"><a id="orge0c6284"></a>3. 线性表的操作</h3>
+<div id="outline-container-orgad60cd0" class="outline-3">
+<h3 id="线性表的操作">3. 线性表的操作</h3>
 <div class="outline-text-3" id="text-线性表的操作">
 <ul class="org-ul">
-<li>假设为表数据结构取一个类型名
-List。为简洁严格地表示操作的对象和结果，下面介绍一种数学表达形式：
-opname：T1 * T2 -&gt; ResT 其中 opname 表示操作名，T1 * T2
-表示有两个参数，类型分别为 T1 和 T2，ResT 表示操作的结果类型。用（）表示没有参数或者操作不返回任何结果</li>
+<li>假设为表数据结构取一个类型名<br>
+List。为简洁严格地表示操作的对象和结果，下面介绍一种数学表达形式：<br>
+opname：T1 * T2 -&gt; ResT 其中 opname 表示操作名，T1 * T2<br>
+表示有两个参数，类型分别为 T1 和 T2，ResT 表示操作的结果类型。<br>
+用（）表示没有参数或者操作不返回任何结果<br></li>
 </ul>
 </div>
 
-<div id="org61b6f48" class="outline-4">
-<h4 id="a.-创建和销毁判断空和满"><a id="org61b6f48"></a>a. 创建和销毁，判断空和满</h4>
+<div id="outline-container-orgda3b0dc" class="outline-4">
+<h4 id="a.-创建和销毁判断空和满">a. 创建和销毁，判断空和满</h4>
 <div class="outline-text-4" id="text-a.-创建和销毁判断空和满">
 <div class="org-src-container">
-<pre class="src src-python">newList:   <span style="color: #2aa198;">()</span> -&gt; List           <span style="color: #586e75;"># </span><span style="color: #586e75;">&#21019;&#24314;&#19968;&#20010;&#31354;&#34920;</span>
-deList:    <span style="color: #2aa198;">()</span> -&gt; <span style="color: #2aa198;">()</span>             <span style="color: #586e75;"># </span><span style="color: #586e75;">&#38144;&#27585;&#34920;</span>
-emptyList: List -&gt; <span style="color: #839496; font-weight: bold;">bool</span>         <span style="color: #586e75;"># </span><span style="color: #586e75;">&#34920;&#31354;&#65311;</span>
-fullList:  List -&gt; <span style="color: #839496; font-weight: bold;">bool</span>         <span style="color: #586e75;"># </span><span style="color: #586e75;">&#34920;&#28385;&#65311;</span>
+<pre class="src src-python">newList:   () -&gt; List           <span class="org-comment-delimiter"># </span><span class="org-comment">&#21019;&#24314;&#19968;&#20010;&#31354;&#34920;</span>
+deList:    () -&gt; ()             <span class="org-comment-delimiter"># </span><span class="org-comment">&#38144;&#27585;&#34920;</span>
+emptyList: List -&gt; <span class="org-builtin">bool</span>         <span class="org-comment-delimiter"># </span><span class="org-comment">&#34920;&#31354;&#65311;</span>
+fullList:  List -&gt; <span class="org-builtin">bool</span>         <span class="org-comment-delimiter"># </span><span class="org-comment">&#34920;&#28385;&#65311;</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="org6241826" class="outline-4">
-<h4 id="b.-元素加入"><a id="org6241826"></a>b. 元素加入</h4>
+<div id="outline-container-org3e99975" class="outline-4">
+<h4 id="b.-元素加入">b. 元素加入</h4>
 <div class="outline-text-4" id="text-b.-元素加入">
 <div class="org-src-container">
-<pre class="src src-python">prepend:  List * Data -&gt; List         <span style="color: #586e75;"># </span><span style="color: #586e75;">&#39318;&#31471;&#21152;&#20837;</span>
-append:   List * Data -&gt; List         <span style="color: #586e75;"># </span><span style="color: #586e75;">&#23614;&#31471;&#21152;&#20837;</span>
-insert:   List * <span style="color: #839496; font-weight: bold;">int</span> * Data -&gt; List   <span style="color: #586e75;"># </span><span style="color: #586e75;">&#23450;&#20301;&#21152;&#20837;&#65292;&#21152;&#20837;&#34920;&#20013;&#29305;&#23450;&#20301;&#32622;&#65292;&#21407;&#22788;&#21450;&#20854;&#21518;&#38754;&#30340;&#20803;&#32032;&#21518;&#31227;</span>
+<pre class="src src-python">prepend:  List * Data -&gt; List         <span class="org-comment-delimiter"># </span><span class="org-comment">&#39318;&#31471;&#21152;&#20837;</span>
+append:   List * Data -&gt; List         <span class="org-comment-delimiter"># </span><span class="org-comment">&#23614;&#31471;&#21152;&#20837;</span>
+insert:   List * <span class="org-builtin">int</span> * Data -&gt; List   <span class="org-comment-delimiter"># </span><span class="org-comment">&#23450;&#20301;&#21152;&#20837;&#65292;&#21152;&#20837;&#34920;&#20013;&#29305;&#23450;&#20301;&#32622;&#65292;&#21407;&#22788;&#21450;&#20854;&#21518;&#38754;&#30340;&#20803;&#32032;&#21518;&#31227;</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="orgd0b6ba8" class="outline-4">
-<h4 id="c.-删除元素"><a id="orgd0b6ba8"></a>c. 删除元素</h4>
+<div id="outline-container-org77adeb5" class="outline-4">
+<h4 id="c.-删除元素">c. 删除元素</h4>
 <div class="outline-text-4" id="text-c.-删除元素">
 <div class="org-src-container">
-<pre class="src src-python">delFront:   List -&gt; List            <span style="color: #586e75;"># </span><span style="color: #586e75;">&#21024;&#38500;&#39318;&#20803;&#32032;</span>
-delEnd:     List -&gt; List            <span style="color: #586e75;"># </span><span style="color: #586e75;">&#21024;&#38500;&#26411;&#20803;&#32032;</span>
-delete:     List * <span style="color: #839496; font-weight: bold;">int</span> -&gt; List      <span style="color: #586e75;"># </span><span style="color: #586e75;">&#23450;&#20301;&#21024;&#38500;</span>
-delElem:    List * Data -&gt; List     <span style="color: #586e75;"># </span><span style="color: #586e75;">&#21024;&#38500;&#19968;&#20010; Data</span>
-delAllElem: List * Data -&gt; List     <span style="color: #586e75;"># </span><span style="color: #586e75;">&#21024;&#38500;&#25152;&#26377; Data</span>
+<pre class="src src-python">delFront:   List -&gt; List            <span class="org-comment-delimiter"># </span><span class="org-comment">&#21024;&#38500;&#39318;&#20803;&#32032;</span>
+delEnd:     List -&gt; List            <span class="org-comment-delimiter"># </span><span class="org-comment">&#21024;&#38500;&#26411;&#20803;&#32032;</span>
+delete:     List * <span class="org-builtin">int</span> -&gt; List      <span class="org-comment-delimiter"># </span><span class="org-comment">&#23450;&#20301;&#21024;&#38500;</span>
+delElem:    List * Data -&gt; List     <span class="org-comment-delimiter"># </span><span class="org-comment">&#21024;&#38500;&#19968;&#20010; Data</span>
+delAllElem: List * Data -&gt; List     <span class="org-comment-delimiter"># </span><span class="org-comment">&#21024;&#38500;&#25152;&#26377; Data</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="orga00c4d5" class="outline-4">
-<h4 id="d.-访问元素"><a id="orga00c4d5"></a>d. 访问元素</h4>
+<div id="outline-container-org45fa664" class="outline-4">
+<h4 id="d.-访问元素">d. 访问元素</h4>
 <div class="outline-text-4" id="text-d.-访问元素">
 <div class="org-src-container">
-<pre class="src src-python">getElem&#65306; List * <span style="color: #839496; font-weight: bold;">int</span> -&gt; Data
+<pre class="src src-python">getElem&#65306; List * <span class="org-builtin">int</span> -&gt; Data
 </pre>
 </div>
 </div>
 </div>
 
-<div id="org7f08b94" class="outline-4">
-<h4 id="e.-其它操作"><a id="org7f08b94"></a>e. 其它操作</h4>
+<div id="outline-container-orgdc67208" class="outline-4">
+<h4 id="e.-其它操作">e. 其它操作</h4>
 <div class="outline-text-4" id="text-e.-其它操作">
 <div class="org-src-container">
-<pre class="src src-python">length:   List -&gt; integer           <span style="color: #586e75;"># </span><span style="color: #586e75;">&#34920;&#20013;&#20803;&#32032;&#20010;&#25968;</span>
-locate:   List * Data -&gt; integer    <span style="color: #586e75;"># </span><span style="color: #586e75;">&#20803;&#32032;&#22312;&#34920;&#20013;&#31532;&#19968;&#27425;&#20986;&#29616;&#30340;&#20301;&#32622;&#65292;&#27809;&#26377;&#36820;&#22238;&#29305;&#27530;&#20540;</span>
-sortList: List -&gt; List              <span style="color: #586e75;"># </span><span style="color: #586e75;">&#25353;&#19978;&#21319;&#24207;&#37325;&#26032;&#25490;&#21015;</span>
+<pre class="src src-python">length:   List -&gt; integer           <span class="org-comment-delimiter"># </span><span class="org-comment">&#34920;&#20013;&#20803;&#32032;&#20010;&#25968;</span>
+locate:   List * Data -&gt; integer    <span class="org-comment-delimiter"># </span><span class="org-comment">&#20803;&#32032;&#22312;&#34920;&#20013;&#31532;&#19968;&#27425;&#20986;&#29616;&#30340;&#20301;&#32622;&#65292;&#27809;&#26377;&#36820;&#22238;&#29305;&#27530;&#20540;</span>
+sortList: List -&gt; List              <span class="org-comment-delimiter"># </span><span class="org-comment">&#25353;&#19978;&#21319;&#24207;&#37325;&#26032;&#25490;&#21015;</span>
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>表内容变化的操作有两种考虑
+<li>表内容变化的操作有两种考虑<br>
 
 <ul class="org-ul">
-<li><code>总构造一个新表作为操作的结果</code> 。语义清晰，适合不变的表</li>
-<li><code>按操作的需要直接修改作为参数的表</code> 。效率可能更高</li>
+<li><code>总构造一个新表作为操作的结果</code> 。语义清晰，适合不变的表<br></li>
+<li><code>按操作的需要直接修改作为参数的表</code> 。效率可能更高<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="org79f5a11" class="outline-3">
-<h3 id="表数据结构实现模型"><a id="org79f5a11"></a>4. 表数据结构实现模型</h3>
+<div id="outline-container-org83b6eeb" class="outline-3">
+<h3 id="表数据结构实现模型">4. 表数据结构实现模型</h3>
 <div class="outline-text-3" id="text-表数据结构实现模型">
 <ul class="org-ul">
-<li>考虑因素
+<li>考虑因素<br>
 
 <ul class="org-ul">
-<li>计算机内存的特点，保存元素和元素顺序信息的需要</li>
-<li>重要操作的效率。最频繁的操作通常是：定位访问，元素加入，元素删除，元素遍历</li>
+<li>计算机内存的特点，保存元素和元素顺序信息的需要<br></li>
+<li>重要操作的效率。最频繁的操作通常是：定位访问，元素加入，元素删除，元素遍历<br></li>
 </ul></li>
 
-<li>元素遍历就是依次访问表里的所有元素
+<li>元素遍历就是依次访问表里的所有元素<br>
 
 <ul class="org-ul">
-<li>操作效率与元素个数有关</li>
-<li>遍历所有元素的操作，希望其复杂性不超过 O(n)</li>
+<li>操作效率与元素个数有关<br></li>
+<li>遍历所有元素的操作，希望其复杂性不超过 O(n)<br></li>
 </ul></li>
 
-<li>加入、删除、访问元素的操作效率与表的实现结构有关</li>
-<li>两种基本实现模型
+<li>加入、删除、访问元素的操作效率与表的实现结构有关<br></li>
+<li>两种基本实现模型<br>
 
 <ul class="org-ul">
-<li>顺序表，将表元素顺序存放在一大块连续的存储区，元素顺序有自然的表示</li>
-<li>链接表，将表元素存放在通过链接构造起来的一系列存储块里</li>
+<li>顺序表，将表元素顺序存放在一大块连续的存储区，元素顺序有自然的表示<br></li>
+<li>链接表，将表元素存放在通过链接构造起来的一系列存储块里<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="org1637eef" class="outline-2">
-<h2 id="三顺序表模型"><a id="org1637eef"></a>三、顺序表模型</h2>
+<div id="outline-container-org2493f48" class="outline-2">
+<h2 id="三顺序表模型">三、顺序表模型</h2>
 <div class="outline-text-2" id="text-三顺序表模型">
 <ul class="org-ul">
-<li>基本实现方式
+<li>基本实现方式<br>
 
 <ul class="org-ul">
-<li>元素顺序存放在一块足够大的连续存储区。表中首元素存入存储区开始位置，其余元素依次顺序存放</li>
-<li><b>通过元素在存储区的‘物理位置'表示元素之间的逻辑顺序关系</b></li>
+<li>元素顺序存放在一块足够大的连续存储区。表中首元素存入存储区开始位置，其余元素依次顺序存放<br></li>
+<li><b>通过元素在存储区的‘物理位置'表示元素之间的逻辑顺序关系</b><br></li>
 </ul></li>
 
-<li>一般情况是表元素所需存储量相同，因此顺序表中任一元素的位置都可简单计算出来，存取操作在
-O(1) 时间内完成</li>
-<li>若元素的情况复杂，大小不一，或者还有复杂的内部结构，可以采用链接方式</li>
+<li>一般情况是表元素所需存储量相同，因此顺序表中任一元素的位置都可简单计算出来，存取操作在<br>
+O(1) 时间内完成<br></li>
+<li>若元素的情况复杂，大小不一，或者还有复杂的内部结构，可以采用链接方式<br></li>
 </ul>
 </div>
 
-<div id="org77dddd9" class="outline-3">
-<h3 id="顺序表"><a id="org77dddd9"></a>1. 顺序表</h3>
+<div id="outline-container-orga73106d" class="outline-3">
+<h3 id="顺序表">1. 顺序表</h3>
 <div class="outline-text-3" id="text-顺序表">
 <ul class="org-ul">
-<li>表的一个重要性质即加入和删除元素，决定表的长度在存续期间可能变化
+<li>表的一个重要性质即加入和删除元素，决定表的长度在存续期间可能变化<br>
 
 <ul class="org-ul">
-<li>存储块一旦分配，大小固定</li>
-<li>建立时按确定元素个数分配存储，适合创建不变表。要考虑变动的表，应区分元素个数和存储区容量</li>
+<li>存储块一旦分配，大小固定<br></li>
+<li>建立时按确定元素个数分配存储，适合创建不变表。要考虑变动的表，应区分元素个数和存储区容量<br></li>
 </ul></li>
 
-<li>解决方法：分配足以容纳所需元素的存储块，可以有一些空位
+<li>解决方法：分配足以容纳所需元素的存储块，可以有一些空位<br>
 
 <ul class="org-ul">
-<li>应约定元素的存放方式，通常连续存放在存储区的前面一段</li>
-<li>为保证正确操作，需要记录块大小和现有元素个数</li>
+<li>应约定元素的存放方式，通常连续存放在存储区的前面一段<br></li>
+<li>为保证正确操作，需要记录块大小和现有元素个数<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="orgbd10320" class="outline-3">
-<h3 id="实现和操作"><a id="orgbd10320"></a>2. 实现和操作</h3>
+<div id="outline-container-orga892f28" class="outline-3">
+<h3 id="实现和操作">2. 实现和操作</h3>
 <div class="outline-text-3" id="text-实现和操作">
 <ul class="org-ul">
-<li><b>元素存储区的大小决定了表的容量，个数记录与实际元素个数保持一致，元素变化时需要维护这一记录</b></li>
-<li>访问第 i 个元素时通过计算位置直接找到。复杂性 O(1)</li>
-<li>判断空满只需对比元素个数记录是否等于容量个数，复杂性 O(1)</li>
-<li>创建空表是分配一块存储，记录容量并设置元素计数为
-0。建立新表后应立即设置这两个记录域，保证合法状态</li>
-<li>只要掌握着元素存储区开始位置，各种访问操作都很容易实现</li>
-<li>遍历操作：
+<li><b>元素存储区的大小决定了表的容量，个数记录与实际元素个数保持一致，元素变化时需要维护这一记录</b><br></li>
+<li>访问第 i 个元素时通过计算位置直接找到。复杂性 O(1)<br></li>
+<li>判断空满只需对比元素个数记录是否等于容量个数，复杂性 O(1)<br></li>
+<li>创建空表是分配一块存储，记录容量并设置元素计数为<br>
+0。建立新表后应立即设置这两个记录域，保证合法状态<br></li>
+<li>只要掌握着元素存储区开始位置，各种访问操作都很容易实现<br></li>
+<li>遍历操作：<br>
 
 <ul class="org-ul">
-<li>遍历过程用一个整数变量记录遍历达到的位置</li>
-<li>通过存储区开始位置和上述变量的值，O(1) 时间可算出相应元素的位置</li>
-<li>找下一元素的更新操作就是加一，前一元素就是减一</li>
+<li>遍历过程用一个整数变量记录遍历达到的位置<br></li>
+<li>通过存储区开始位置和上述变量的值，O(1) 时间可算出相应元素的位置<br></li>
+<li>找下一元素的更新操作就是加一，前一元素就是减一<br></li>
 </ul></li>
 
-<li>访问给定下标 i 的元素
+<li>访问给定下标 i 的元素<br>
 
 <ul class="org-ul">
-<li>需判断i值是否在表当时的合法元素范围内</li>
-<li>不在范围内是非法访问，合法时从给定位置取得元素的值</li>
+<li>需判断i值是否在表当时的合法元素范围内<br></li>
+<li>不在范围内是非法访问，合法时从给定位置取得元素的值<br></li>
 </ul></li>
 
-<li>查找给定元素 d 的位置（第一次出现），通常循环，将 d
-与表里的元素逐个比较，找到返回元素下标，否则返回一个特殊值</li>
-<li>尾端加入与删除都是 O(1) 操作
+<li>查找给定元素 d 的位置（第一次出现），通常循环，将 d<br>
+与表里的元素逐个比较，找到返回元素下标，否则返回一个特殊值<br></li>
+<li>尾端加入与删除都是 O(1) 操作<br>
 
 <ul class="org-ul">
-<li>加入需先判断表是否满，将新数据存入，同时元素计数加一</li>
-<li>删除只需把元素计数减一</li>
+<li>加入需先判断表是否满，将新数据存入，同时元素计数加一<br></li>
+<li>删除只需把元素计数减一<br></li>
 </ul></li>
 
-<li>首端加入与定位删除需要移动元素，比较复杂，需要 O(n) 操作</li>
+<li>首端加入与定位删除需要移动元素，比较复杂，需要 O(n) 操作<br></li>
 </ul>
 </div>
 
-<div id="orga353895" class="outline-4">
-<h4 id="a.-实现"><a id="orga353895"></a>a. 实现</h4>
+<div id="outline-container-org4a2f547" class="outline-4">
+<h4 id="a.-实现">a. 实现</h4>
 <div class="outline-text-4" id="text-a.-实现">
 <ul class="org-ul">
-<li>模型应包括两部分内容
+<li>模型应包括两部分内容<br>
 
 <ul class="org-ul">
-<li><b>一个元素存储区，存放表中的实际元素</b></li>
-<li><b>若干单元，存放一个表的全局信息（容量，表元素个数）</b></li>
+<li><b>一个元素存储区，存放表中的实际元素</b><br></li>
+<li><b>若干单元，存放一个表的全局信息（容量，表元素个数）</b><br></li>
 </ul></li>
 
-<li>一个数据结构应该具有一个对象的整体形态。对顺序表，就是把上述两块信息组织关联起来</li>
-<li>一块存储连续存放这两部分信息称为 <code>一体式实现</code>
-；用两块存储区，通过链接关联，称为 <code>分离式实现</code></li>
+<li>一个数据结构应该具有一个对象的整体形态。对顺序表，就是把上述两块信息组织关联起来<br></li>
+<li>一块存储连续存放这两部分信息称为 <code>一体式实现</code><br>
+；用两块存储区，通过链接关联，称为 <code>分离式实现</code><br></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="org1a00f56" class="outline-3">
-<h3 id="python-的-list"><a id="org1a00f56"></a>3. python 的 list</h3>
+<div id="outline-container-org53d8e9d" class="outline-3">
+<h3 id="python-的-list">3. python 的 list</h3>
 <div class="outline-text-3" id="text-python-的-list">
 <ul class="org-ul">
-<li>list 是一种线性结构，可看作线性表的一种实现
+<li>list 是一种线性结构，可看作线性表的一种实现<br>
 
 <ul class="org-ul">
-<li>基于下标（位置）的元素访问和更新操作，复杂性为 O(1)</li>
-<li>允许任意加入元素，而且维持表对象标识不变（id()）</li>
+<li>基于下标（位置）的元素访问和更新操作，复杂性为 O(1)<br></li>
+<li>允许任意加入元素，而且维持表对象标识不变（id()）<br></li>
 </ul></li>
 
-<li>list 实现约束和解决方案
+<li>list 实现约束和解决方案<br>
 
 <ul class="org-ul">
-<li>要求 O(1)
-的元素访问并维持元素的顺序，只能采用连续表技术，元素保存在一块连续存储区</li>
-<li><b>要能容纳任意多个元素，必须在元素个数将要超出存储区容量时换一块更大的存储区。要想在替换存储时
-id 不变，只能采用分离式实现</b></li>
+<li>要求 O(1)<br>
+的元素访问并维持元素的顺序，只能采用连续表技术，元素保存在一块连续存储区<br></li>
+<li><b>要能容纳任意多个元素，必须在元素个数将要超出存储区容量时换一块更大的存储区。要想在替换存储时<br>
+id 不变，只能采用分离式实现</b><br></li>
 </ul></li>
 
-<li>list里元素越多，换一次存储区的代价也越高
+<li>list里元素越多，换一次存储区的代价也越高<br>
 
 <ul class="org-ul">
-<li>要想平均结果较好，随着表长度增加，换存储区的频率应降低</li>
-<li>一种可能做法：每次换存储区，容量加倍</li>
+<li>要想平均结果较好，随着表长度增加，换存储区的频率应降低<br></li>
+<li>一种可能做法：每次换存储区，容量加倍<br></li>
 </ul></li>
 
-<li>一次高开销操作后，保证有很多次低开销操作，称为‘分期付款式'的常量复杂性</li>
-<li>python 中 list 采用上述设计，因此 lst.insert(len(lst), x)
-比一般位置加入的效率高，等价写法 lst.append(x)，如何使，应优先使用</li>
+<li>一次高开销操作后，保证有很多次低开销操作，称为‘分期付款式'的常量复杂性<br></li>
+<li>python 中 list 采用上述设计，因此 lst.insert(len(lst), x)<br>
+比一般位置加入的效率高，等价写法 lst.append(x)，如何使，应优先使用<br></li>
 </ul>
 </div>
 
-<div id="org5de555c" class="outline-4">
-<h4 id="a.-list-的操作"><a id="org5de555c"></a>a. list 的操作</h4>
+<div id="outline-container-orgbbb821b" class="outline-4">
+<h4 id="a.-list-的操作">a. list 的操作</h4>
 <div class="outline-text-4" id="text-a.-list-的操作">
 <ul class="org-ul">
-<li>实际实现策略
+<li>实际实现策略<br>
 
 <ul class="org-ul">
-<li>建立空 list 时分配可以容纳8个元素的存储区</li>
-<li>元素区满时换一块 4
-倍大的存储区；但在表已经比较大时就会改变策略，加倍换存储区的规模</li>
-<li>效果：尾端加入平均复杂性为 O(1)</li>
+<li>建立空 list 时分配可以容纳8个元素的存储区<br></li>
+<li>元素区满时换一块 4<br>
+倍大的存储区；但在表已经比较大时就会改变策略，加倍换存储区的规模<br></li>
+<li>效果：尾端加入平均复杂性为 O(1)<br></li>
 </ul></li>
 
-<li>其它操作的性质由连续表的实现方式确定
+<li>其它操作的性质由连续表的实现方式确定<br>
 
 <ul class="org-ul">
-<li>所有序列的共性操作，复杂性由操作中需要考察的元素个数确定，其中 len()
-是 O(1) 操作</li>
-<li>元素访问和赋值，尾端加入和尾端（切片）删除是 O(1) 操作</li>
-<li>一般元素加入，切片替换，切片删除，表拼接（extend）等都是 O(1)
-操作。pop 操作默认情况是尾端删除返回，为 O(1)。</li>
+<li>所有序列的共性操作，复杂性由操作中需要考察的元素个数确定，其中 len()<br>
+是 O(1) 操作<br></li>
+<li>元素访问和赋值，尾端加入和尾端（切片）删除是 O(1) 操作<br></li>
+<li>一般元素加入，切片替换，切片删除，表拼接（extend）等都是 O(1)<br>
+操作。pop 操作默认情况是尾端删除返回，为 O(1)。<br></li>
 </ul></li>
 
-<li>特殊操作
+<li>特殊操作<br>
 
 <ul class="org-ul">
-<li>list 仅有的特殊方法是 sort，对表中元素进行排序。
-<code>最好的排序算法复杂性是 O(nlogn)</code></li>
+<li>list 仅有的特殊方法是 sort，对表中元素进行排序。<br>
+<code>最好的排序算法复杂性是 O(nlogn)</code><br></li>
 <li><p>
-lst.reverse() 修改
-lst，将其元素倒置。如下实现，假设元素存储区的域名为 elements，复杂性
-O(n)
+lst.reverse() 修改<br>
+lst，将其元素倒置。如下实现，假设元素存储区的域名为 elements，复杂性<br>
+O(n)<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">reverse</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.elements
-    <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>, <span style="color: #268bd2;">j</span> = <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>e<span style="color: #2aa198;">)</span>-<span style="color: #6c71c4;">1</span>
-    <span style="color: #859900; font-weight: bold;">for</span> i &lt; j:
-        e<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>, <span style="color: #268bd2;">e</span><span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span> = e<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>, e<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
-        <span style="color: #268bd2;">i</span>, <span style="color: #268bd2;">j</span> = i+<span style="color: #6c71c4;">1</span>, j-<span style="color: #6c71c4;">1</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">reverse</span>(<span class="org-keyword">self</span>):
+    <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.elements
+    <span class="org-variable-name">i</span> = <span class="org-variable-name">0</span>, <span class="org-variable-name">j</span> = <span class="org-builtin">len</span>(e)-1
+    <span class="org-keyword">for</span> i &lt; j:
+        e[i], <span class="org-variable-name">e</span>[j] = e[j], e[i]
+        <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span> = i+1, j-1
 </pre>
 </div></li>
 </ul></li>
@@ -531,544 +532,544 @@ O(n)
 </div>
 </div>
 
-<div id="org22146ab" class="outline-2">
-<h2 id="四链接表"><a id="org22146ab"></a>四、链接表</h2>
+<div id="outline-container-org61ff43f" class="outline-2">
+<h2 id="四链接表">四、链接表</h2>
 <div class="outline-text-2" id="text-四链接表">
 <ul class="org-ul">
-<li>顺序表结构是组织一组元素的最重要方式
+<li>顺序表结构是组织一组元素的最重要方式<br>
 
 <ul class="org-ul">
-<li>可以直接地实现线性表</li>
-<li>也是许多其他数据结构的实现基础</li>
+<li>可以直接地实现线性表<br></li>
+<li>也是许多其他数据结构的实现基础<br></li>
 </ul></li>
 
-<li>如果一个表在使用中经常需要修改结构，使用顺序表操作代价可能很高，根源在于
-<code>元素存储的集中方式和连续性</code></li>
-<li>线性表实现的基本需要：
+<li>如果一个表在使用中经常需要修改结构，使用顺序表操作代价可能很高，根源在于<br>
+<code>元素存储的集中方式和连续性</code><br></li>
+<li>线性表实现的基本需要：<br>
 
 <ul class="org-ul">
-<li>能够找到表中的首元素</li>
-<li>从表中任一元素出发，可以找到它之后的下一个元素</li>
-<li>将元素保存在连续存储区，自然满足这两个需求，顺序关联是隐含的。但满足这两种需求，并不一定要连续存储元素</li>
+<li>能够找到表中的首元素<br></li>
+<li>从表中任一元素出发，可以找到它之后的下一个元素<br></li>
+<li>将元素保存在连续存储区，自然满足这两个需求，顺序关联是隐含的。但满足这两种需求，并不一定要连续存储元素<br></li>
 </ul></li>
 
-<li>实现线性表的另一方式是基于链接结构，用链接显示地表示元素之间的顺序关联。基于链接技术实现的线性表称为链接表或链表</li>
-<li>基本想法：
+<li>实现线性表的另一方式是基于链接结构，用链接显示地表示元素之间的顺序关联。基于链接技术实现的线性表称为链接表或链表<br></li>
+<li>基本想法：<br>
 
 <ul class="org-ul">
-<li>把元素分别存储在一批独立的存储块（称为结点）里
+<li>把元素分别存储在一批独立的存储块（称为结点）里<br>
 
 <ul class="org-ul">
-<li>保证从一个元素的结点可找到与其相关的下一元素的结点</li>
-<li>在结点里用链接的方式显示记录元素（结点）之间的关联</li>
+<li>保证从一个元素的结点可找到与其相关的下一元素的结点<br></li>
+<li>在结点里用链接的方式显示记录元素（结点）之间的关联<br></li>
 </ul></li>
 
-<li>只需知道表中第一个结点，就能顺序找到表中其它元素</li>
+<li>只需知道表中第一个结点，就能顺序找到表中其它元素<br></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="orgf5c0d05" class="outline-3">
-<h3 id="单链表"><a id="orgf5c0d05"></a>1. 单链表</h3>
+<div id="outline-container-org0a5b1f8" class="outline-3">
+<h3 id="单链表">1. 单链表</h3>
 <div class="outline-text-3" id="text-单链表">
 <ul class="org-ul">
-<li>每个结点里中记录着下一元素所在结点的标识</li>
-<li>表中的 n 个元素对应的 n
-个结点通过链接形成一条结点链。从表中的任一结点都可以找到保存下一个元素的结点</li>
-<li>要掌握一个单链表，仅需要掌握其首结点
+<li>每个结点里中记录着下一元素所在结点的标识<br></li>
+<li>表中的 n 个元素对应的 n<br>
+个结点通过链接形成一条结点链。从表中的任一结点都可以找到保存下一个元素的结点<br></li>
+<li>要掌握一个单链表，仅需要掌握其首结点<br>
 
 <ul class="org-ul">
-<li>可以找到表的首元素</li>
-<li>可以找到表中下一结点的位置，以此下去，就可以找到表中所有数据元素</li>
+<li>可以找到表的首元素<br></li>
+<li>可以找到表中下一结点的位置，以此下去，就可以找到表中所有数据元素<br></li>
 </ul></li>
 
-<li><b>表头变量：保存着链表第一个结点的标识（链接）的变量</b></li>
-<li>概括如下：一个具体的表由一些具体结点构成
+<li><b>表头变量：保存着链表第一个结点的标识（链接）的变量</b><br></li>
+<li>概括如下：一个具体的表由一些具体结点构成<br>
 
 <ul class="org-ul">
-<li>每个结点有自己的标识（下面也常直接称为链接）</li>
-<li>结点之间通过结点链接建立起顺序联系</li>
-<li>给表的最后一个结点的链接域设置一个不会作为结点对象标识的值（python
-里自然应该用 None），称为空链接</li>
+<li>每个结点有自己的标识（下面也常直接称为链接）<br></li>
+<li>结点之间通过结点链接建立起顺序联系<br></li>
+<li>给表的最后一个结点的链接域设置一个不会作为结点对象标识的值（python<br>
+里自然应该用 None），称为空链接<br></li>
 </ul></li>
 
-<li>通过判断是否空链接，可以知道是否到了表尾
+<li>通过判断是否空链接，可以知道是否到了表尾<br>
 
 <ul class="org-ul">
-<li>做检索工作时，据此判断是否结束工作</li>
-<li>如果表头指针的值是空链接，说明‘它所引用的表已经结束'，没有元素就已结束，说明是空表</li>
+<li>做检索工作时，据此判断是否结束工作<br></li>
+<li>如果表头指针的值是空链接，说明‘它所引用的表已经结束'，没有元素就已结束，说明是空表<br></li>
 </ul></li>
 
-<li>在实现算法时，并不需要关系各结点的具体链接的值，只需关系链表的逻辑结构
+<li>在实现算法时，并不需要关系各结点的具体链接的值，只需关系链表的逻辑结构<br>
 
 <ul class="org-ul">
-<li>链表的操作也只需根据链表的逻辑结构考虑和实现</li>
+<li>链表的操作也只需根据链表的逻辑结构考虑和实现<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="org9864a7c" class="outline-3">
-<h3 id="基本操作"><a id="org9864a7c"></a>2. 基本操作</h3>
+<div id="outline-container-orgfe6de08" class="outline-3">
+<h3 id="基本操作">2. 基本操作</h3>
 <div class="outline-text-3" id="text-基本操作">
 <ul class="org-ul">
-<li>创建空链表：只需将表头变量设置为空链接
+<li>创建空链表：只需将表头变量设置为空链接<br>
 
 <ul class="org-ul">
-<li>python 中设置为 None</li>
+<li>python 中设置为 None<br></li>
 </ul></li>
 
-<li>删除链表：丢弃表的所有结点
+<li>删除链表：丢弃表的所有结点<br>
 
 <ul class="org-ul">
-<li>在一些语言中需要做许多事情，释放所有存储</li>
-<li>python 只需将表指针设为 None 即可。存储管理系统会自动回收不用的存储</li>
+<li>在一些语言中需要做许多事情，释放所有存储<br></li>
+<li>python 只需将表指针设为 None 即可。存储管理系统会自动回收不用的存储<br></li>
 </ul></li>
 
-<li>判断是否为空：将表头变量的值与空链接比较
+<li>判断是否为空：将表头变量的值与空链接比较<br>
 
 <ul class="org-ul">
-<li>python 中检查其是否为 None</li>
+<li>python 中检查其是否为 None<br></li>
 </ul></li>
 
-<li>判断是否满：链接表不会满，除非存储空间用完</li>
+<li>判断是否满：链接表不会满，除非存储空间用完<br></li>
 </ul>
 </div>
 
-<div id="org4d27145" class="outline-4">
-<h4 id="a.-加入元素"><a id="org4d27145"></a>a. 加入元素</h4>
+<div id="outline-container-org0b6a3b2" class="outline-4">
+<h4 id="a.-加入元素">a. 加入元素</h4>
 <div class="outline-text-4" id="text-a.-加入元素">
 <ul class="org-ul">
-<li>基本情况
+<li>基本情况<br>
 
 <ul class="org-ul">
-<li>分为首端、尾端、定位加入，不同位置的操作复杂性可能不同</li>
-<li>无需移动已有数据，只需为新元素安排一个新结点，然后把其连接到表中所需的位置</li>
+<li>分为首端、尾端、定位加入，不同位置的操作复杂性可能不同<br></li>
+<li>无需移动已有数据，只需为新元素安排一个新结点，然后把其连接到表中所需的位置<br></li>
 </ul></li>
 
-<li>首端加入：
+<li>首端加入：<br>
 
 <ul class="org-ul">
-<li>创建一个新结点将元素存入</li>
-<li>设置新结点的链接域指向链表首结点</li>
-<li>修改表头变量使其引用新结点</li>
+<li>创建一个新结点将元素存入<br></li>
+<li>设置新结点的链接域指向链表首结点<br></li>
+<li>修改表头变量使其引用新结点<br></li>
 </ul></li>
 
-<li>尾端加入：
+<li>尾端加入：<br>
 
 <ul class="org-ul">
-<li>创建一个新结点将元素存入</li>
-<li>设置新结点的链接域指向 None</li>
-<li>表空时，设置表头变量引用新结点，否则设置表尾结点的链接域指向新结点</li>
+<li>创建一个新结点将元素存入<br></li>
+<li>设置新结点的链接域指向 None<br></li>
+<li>表空时，设置表头变量引用新结点，否则设置表尾结点的链接域指向新结点<br></li>
 </ul></li>
 
-<li>定位加入：
+<li>定位加入：<br>
 
 <ul class="org-ul">
-<li>找到加入位置的前一结点，不存在则结束</li>
-<li>创建一个新结点将元素存入，设置新结点链接域的指向为前一结点的链接域指向</li>
-<li>设置前一结点的链接域指向为新结点</li>
+<li>找到加入位置的前一结点，不存在则结束<br></li>
+<li>创建一个新结点将元素存入，设置新结点链接域的指向为前一结点的链接域指向<br></li>
+<li>设置前一结点的链接域指向为新结点<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="orgbf13275" class="outline-4">
-<h4 id="b.-删除元素"><a id="orgbf13275"></a>b. 删除元素</h4>
+<div id="outline-container-org01603db" class="outline-4">
+<h4 id="b.-删除元素">b. 删除元素</h4>
 <div class="outline-text-4" id="text-b.-删除元素">
 <ul class="org-ul">
-<li>首端删除：设置表头变量引用原表头变量链接域所指向的结点</li>
-<li>尾端删除：找到链接域为 None 的前一结点，设置其链接域指向为
-None；若不存在则将表头变量设为 None</li>
-<li>定位删除：找到删除结点的前一结点，设置其链接域指向删除结点的链接域指向；若不存在则设置表头变量引用删除结点链接域所指向结点</li>
+<li>首端删除：设置表头变量引用原表头变量链接域所指向的结点<br></li>
+<li>尾端删除：找到链接域为 None 的前一结点，设置其链接域指向为<br>
+None；若不存在则将表头变量设为 None<br></li>
+<li>定位删除：找到删除结点的前一结点，设置其链接域指向删除结点的链接域指向；若不存在则设置表头变量引用删除结点链接域所指向结点<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org9dcb703" class="outline-4">
-<h4 id="c.-扫描和遍历"><a id="org9dcb703"></a>c. 扫描和遍历</h4>
+<div id="outline-container-orga46ca18" class="outline-4">
+<h4 id="c.-扫描和遍历">c. 扫描和遍历</h4>
 <div class="outline-text-4" id="text-c.-扫描和遍历">
 <ul class="org-ul">
-<li>许多操作需要扫描表里一个个结点，可能检查其中的元素，该过程称为遍历，顺序检查一个数据结构的所有元素，如
+<li>许多操作需要扫描表里一个个结点，可能检查其中的元素，该过程称为遍历，顺序检查一个数据结构的所有元素，如<br>
 
 <ul class="org-ul">
-<li>求元素个数</li>
-<li>查找特定位置的元素，或满足某些条件的元素</li>
+<li>求元素个数<br></li>
+<li>查找特定位置的元素，或满足某些条件的元素<br></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="orgdb19ff9" class="outline-4">
-<h4 id="d.-操作复杂性"><a id="orgdb19ff9"></a>d. 操作复杂性</h4>
+<div id="outline-container-orgff98723" class="outline-4">
+<h4 id="d.-操作复杂性">d. 操作复杂性</h4>
 <div class="outline-text-4" id="text-d.-操作复杂性">
 <blockquote>
 <p>
-
+<br>
 </p>
 
 <ul class="org-ul">
-<li>创建空表、删除表、判断空表都是 O(1)</li>
-<li>首端加入为 O(1)，尾端加入和定位加入都是 O(n)</li>
-<li>首端删除为O(1)，尾端删除和定位删除都是 O(n)</li>
-<li>其它操作：如需要扫描整个表或其中一部分，都是 O(1)
-操作；有时可根据需要改造表的表示方式，如经常要用到表长度，可以考虑首结点的元素区存放长度值，需要在加入和删除操作中维护个数记录</li>
+<li>创建空表、删除表、判断空表都是 O(1)<br></li>
+<li>首端加入为 O(1)，尾端加入和定位加入都是 O(n)<br></li>
+<li>首端删除为O(1)，尾端删除和定位删除都是 O(n)<br></li>
+<li>其它操作：如需要扫描整个表或其中一部分，都是 O(1)<br>
+操作；有时可根据需要改造表的表示方式，如经常要用到表长度，可以考虑首结点的元素区存放长度值，需要在加入和删除操作中维护个数记录<br></li>
 </ul>
 </blockquote>
 </div>
 </div>
 </div>
 
-<div id="orga0afee4" class="outline-3">
-<h3 id="python实现"><a id="orga0afee4"></a>3. python实现</h3>
+<div id="outline-container-orgaa944a8" class="outline-3">
+<h3 id="python实现">3. python实现</h3>
 <div class="outline-text-3" id="text-python实现">
 <ul class="org-ul">
 <li><p>
-实现单链表需要定义相应的类，首先是表示结点的类
+实现单链表需要定义相应的类，首先是表示结点的类<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LNode</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>,elm,nxt<span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">self</span>.elem = elm
-        <span style="color: #859900; font-weight: bold;">self</span>.<span style="color: #839496; font-weight: bold;">next</span> = nxt
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">LNode</span>(<span class="org-builtin">object</span>)
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>,elm,nxt):
+        <span class="org-keyword">self</span>.elem = elm
+        <span class="org-keyword">self</span>.<span class="org-builtin">next</span> = nxt
 </pre>
 </div></li>
 
 <li><p>
-简单使用
+简单使用<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #268bd2;">llist</span> = Lnode<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>, <span style="color: #268bd2;">pnode</span> = llist
-<span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">2</span>, <span style="color: #6c71c4;">7</span><span style="color: #2aa198;">)</span>:
-    pnode.<span style="color: #839496; font-weight: bold;">next</span> = LNode<span style="color: #2aa198;">(</span>i, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-    <span style="color: #268bd2;">pnode</span> = ponde.<span style="color: #839496; font-weight: bold;">next</span>
+<pre class="src src-python"><span class="org-variable-name">llist</span> = Lnode(1, <span class="org-constant">None</span>), <span class="org-variable-name">pnode</span> = llist
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(2, 7):
+    pnode.<span class="org-builtin">next</span> = LNode(i, <span class="org-constant">None</span>)
+    <span class="org-variable-name">pnode</span> = ponde.<span class="org-builtin">next</span>
 
-<span style="color: #268bd2;">n</span> = llist
-<span style="color: #859900; font-weight: bold;">while</span> n <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>n.elem<span style="color: #2aa198;">)</span>
-    <span style="color: #268bd2;">n</span> = n.<span style="color: #839496; font-weight: bold;">next</span>
+<span class="org-variable-name">n</span> = llist
+<span class="org-keyword">while</span> n <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+    <span class="org-keyword">print</span>(n.elem)
+    <span class="org-variable-name">n</span> = n.<span class="org-builtin">next</span>
 </pre>
 </div></li>
 </ul>
 </div>
 
-<div id="org30f1a04" class="outline-4">
-<h4 id="a.-基本操作"><a id="org30f1a04"></a>a. 基本操作</h4>
+<div id="outline-container-org8c9a4e9" class="outline-4">
+<h4 id="a.-基本操作">a. 基本操作</h4>
 <div class="outline-text-4" id="text-a.-基本操作">
 <ul class="org-ul">
 <li><p>
-我们希望基于结点 LNode 定义一种链接表类型，为此定义一个表类
+我们希望基于结点 LNode 定义一种链接表类型，为此定义一个表类<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LList</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #268bd2; font-weight: bold;">None</span>
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">LList</span>(<span class="org-builtin">object</span>):
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">self</span>.head = <span class="org-constant">None</span>
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">isEmpty</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">self</span>.head == <span style="color: #268bd2; font-weight: bold;">None</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">isEmpty</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">return</span> <span class="org-keyword">self</span>.head == <span class="org-constant">None</span>
 
-    <span style="color: #586e75;"># </span><span style="color: #586e75;">&#39318;&#31471;&#21152;&#20837;</span>
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">prepend</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elem<span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">self</span>.head = LNode<span style="color: #2aa198;">(</span>elem, <span style="color: #859900; font-weight: bold;">self</span>.head<span style="color: #2aa198;">)</span>
+    <span class="org-comment-delimiter"># </span><span class="org-comment">&#39318;&#31471;&#21152;&#20837;</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">prepend</span>(<span class="org-keyword">self</span>, elem):
+        <span class="org-keyword">self</span>.head = LNode(elem, <span class="org-keyword">self</span>.head)
 </pre>
 </div></li>
 
 <li><p>
-尾端加入，复杂性（最坏情况）为 O(n)，需要循环找到最后一个结点
+尾端加入，复杂性（最坏情况）为 O(n)，需要循环找到最后一个结点<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">append</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elem<span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-    <span style="color: #859900; font-weight: bold;">if</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">&#21028;&#26029;&#21407;&#34920;&#26159;&#21542;&#20026;&#31354;</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.head = LNode<span style="color: #2aa198;">(</span>elem, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">return</span>
-    <span style="color: #859900; font-weight: bold;">while</span> p.<span style="color: #839496; font-weight: bold;">next</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-    p.<span style="color: #839496; font-weight: bold;">next</span> = LNode<span style="color: #2aa198;">(</span>elem, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">append</span>(<span class="org-keyword">self</span>, elem):
+    <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head
+    <span class="org-keyword">if</span> p <span class="org-keyword">is</span> <span class="org-constant">None</span>: <span class="org-comment-delimiter"># </span><span class="org-comment">&#21028;&#26029;&#21407;&#34920;&#26159;&#21542;&#20026;&#31354;</span>
+        <span class="org-keyword">self</span>.head = LNode(elem, <span class="org-constant">None</span>)
+        <span class="org-keyword">return</span>
+    <span class="org-keyword">while</span> p.<span class="org-builtin">next</span> <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>
+        <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
+    p.<span class="org-builtin">next</span> = LNode(elem, <span class="org-constant">None</span>)
 </pre>
 </div></li>
 
 <li><p>
-首尾端弹出
+首尾端弹出<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">pop</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">raise</span> <span style="color: #b58900;">ValueError</span>
-    <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.head.elem
-    <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #859900; font-weight: bold;">self</span>.head.<span style="color: #839496; font-weight: bold;">next</span>
-    <span style="color: #859900; font-weight: bold;">return</span> e
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">pop</span>(<span class="org-keyword">self</span>):
+    <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+        <span class="org-keyword">raise</span> <span class="org-type">ValueError</span>
+    <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.head.elem
+    <span class="org-keyword">self</span>.head = <span class="org-keyword">self</span>.head.<span class="org-builtin">next</span>
+    <span class="org-keyword">return</span> e
 
-<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">poplast</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">&#23614;&#31471;&#24377;&#20986;&#65292;&#22797;&#26434;&#24615;&#20026;O(n)</span>
-    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">raise</span> <span style="color: #b58900;">ValueError</span>
-    <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-    <span style="color: #859900; font-weight: bold;">if</span> p.<span style="color: #839496; font-weight: bold;">next</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #268bd2;">e</span> = p.elem
-        <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">return</span> e
-    <span style="color: #859900; font-weight: bold;">while</span> p.<span style="color: #839496; font-weight: bold;">next</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #268bd2;">pre</span> = p
-        <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-    <span style="color: #268bd2;">e</span> = p.elem
-    pre.<span style="color: #839496; font-weight: bold;">next</span> = <span style="color: #268bd2; font-weight: bold;">None</span>
-    <span style="color: #859900; font-weight: bold;">return</span> e
+<span class="org-keyword">def</span> <span class="org-function-name">poplast</span>(<span class="org-keyword">self</span>): <span class="org-comment-delimiter"># </span><span class="org-comment">&#23614;&#31471;&#24377;&#20986;&#65292;&#22797;&#26434;&#24615;&#20026;O(n)</span>
+    <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+        <span class="org-keyword">raise</span> <span class="org-type">ValueError</span>
+    <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head
+    <span class="org-keyword">if</span> p.<span class="org-builtin">next</span> <span class="org-keyword">is</span> <span class="org-constant">None</span>
+        <span class="org-variable-name">e</span> = p.elem
+        <span class="org-keyword">self</span>.head = <span class="org-constant">None</span>
+        <span class="org-keyword">return</span> e
+    <span class="org-keyword">while</span> p.<span class="org-builtin">next</span> <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+        <span class="org-variable-name">pre</span> = p
+        <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
+    <span class="org-variable-name">e</span> = p.elem
+    pre.<span class="org-builtin">next</span> = <span class="org-constant">None</span>
+    <span class="org-keyword">return</span> e
 </pre>
 </div></li>
 
 <li><p>
-其它操作
+其它操作<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">find</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, pred<span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-    <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">if</span> pred<span style="color: #2aa198;">(</span>p.elem<span style="color: #2aa198;">)</span>:
-            <span style="color: #859900; font-weight: bold;">return</span> p.elem
-        <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">None</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">find</span>(<span class="org-keyword">self</span>, pred):
+    <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head
+    <span class="org-keyword">while</span> p <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+        <span class="org-keyword">if</span> pred(p.elem):
+            <span class="org-keyword">return</span> p.elem
+        <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
+    <span class="org-keyword">return</span> <span class="org-constant">None</span>
 
-<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">printall</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-    <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>p.elem<span style="color: #2aa198;">)</span>
-        <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
+<span class="org-keyword">def</span> <span class="org-function-name">printall</span>(<span class="org-keyword">self</span>):
+    <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head
+    <span class="org-keyword">while</span> p <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+        <span class="org-keyword">print</span>(p.elem)
+        <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
 </pre>
 </div></li>
 </ul>
 </div>
 
-<div id="orge225775" class="outline-5">
-<h5 id="x定位删除"><a id="orge225775"></a>X定位删除</h5>
+<div id="outline-container-orgcd2e779" class="outline-5">
+<h5 id="x定位删除">X定位删除</h5>
 <div class="outline-text-5" id="text-x定位删除">
 </div>
 </div>
 </div>
 </div>
 
-<div id="orgcf5eda0" class="outline-3">
-<h3 id="单链表变形"><a id="orgcf5eda0"></a>4. 单链表变形</h3>
+<div id="outline-container-orgb0044a2" class="outline-3">
+<h3 id="单链表变形">4. 单链表变形</h3>
 <div class="outline-text-3" id="text-单链表变形">
 <ul class="org-ul">
 <li><p>
-实际中可根据具体需求做相应调整，例如加入尾端结点的引用，
-<code>结构变化应该只影响到表的变动操作，非变动操作不需要修改</code> ，可以重用
-LList 的一些定义
+实际中可根据具体需求做相应调整，例如加入尾端结点的引用，<br>
+<code>结构变化应该只影响到表的变动操作，非变动操作不需要修改</code> ，可以重用<br>
+LList 的一些定义<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LList1</span><span style="color: #2aa198;">(</span>LList<span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>
-        LList.__init__<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #268bd2; font-weight: bold;">None</span>
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">LList1</span>(LList):
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>)
+        LList.__init__(<span class="org-keyword">self</span>)
+        <span class="org-keyword">self</span>.rear = <span class="org-constant">None</span>
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">prepend</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elem<span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">self</span>.head = LNode<span style="color: #2aa198;">(</span>elem, <span style="color: #859900; font-weight: bold;">self</span>.head<span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.head
+    <span class="org-keyword">def</span> <span class="org-function-name">prepend</span>(<span class="org-keyword">self</span>, elem):
+        <span class="org-keyword">self</span>.head = LNode(elem, <span class="org-keyword">self</span>.head)
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.head
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">append</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elem<span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            preend<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elem<span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span> = LNode<span style="color: #2aa198;">(</span>elem, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">append</span>(<span class="org-keyword">self</span>, elem):
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            preend(<span class="org-keyword">self</span>, elem)
+        <span class="org-keyword">else</span>:
+            <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span> = LNode(elem, <span class="org-constant">None</span>)
+            <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">pop</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.head.elem
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">self</span>.head:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #859900; font-weight: bold;">self</span>.head.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #859900; font-weight: bold;">return</span> e
+    <span class="org-keyword">def</span> <span class="org-function-name">pop</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">return</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.head.elem
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-keyword">self</span>.head:
+            <span class="org-keyword">self</span>.rear = <span class="org-constant">None</span>
+        <span class="org-keyword">self</span>.head = <span class="org-keyword">self</span>.head.<span class="org-builtin">next</span>
+        <span class="org-keyword">return</span> e
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">poplast</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #586e75;">#</span><span style="color: #586e75;">return None</span>
-        <span style="color: #586e75;"># </span><span style="color: #586e75;">to be implemented or simply use this</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.elem
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">self</span>.rear:
-            <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-        <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #859900; font-weight: bold;">self</span>.rear:
-            <span style="color: #268bd2;">pre</span> = p
-            <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-        pre.<span style="color: #839496; font-weight: bold;">next</span> = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.rear = pre
-        <span style="color: #859900; font-weight: bold;">return</span> e
+    <span class="org-keyword">def</span> <span class="org-function-name">poplast</span>(<span class="org-keyword">self</span>):
+        <span class="org-comment-delimiter">#</span><span class="org-comment">return None</span>
+        <span class="org-comment-delimiter"># </span><span class="org-comment">to be implemented or simply use this</span>
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">return</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.rear.elem
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-keyword">self</span>.rear:
+            <span class="org-keyword">self</span>.head = <span class="org-constant">None</span>
+        <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head
+        <span class="org-keyword">while</span> p <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-keyword">self</span>.rear:
+            <span class="org-variable-name">pre</span> = p
+            <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
+        pre.<span class="org-builtin">next</span> = <span class="org-constant">None</span>
+        <span class="org-keyword">self</span>.rear = pre
+        <span class="org-keyword">return</span> e
 </pre>
 </div></li>
 </ul>
 </div>
 </div>
 
-<div id="org10b93e2" class="outline-3">
-<h3 id="循环单链表"><a id="org10b93e2"></a>5. 循环单链表</h3>
+<div id="outline-container-orgf3169ec" class="outline-3">
+<h3 id="循环单链表">5. 循环单链表</h3>
 <div class="outline-text-3" id="text-循环单链表">
 <ul class="org-ul">
-<li>最后结点的 next 指向首结点</li>
-<li>该设计在结构上有致命的缺点
+<li>最后结点的 next 指向首结点<br></li>
+<li>该设计在结构上有致命的缺点<br>
 
 <ul class="org-ul">
-<li><b>首端加入删除不能在 O(1) 时间内完成，因为要修改尾结点的 next</b></li>
-<li><b>让表对象指向概念上的尾结点更有利，可支持 O(1) 的首端加入删除，以及
-O(1) 的尾端加入</b></li>
+<li><b>首端加入删除不能在 O(1) 时间内完成，因为要修改尾结点的 next</b><br></li>
+<li><b>让表对象指向概念上的尾结点更有利，可支持 O(1) 的首端加入删除，以及<br>
+O(1) 的尾端加入</b><br></li>
 </ul></li>
 
-<li>操作实现的关键是加入、删除后表对象域的正确更新
+<li>操作实现的关键是加入、删除后表对象域的正确更新<br>
 
 <ul class="org-ul">
-<li>把问题想清楚，实现并不困难</li>
-<li>非变动操作也许修改</li>
+<li>把问题想清楚，实现并不困难<br></li>
+<li>非变动操作也许修改<br></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="org0bf6e2f" class="outline-4">
-<h4 id="a.-程序实现"><a id="org0bf6e2f"></a>a. 程序实现</h4>
+<div id="outline-container-org6ac39a8" class="outline-4">
+<h4 id="a.-程序实现">a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LCList</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">object</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #268bd2; font-weight: bold;">None</span>
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">LCList</span>(<span class="org-builtin">object</span>):
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">self</span>.rear = <span class="org-constant">None</span>
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">isEmpty</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">isEmpty</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">return</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">prepend</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elm<span style="color: #2aa198;">)</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">&#39318;&#31471;&#21152;&#20837;</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = LNode<span style="color: #2aa198;">(</span>elm, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-            <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
-            <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span> = LNode<span style="color: #2aa198;">(</span>elm, p<span style="color: #2aa198;">)</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">prepend</span>(<span class="org-keyword">self</span>, elm): <span class="org-comment-delimiter">#</span><span class="org-comment">&#39318;&#31471;&#21152;&#20837;</span>
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">self</span>.rear = LNode(elm, <span class="org-constant">None</span>)
+            <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span> = <span class="org-keyword">self</span>.rear
+        <span class="org-keyword">else</span>:
+            <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
+            <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span> = LNode(elm, p)
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">append</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elm<span style="color: #2aa198;">)</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">&#23614;&#31471;&#21152;&#20837;</span>
-        <span style="color: #586e75;">#</span><span style="color: #586e75;">p = LNode(elm, None)</span>
-        <span style="color: #586e75;">#</span><span style="color: #586e75;">p.next = self.rear.next</span>
-        <span style="color: #586e75;">#</span><span style="color: #586e75;">self.rear.next = p</span>
-        <span style="color: #586e75;">#</span><span style="color: #586e75;">self.rear = p</span>
-        prepend<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elm<span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">append</span>(<span class="org-keyword">self</span>, elm): <span class="org-comment-delimiter">#</span><span class="org-comment">&#23614;&#31471;&#21152;&#20837;</span>
+        <span class="org-comment-delimiter">#</span><span class="org-comment">p = LNode(elm, None)</span>
+        <span class="org-comment-delimiter">#</span><span class="org-comment">p.next = self.rear.next</span>
+        <span class="org-comment-delimiter">#</span><span class="org-comment">self.rear.next = p</span>
+        <span class="org-comment-delimiter">#</span><span class="org-comment">self.rear = p</span>
+        prepend(<span class="org-keyword">self</span>, elm)
+        <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">pop</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">&#39318;&#31471;&#24377;&#20986;</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">raise</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #268bd2;">e</span> = p.elem
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #859900; font-weight: bold;">return</span> e
+    <span class="org-keyword">def</span> <span class="org-function-name">pop</span>(<span class="org-keyword">self</span>): <span class="org-comment-delimiter"># </span><span class="org-comment">&#39318;&#31471;&#24377;&#20986;</span>
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">raise</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
+        <span class="org-variable-name">e</span> = p.elem
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>:
+            <span class="org-keyword">self</span>.rear = <span class="org-constant">None</span>
+        <span class="org-keyword">else</span>:
+            <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span> = p.<span class="org-builtin">next</span>
+        <span class="org-keyword">return</span> e
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">poplast</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">&#23614;&#31471;&#24377;&#20986;</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">raise</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.elem
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #859900; font-weight: bold;">self</span>.rear:
-                <span style="color: #268bd2;">pre</span> = p
-                <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-            pre.<span style="color: #839496; font-weight: bold;">next</span> = p
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = pre
-        <span style="color: #859900; font-weight: bold;">return</span> e
+    <span class="org-keyword">def</span> <span class="org-function-name">poplast</span>(<span class="org-keyword">self</span>): <span class="org-comment-delimiter"># </span><span class="org-comment">&#23614;&#31471;&#24377;&#20986;</span>
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">raise</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
+        <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.rear.elem
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>:
+            <span class="org-keyword">self</span>.rear = <span class="org-constant">None</span>
+        <span class="org-keyword">else</span>:
+            <span class="org-keyword">while</span> p <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-keyword">self</span>.rear:
+                <span class="org-variable-name">pre</span> = p
+                <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
+            pre.<span class="org-builtin">next</span> = p
+            <span class="org-keyword">self</span>.rear = pre
+        <span class="org-keyword">return</span> e
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">prinall</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">raise</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #859900; font-weight: bold;">while</span> <span style="color: #268bd2; font-weight: bold;">True</span>:
-            <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>p.elem<span style="color: #2aa198;">)</span>
-            <span style="color: #859900; font-weight: bold;">if</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">self</span>.rear:
-                <span style="color: #859900; font-weight: bold;">break</span>
-            <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">prinall</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">raise</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
+        <span class="org-keyword">while</span> <span class="org-constant">True</span>:
+            <span class="org-keyword">print</span>(p.elem)
+            <span class="org-keyword">if</span> p <span class="org-keyword">is</span> <span class="org-keyword">self</span>.rear:
+                <span class="org-keyword">break</span>
+            <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="org905e2b4" class="outline-3">
-<h3 id="双向链接表"><a id="org905e2b4"></a>6. 双向链接表</h3>
+<div id="outline-container-orge30c16a" class="outline-3">
+<h3 id="双向链接表">6. 双向链接表</h3>
 <div class="outline-text-3" id="text-双向链接表">
 <ul class="org-ul">
-<li>从任一结点出发，可以直接找到前后的相邻结点</li>
-<li>每个结点需要增加一个前向引用域，指向前一结点</li>
-<li>支持首尾端高效操作</li>
-<li>定义一个新结点类</li>
+<li>从任一结点出发，可以直接找到前后的相邻结点<br></li>
+<li>每个结点需要增加一个前向引用域，指向前一结点<br></li>
+<li>支持首尾端高效操作<br></li>
+<li>定义一个新结点类<br></li>
 </ul>
 </div>
 
-<div id="org907db90" class="outline-4">
-<h4 id="a.-程序实现-1"><a id="org907db90"></a>a. 程序实现</h4>
+<div id="outline-container-orgc13c83e" class="outline-4">
+<h4 id="a.-程序实现-1">a. 程序实现</h4>
 <div class="outline-text-4" id="text-a.-程序实现-1">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LDNode</span><span style="color: #2aa198;">(</span>LNode<span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, pre, elm, nxt<span style="color: #2aa198;">)</span>:
-        LNode.__init__<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elm, nxt<span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.prev = pre
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">LDNode</span>(LNode):
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>, pre, elm, nxt):
+        LNode.__init__(<span class="org-keyword">self</span>, elm, nxt)
+        <span class="org-keyword">self</span>.prev = pre
 </pre>
 </div>
 
 <ul class="org-ul">
 <li><p>
-双向链表实现，带尾结点
+双向链表实现，带尾结点<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">LDList</span><span style="color: #2aa198;">(</span>LList1<span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        LList.__init__<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">LDList</span>(LList1):
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>):
+        LList.__init__(<span class="org-keyword">self</span>)
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">prepend</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elm<span style="color: #2aa198;">)</span>:
-        <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-        <span style="color: #859900; font-weight: bold;">self</span>.head = LDNode<span style="color: #2aa198;">(</span><span style="color: #268bd2; font-weight: bold;">None</span>, elm, p<span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.head
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #268bd2;">p.prev</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
+    <span class="org-keyword">def</span> <span class="org-function-name">prepend</span>(<span class="org-keyword">self</span>, elm):
+        <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head
+        <span class="org-keyword">self</span>.head = LDNode(<span class="org-constant">None</span>, elm, p)
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.head
+        <span class="org-keyword">else</span>:
+            <span class="org-variable-name">p.prev</span> = <span class="org-keyword">self</span>.head
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">append</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, elm<span style="color: #2aa198;">)</span>:
-        <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear
-        <span style="color: #859900; font-weight: bold;">self</span>.rear = LDNode<span style="color: #2aa198;">(</span>p, elm, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #859900; font-weight: bold;">self</span>.rear
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            p.<span style="color: #839496; font-weight: bold;">next</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear
+    <span class="org-keyword">def</span> <span class="org-function-name">append</span>(<span class="org-keyword">self</span>, elm):
+        <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.rear
+        <span class="org-keyword">self</span>.rear = LDNode(p, elm, <span class="org-constant">None</span>)
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">self</span>.head = <span class="org-keyword">self</span>.rear
+        <span class="org-keyword">else</span>:
+            p.<span class="org-builtin">next</span> = <span class="org-keyword">self</span>.rear
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">pop</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">raise</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.head.elem
-        <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #859900; font-weight: bold;">self</span>.head.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.head.prev = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">return</span> e
+    <span class="org-keyword">def</span> <span class="org-function-name">pop</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">raise</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.head.elem
+        <span class="org-keyword">self</span>.head = <span class="org-keyword">self</span>.head.<span class="org-builtin">next</span>
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">self</span>.rear = <span class="org-constant">None</span>
+        <span class="org-keyword">else</span>:
+            <span class="org-keyword">self</span>.head.prev = <span class="org-constant">None</span>
+        <span class="org-keyword">return</span> e
 
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">poplast</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">ValueError</span>
-        <span style="color: #268bd2;">e</span> = <span style="color: #859900; font-weight: bold;">self</span>.rear.elem
-        <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.rear.prev
-        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.rear <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">else</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span> = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #859900; font-weight: bold;">return</span> e
+    <span class="org-keyword">def</span> <span class="org-function-name">poplast</span>(<span class="org-keyword">self</span>):
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">return</span> <span class="org-type">ValueError</span>
+        <span class="org-variable-name">e</span> = <span class="org-keyword">self</span>.rear.elem
+        <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.rear.prev
+        <span class="org-keyword">if</span> <span class="org-keyword">self</span>.rear <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+            <span class="org-keyword">self</span>.head = <span class="org-constant">None</span>:
+        <span class="org-keyword">else</span>:
+            <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span> = <span class="org-constant">None</span>
+        <span class="org-keyword">return</span> e
 </pre>
 </div></li>
 </ul>
@@ -1076,120 +1077,120 @@ O(1) 的尾端加入</b></li>
 </div>
 </div>
 
-<div id="orgbea3531" class="outline-3">
-<h3 id="表元素反转"><a id="orgbea3531"></a>7. 表元素反转</h3>
+<div id="outline-container-org41382d5" class="outline-3">
+<h3 id="表元素反转">7. 表元素反转</h3>
 <div class="outline-text-3" id="text-表元素反转">
 <ul class="org-ul">
-<li>表元素反转，要求修改被操作的表，其中元素按原顺序反转</li>
-<li>表元素排序，要求修改被操作的表，其中表元素按&lt;排好顺序</li>
-<li>表元素反转，算法通常用两个下标，逐对交换元素位置
+<li>表元素反转，要求修改被操作的表，其中元素按原顺序反转<br></li>
+<li>表元素排序，要求修改被操作的表，其中表元素按&lt;排好顺序<br></li>
+<li>表元素反转，算法通常用两个下标，逐对交换元素位置<br>
 
 <ul class="org-ul">
-<li>在双链表上很容易实现</li>
-<li>单链表由于不支持从后向前找结点，只能每次从头开始找，需要 \(O(n^2)\)
-时间</li>
+<li>在双链表上很容易实现<br></li>
+<li>单链表由于不支持从后向前找结点，只能每次从头开始找，需要 \(O(n^2)\)<br>
+时间<br></li>
 </ul></li>
 
-<li>对顺序表，只能搬动表中元素；对链接表，即可通过搬动结点元素，也可通过修改链接关系
+<li>对顺序表，只能搬动表中元素；对链接表，即可通过搬动结点元素，也可通过修改链接关系<br>
 
 <ul class="org-ul">
-<li>在单链表通过搬动元素实现反转，不方便，效率低</li>
-<li>考虑基于修改链接的方式</li>
+<li>在单链表通过搬动元素实现反转，不方便，效率低<br></li>
+<li>考虑基于修改链接的方式<br></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="orgda30bbe" class="outline-4">
-<h4 id="a.-表元素反转实现"><a id="orgda30bbe"></a>a. 表元素反转实现</h4>
+<div id="outline-container-org2c0ef21" class="outline-4">
+<h4 id="a.-表元素反转实现">a. 表元素反转实现</h4>
 <div class="outline-text-4" id="text-a.-表元素反转实现">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">rev</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">p</span> = <span style="color: #268bd2; font-weight: bold;">None</span>
-    <span style="color: #859900; font-weight: bold;">while</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #268bd2;">q</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-        <span style="color: #859900; font-weight: bold;">self</span>.head = <span style="color: #859900; font-weight: bold;">self</span>.head.<span style="color: #839496; font-weight: bold;">next</span>
-        q.<span style="color: #839496; font-weight: bold;">next</span> = p
-        <span style="color: #268bd2;">p</span> = q
-    <span style="color: #859900; font-weight: bold;">self</span>.head = p
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">rev</span>(<span class="org-keyword">self</span>):
+    <span class="org-variable-name">p</span> = <span class="org-constant">None</span>
+    <span class="org-keyword">while</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+        <span class="org-variable-name">q</span> = <span class="org-keyword">self</span>.head
+        <span class="org-keyword">self</span>.head = <span class="org-keyword">self</span>.head.<span class="org-builtin">next</span>
+        q.<span class="org-builtin">next</span> = p
+        <span class="org-variable-name">p</span> = q
+    <span class="org-keyword">self</span>.head = p
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="org9b2182b" class="outline-3">
-<h3 id="表元素排序"><a id="org9b2182b"></a>8. 表元素排序</h3>
+<div id="outline-container-orgcda0d7d" class="outline-3">
+<h3 id="表元素排序">8. 表元素排序</h3>
 <div class="outline-text-3" id="text-表元素排序">
 <ul class="org-ul">
 <li><p>
-先看一个对 list 中元素的排序，使用插入排序算法
+先看一个对 list 中元素的排序，使用插入排序算法<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">listSort</span><span style="color: #2aa198;">(</span>lst<span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>, <span style="color: #839496; font-weight: bold;">len</span><span style="color: #b58900;">(</span>lst<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #268bd2;">p</span> = lst<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
-        <span style="color: #268bd2;">x</span> = i
-        <span style="color: #859900; font-weight: bold;">while</span> x &gt; <span style="color: #6c71c4;">0</span> <span style="color: #859900; font-weight: bold;">and</span> lst<span style="color: #2aa198;">[</span>x-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span> &gt; p:
-            <span style="color: #839496; font-weight: bold;">list</span><span style="color: #2aa198;">[</span>x<span style="color: #2aa198;">]</span> = lst<span style="color: #2aa198;">[</span>x-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
-             <span style="color: #268bd2;">x</span> -= <span style="color: #6c71c4;">1</span>
-        <span style="color: #268bd2;">lst</span><span style="color: #2aa198;">[</span>x<span style="color: #2aa198;">]</span> = p
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">listSort</span>(lst):
+    <span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(1, <span class="org-builtin">len</span>(lst)):
+        <span class="org-variable-name">p</span> = lst[i]
+        <span class="org-variable-name">x</span> = i
+        <span class="org-keyword">while</span> x &gt; 0 <span class="org-keyword">and</span> lst[x-1] &gt; p:
+            <span class="org-builtin">list</span>[x] = lst[x-1]
+             <span class="org-variable-name">x</span> -= 1
+        <span class="org-variable-name">lst</span>[x] = p
 </pre>
 </div></li>
 </ul>
 </div>
 
-<div id="org91ed8a8" class="outline-4">
-<h4 id="a.-单链表排序移动元素实现"><a id="org91ed8a8"></a>a. 单链表排序，移动元素实现</h4>
+<div id="outline-container-org99cad48" class="outline-4">
+<h4 id="a.-单链表排序移动元素实现">a. 单链表排序，移动元素实现</h4>
 <div class="outline-text-4" id="text-a.-单链表排序移动元素实现">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">sortll</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">return</span>
-    <span style="color: #268bd2;">p</span> = <span style="color: #859900; font-weight: bold;">self</span>.head.<span style="color: #839496; font-weight: bold;">next</span>
-    <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #268bd2;">h</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-        <span style="color: #268bd2;">m</span> = p.elem
-        <span style="color: #859900; font-weight: bold;">while</span> h <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> p:
-            <span style="color: #859900; font-weight: bold;">if</span> h.elem &lt;= m:
-                <span style="color: #859900; font-weight: bold;">pass</span>
-            <span style="color: #859900; font-weight: bold;">else</span>:
-                <span style="color: #268bd2;">x</span> = h.elem
-                <span style="color: #268bd2;">h.elem</span> = m
-                <span style="color: #268bd2;">m</span> = x
-            <span style="color: #268bd2;">h</span> = h.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #268bd2;">p.elem</span> = m
-        <span style="color: #268bd2;">p</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">sortll</span>(<span class="org-keyword">self</span>):
+    <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+        <span class="org-keyword">return</span>
+    <span class="org-variable-name">p</span> = <span class="org-keyword">self</span>.head.<span class="org-builtin">next</span>
+    <span class="org-keyword">while</span> p <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+        <span class="org-variable-name">h</span> = <span class="org-keyword">self</span>.head
+        <span class="org-variable-name">m</span> = p.elem
+        <span class="org-keyword">while</span> h <span class="org-keyword">is</span> <span class="org-keyword">not</span> p:
+            <span class="org-keyword">if</span> h.elem &lt;= m:
+                <span class="org-keyword">pass</span>
+            <span class="org-keyword">else</span>:
+                <span class="org-variable-name">x</span> = h.elem
+                <span class="org-variable-name">h.elem</span> = m
+                <span class="org-variable-name">m</span> = x
+            <span class="org-variable-name">h</span> = h.<span class="org-builtin">next</span>
+        <span class="org-variable-name">p.elem</span> = m
+        <span class="org-variable-name">p</span> = p.<span class="org-builtin">next</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="orga270199" class="outline-4">
-<h4 id="b.-单链表调整链接实现"><a id="orga270199"></a>b. 单链表，调整链接实现</h4>
+<div id="outline-container-orgfddfde4" class="outline-4">
+<h4 id="b.-单链表调整链接实现">b. 单链表，调整链接实现</h4>
 <div class="outline-text-4" id="text-b.-单链表调整链接实现">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">sort</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">self</span>.head <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #859900; font-weight: bold;">return</span>
-    <span style="color: #268bd2;">n</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-    <span style="color: #268bd2;">p</span> = n.<span style="color: #839496; font-weight: bold;">next</span>
-    <span style="color: #859900; font-weight: bold;">while</span> p <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-        <span style="color: #268bd2;">j</span> = <span style="color: #268bd2; font-weight: bold;">None</span>
-        <span style="color: #268bd2;">h</span> = <span style="color: #859900; font-weight: bold;">self</span>.head
-        <span style="color: #268bd2;">m</span> = p.elem
-        <span style="color: #859900; font-weight: bold;">while</span> h <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> p <span style="color: #859900; font-weight: bold;">and</span> h.elem &lt;= m:
-            <span style="color: #268bd2;">j</span> = h; <span style="color: #268bd2;">h</span> = j.<span style="color: #839496; font-weight: bold;">next</span>
-        <span style="color: #859900; font-weight: bold;">if</span> h <span style="color: #859900; font-weight: bold;">is</span> p:
-            <span style="color: #268bd2;">n</span> = p <span style="color: #586e75;"># </span><span style="color: #586e75;">&#19981;&#29992;&#20462;&#25913;&#38142;&#25509;&#65292;n &#21644; p &#37117;&#23450;&#20301;&#21040;&#30456;&#24212;&#30340;&#19979;&#19968;&#32467;&#28857;</span>
-        <span style="color: #859900; font-weight: bold;">else</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">&#38656;&#35201;&#20462;&#25913;&#38142;&#25509;&#65292;&#23558; p &#21462;&#20986;&#25554;&#20837;&#21040;&#23545;&#24212;&#20301;&#32622;&#65292;&#26032;p&#30340;&#21069;&#19968;&#32467;&#28857;&#20381;&#28982;&#26159; n&#65292;&#22240;&#27492;&#19981;&#29992;&#20462;&#25913; n</span>
-            p.<span style="color: #839496; font-weight: bold;">next</span> = h
-            n.<span style="color: #839496; font-weight: bold;">next</span> = p.<span style="color: #839496; font-weight: bold;">next</span>
-            <span style="color: #859900; font-weight: bold;">if</span> j <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #268bd2; font-weight: bold;">None</span>:
-                <span style="color: #859900; font-weight: bold;">self</span>.head = p
-            <span style="color: #859900; font-weight: bold;">else</span>:
-                j.<span style="color: #839496; font-weight: bold;">next</span> = p
-        <span style="color: #268bd2;">p</span> = n.<span style="color: #839496; font-weight: bold;">next</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">sort</span>(<span class="org-keyword">self</span>):
+    <span class="org-keyword">if</span> <span class="org-keyword">self</span>.head <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+        <span class="org-keyword">return</span>
+    <span class="org-variable-name">n</span> = <span class="org-keyword">self</span>.head
+    <span class="org-variable-name">p</span> = n.<span class="org-builtin">next</span>
+    <span class="org-keyword">while</span> p <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>:
+        <span class="org-variable-name">j</span> = <span class="org-constant">None</span>
+        <span class="org-variable-name">h</span> = <span class="org-keyword">self</span>.head
+        <span class="org-variable-name">m</span> = p.elem
+        <span class="org-keyword">while</span> h <span class="org-keyword">is</span> <span class="org-keyword">not</span> p <span class="org-keyword">and</span> h.elem &lt;= m:
+            <span class="org-variable-name">j</span> = h; <span class="org-variable-name">h</span> = j.<span class="org-builtin">next</span>
+        <span class="org-keyword">if</span> h <span class="org-keyword">is</span> p:
+            <span class="org-variable-name">n</span> = p <span class="org-comment-delimiter"># </span><span class="org-comment">&#19981;&#29992;&#20462;&#25913;&#38142;&#25509;&#65292;n &#21644; p &#37117;&#23450;&#20301;&#21040;&#30456;&#24212;&#30340;&#19979;&#19968;&#32467;&#28857;</span>
+        <span class="org-keyword">else</span>: <span class="org-comment-delimiter"># </span><span class="org-comment">&#38656;&#35201;&#20462;&#25913;&#38142;&#25509;&#65292;&#23558; p &#21462;&#20986;&#25554;&#20837;&#21040;&#23545;&#24212;&#20301;&#32622;&#65292;&#26032;p&#30340;&#21069;&#19968;&#32467;&#28857;&#20381;&#28982;&#26159; n&#65292;&#22240;&#27492;&#19981;&#29992;&#20462;&#25913; n</span>
+            p.<span class="org-builtin">next</span> = h
+            n.<span class="org-builtin">next</span> = p.<span class="org-builtin">next</span>
+            <span class="org-keyword">if</span> j <span class="org-keyword">is</span> <span class="org-constant">None</span>:
+                <span class="org-keyword">self</span>.head = p
+            <span class="org-keyword">else</span>:
+                j.<span class="org-builtin">next</span> = p
+        <span class="org-variable-name">p</span> = n.<span class="org-builtin">next</span>
 </pre>
 </div>
 </div>
@@ -1197,139 +1198,139 @@ O(1) 的尾端加入</b></li>
 </div>
 </div>
 
-<div id="org1be7fd6" class="outline-2">
-<h2 id="五应用实例"><a id="org1be7fd6"></a>五、应用实例</h2>
+<div id="outline-container-orgd6673ef" class="outline-2">
+<h2 id="五应用实例">五、应用实例</h2>
 <div class="outline-text-2" id="text-五应用实例">
 </div>
 
-<div id="org7e8006e" class="outline-3">
-<h3 id="josephus-问题"><a id="org7e8006e"></a>1. Josephus 问题</h3>
+<div id="outline-container-orgd7989c9" class="outline-3">
+<h3 id="josephus-问题">1. Josephus 问题</h3>
 <div class="outline-text-3" id="text-josephus-问题">
 <ul class="org-ul">
-<li>问题：设有 n
-个人围坐一圈，现在从第k个人开始报数，报到第m的人退出。然后继续报数，直至所有人退出。输出出列人顺序编号</li>
+<li>问题：设有 n<br>
+个人围坐一圈，现在从第k个人开始报数，报到第m的人退出。然后继续报数，直至所有人退出。输出出列人顺序编号<br></li>
 </ul>
 </div>
 
-<div id="org2c1087e" class="outline-4">
-<h4 id="a.-基于-python-list-和固定大小数组"><a id="org2c1087e"></a>a. 基于 python list 和固定大小‘数组'</h4>
+<div id="outline-container-org35e4f3b" class="outline-4">
+<h4 id="a.-基于-python-list-和固定大小数组">a. 基于 python list 和固定大小‘数组'</h4>
 <div class="outline-text-4" id="text-a.-基于-python-list-和固定大小数组">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">josephus</span><span style="color: #2aa198;">(</span>n, k, m<span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">people</span> = <span style="color: #839496; font-weight: bold;">list</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">range</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">1</span>, n+<span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-    <span style="color: #268bd2;">i</span> = k-<span style="color: #6c71c4;">1</span>
-    <span style="color: #859900; font-weight: bold;">for</span> num <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:
-        <span style="color: #268bd2;">count</span> = <span style="color: #6c71c4;">0</span>
-        <span style="color: #859900; font-weight: bold;">while</span> n &lt; m:
-            <span style="color: #859900; font-weight: bold;">if</span> people<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> &gt; <span style="color: #6c71c4;">0</span>:
-                <span style="color: #268bd2;">count</span> += <span style="color: #6c71c4;">1</span>
-            <span style="color: #859900; font-weight: bold;">if</span> count == m:
-                <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>people<span style="color: #b58900;">[</span>i<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
-                <span style="color: #268bd2;">people</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = <span style="color: #6c71c4;">0</span>
-            <span style="color: #268bd2;">i</span> = <span style="color: #2aa198;">(</span>i+<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">)</span> % n
-            <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">","</span> <span style="color: #859900; font-weight: bold;">if</span> num &lt; n-<span style="color: #6c71c4;">1</span> <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #2aa198;">"\n"</span><span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">josephus</span>(n, k, m):
+    <span class="org-variable-name">people</span> = <span class="org-builtin">list</span>(<span class="org-builtin">range</span>(1, n+1))
+    <span class="org-variable-name">i</span> = k-1
+    <span class="org-keyword">for</span> num <span class="org-keyword">in</span> <span class="org-builtin">range</span>(n):
+        <span class="org-variable-name">count</span> = 0
+        <span class="org-keyword">while</span> n &lt; m:
+            <span class="org-keyword">if</span> people[i] &gt; 0:
+                <span class="org-variable-name">count</span> += 1
+            <span class="org-keyword">if</span> count == m:
+                <span class="org-keyword">print</span>(people[i])
+                <span class="org-variable-name">people</span>[i] = 0  
+            <span class="org-variable-name">i</span> = (i+1) % n
+            <span class="org-keyword">print</span>(<span class="org-string">","</span> <span class="org-keyword">if</span> num &lt; n-1 <span class="org-keyword">else</span> <span class="org-string">"\n"</span>)
 
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>建立一个包含 n 个人的 list 编号</li>
-<li>找到第 k 个人，开始报数。处理过程中，通过把相应元素修改为 0
-表示人已不在位</li>
-<li>反复做：
+<li>建立一个包含 n 个人的 list 编号<br></li>
+<li>找到第 k 个人，开始报数。处理过程中，通过把相应元素修改为 0<br>
+表示人已不在位<br></li>
+<li>反复做：<br>
 
 <ul class="org-ul">
-<li>数 m 个人</li>
-<li>把表示第 m 个人的元素值修改为 0</li>
-<li>数到 list 最后元素之后转到下标为 0 的元素继续</li>
+<li>数 m 个人<br></li>
+<li>把表示第 m 个人的元素值修改为 0<br></li>
+<li>数到 list 最后元素之后转到下标为 0 的元素继续<br></li>
 </ul></li>
 
-<li>该算法重点是保证报1时是本身，因此 count 判断应在改变i值之前</li>
-<li>算法复杂性 \(O(n^2)\)</li>
+<li>该算法重点是保证报1时是本身，因此 count 判断应在改变i值之前<br></li>
+<li>算法复杂性 \(O(n^2)\)<br></li>
 </ul>
 </div>
 </div>
 
-<div id="orgf760cad" class="outline-4">
-<h4 id="b.-连续表算法实现"><a id="orgf760cad"></a>b. 连续表算法实现</h4>
+<div id="outline-container-orgca4b6fd" class="outline-4">
+<h4 id="b.-连续表算法实现">b. 连续表算法实现</h4>
 <div class="outline-text-4" id="text-b.-连续表算法实现">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">josephusL</span><span style="color: #2aa198;">(</span>n, k, m<span style="color: #2aa198;">)</span>:
-    <span style="color: #268bd2;">people</span> = <span style="color: #839496; font-weight: bold;">list</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">range</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">1</span>, n+<span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-    <span style="color: #268bd2;">i</span> = k-<span style="color: #6c71c4;">1</span>
-    <span style="color: #859900; font-weight: bold;">for</span> num <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>n&#65292;0&#65292;-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">)</span>:
-        <span style="color: #268bd2;">i</span> = <span style="color: #2aa198;">(</span>i+m-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">)</span> % num
-        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>people.pop<span style="color: #b58900;">(</span>i<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">","</span> <span style="color: #859900; font-weight: bold;">if</span> num &gt; <span style="color: #6c71c4;">1</span> <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #2aa198;">"\n"</span><span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">josephusL</span>(n, k, m):
+    <span class="org-variable-name">people</span> = <span class="org-builtin">list</span>(<span class="org-builtin">range</span>(1, n+1))
+    <span class="org-variable-name">i</span> = k-1
+    <span class="org-keyword">for</span> num <span class="org-keyword">in</span> <span class="org-builtin">range</span>(n&#65292;0&#65292;-1):
+        <span class="org-variable-name">i</span> = (i+m-1) % num
+        <span class="org-keyword">print</span>(people.pop(i))
+        <span class="org-keyword">print</span>(<span class="org-string">","</span> <span class="org-keyword">if</span> num &gt; 1 <span class="org-keyword">else</span> <span class="org-string">"\n"</span>)
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>将保存人员编号的 list 按照表的方式处理</li>
-<li>算出应该退出的人后，将其从表里删除</li>
-<li>元素计数与下标计数统一，下标更新可用 i=(i+m-1)%num</li>
-<li>该算法重点是pop()弹出操作，弹出后下标i后面的所有元素前移一位，因此还是从下标i位置开始记录报数，只是表长度减一</li>
-<li>由于pop操作为 \(O(n)\) ，因此算法复杂性为 \(O(n^2)\)</li>
+<li>将保存人员编号的 list 按照表的方式处理<br></li>
+<li>算出应该退出的人后，将其从表里删除<br></li>
+<li>元素计数与下标计数统一，下标更新可用 i=(i+m-1)%num<br></li>
+<li>该算法重点是pop()弹出操作，弹出后下标i后面的所有元素前移一位，因此还是从下标i位置开始记录报数，只是表长度减一<br></li>
+<li>由于pop操作为 \(O(n)\) ，因此算法复杂性为 \(O(n^2)\)<br></li>
 </ul>
 </div>
 </div>
 
-<div id="org28eee0a" class="outline-4">
-<h4 id="c.-循环链表算法实现"><a id="org28eee0a"></a>c. 循环链表算法实现</h4>
+<div id="outline-container-org2f8e851" class="outline-4">
+<h4 id="c.-循环链表算法实现">c. 循环链表算法实现</h4>
 <div class="outline-text-4" id="text-c.-循环链表算法实现">
 <ul class="org-ul">
-<li>建立一个包含 n 个人编号的循环链表</li>
-<li>循环计数，删去需要退出的结点</li>
+<li>建立一个包含 n 个人编号的循环链表<br></li>
+<li>循环计数，删去需要退出的结点<br></li>
 <li><p>
-基于循环单链表
+基于循环单链表<br>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Joesphus</span><span style="color: #2aa198;">(</span>LCList<span style="color: #2aa198;">)</span>:
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">turn</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, m<span style="color: #2aa198;">)</span>:
-        <span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>m<span style="color: #2aa198;">)</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.rear = <span style="color: #859900; font-weight: bold;">self</span>.rear.<span style="color: #839496; font-weight: bold;">next</span>
-    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">__init__</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>, n, k, m<span style="color: #2aa198;">)</span>:
-        LCList.__init__<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span><span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>, n+<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">)</span>
-            <span style="color: #859900; font-weight: bold;">self</span>.append<span style="color: #2aa198;">(</span>i<span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">self</span>.turn<span style="color: #2aa198;">(</span>k-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">)</span>
-        <span style="color: #859900; font-weight: bold;">while</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #859900; font-weight: bold;">self</span>.isEmpty<span style="color: #2aa198;">()</span>:
-            <span style="color: #859900; font-weight: bold;">self</span>.turn<span style="color: #2aa198;">(</span>m-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">)</span>
-            <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">self</span>.pop<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>
-            <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">","</span> <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900; font-weight: bold;">not</span> <span style="color: #859900; font-weight: bold;">self</span>.isEmpty <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #2aa198;">"\n"</span><span style="color: #2aa198;">)</span>
+<pre class="src src-python"><span class="org-keyword">class</span> <span class="org-type">Joesphus</span>(LCList):
+    <span class="org-keyword">def</span> <span class="org-function-name">turn</span>(<span class="org-keyword">self</span>, m):
+        <span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(m):
+            <span class="org-keyword">self</span>.rear = <span class="org-keyword">self</span>.rear.<span class="org-builtin">next</span>
+    <span class="org-keyword">def</span> <span class="org-function-name">__init__</span>(<span class="org-keyword">self</span>, n, k, m):
+        LCList.__init__(<span class="org-keyword">self</span>)
+        <span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(1, n+1)
+            <span class="org-keyword">self</span>.append(i)
+        <span class="org-keyword">self</span>.turn(k-1)
+        <span class="org-keyword">while</span> <span class="org-keyword">not</span> <span class="org-keyword">self</span>.isEmpty():
+            <span class="org-keyword">self</span>.turn(m-1)
+            <span class="org-keyword">print</span>(<span class="org-keyword">self</span>.pop())
+            <span class="org-keyword">print</span>(<span class="org-string">","</span> <span class="org-keyword">if</span> <span class="org-keyword">not</span> <span class="org-keyword">self</span>.isEmpty <span class="org-keyword">else</span> <span class="org-string">"\n"</span>)
 </pre>
 </div></li>
 
-<li>该算法重点利用了 self.rear，初始时 self.rear
-指向循环链表尾端结点，通过预先调用 turn 函数沿 next 移动 k-1
-步，即到了编号为 k-1 所在结点，由于 pop 是首端弹出，在链表上体现为
-self.rear 的 next 域所指向的结点，因此应将 self.rear
-移动到结点被弹出处的前一位置。由于报数是从 1
-开始报，因此每次循环，self.rear 都是沿 next 移动 m-1
-步，为了保证循环的统一性，因而第一次调用 turn 只移动 k-1 步。</li>
-<li>算法复杂性 O(m*n)</li>
+<li>该算法重点利用了 self.rear，初始时 self.rear<br>
+指向循环链表尾端结点，通过预先调用 turn 函数沿 next 移动 k-1<br>
+步，即到了编号为 k-1 所在结点，由于 pop 是首端弹出，在链表上体现为<br>
+self.rear 的 next 域所指向的结点，因此应将 self.rear<br>
+移动到结点被弹出处的前一位置。由于报数是从 1<br>
+开始报，因此每次循环，self.rear 都是沿 next 移动 m-1<br>
+步，为了保证循环的统一性，因而第一次调用 turn 只移动 k-1 步。<br></li>
+<li>算法复杂性 O(m*n)<br></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 
-<div id="org9e06e7d" class="outline-2">
-<h2 id="思考"><a id="org9e06e7d"></a>思考</h2>
+<div id="outline-container-orgedcab58" class="outline-2">
+<h2 id="思考">思考</h2>
 <div class="outline-text-2" id="text-思考">
 <ul class="org-ul">
-<li>数据结构是一种结合数据在内存中的存储方式（连续存储或分散存储）与实际应用的抽象化数据组织方式</li>
+<li>数据结构是一种结合数据在内存中的存储方式（连续存储或分散存储）与实际应用的抽象化数据组织方式<br></li>
 
-<li>下标有时等效于数据在内存中的位置，即存储地址。访问数据只能通过存储地址访问</li>
+<li>下标有时等效于数据在内存中的位置，即存储地址。访问数据只能通过存储地址访问<br></li>
 
-<li>数据通过预先组织形成一种关联性，然后存入内存，该关联性体现在从内存中取出数据</li>
+<li>数据通过预先组织形成一种关联性，然后存入内存，该关联性体现在从内存中取出数据<br></li>
 
-<li>数据结构首先应定义好结构单元</li>
+<li>数据结构首先应定义好结构单元<br></li>
 
-<li>数据结构的实现是一系列结构单元的内在联系及外部组织的体现</li>
+<li>数据结构的实现是一系列结构单元的内在联系及外部组织的体现<br></li>
 
-<li>如单链表，预先定义好结点的结构，在构建一序列相关结点时，形成内部的链接关系，通过外部指定表头变量，从而体现出单链表的结构完整性</li>
+<li>如单链表，预先定义好结点的结构，在构建一序列相关结点时，形成内部的链接关系，通过外部指定表头变量，从而体现出单链表的结构完整性<br></li>
 </ul>
 </div>
 </div>
